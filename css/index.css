@@ -118,7 +118,6 @@ body {
         color:#281822;
         text-align: center;
         margin: 40px 0;
-        
     }
 
     .Cbotão{
@@ -147,7 +146,7 @@ body {
         flex-wrap: wrap;
         justify-content: center;
         gap: 20px;
-        margin-bottom: 30px;
+        margin-bottom: 20px;
         margin-top: 0;
     }
 
@@ -165,11 +164,34 @@ body {
         font-weight: 400;
         color:#281822;
         text-align: center;
-        margin: 40px 0;
-        
+        margin: 40px 20px;
+        margin-bottom: 60px;
     }
 
-   .rodape {
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+    h2{
+        font-family: 'Outfit', sans-serif;
+        font-weight: 550;
+        color:#281822;
+        font-size: 18px;
+        padding: 0 40px;
+    }
+
+    hr{
+        width: 96%;
+        height: 1.5px;
+        border: none;
+        background-color: #281822;
+        opacity: 0.3;
+    }
+
+    .avaliações {
+    text-align: center;
+    padding: 20px;
+    }
+
+    .rodape {
         width: 100%;
         height: 180px;
         background-color: #281822;
