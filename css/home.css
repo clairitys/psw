@@ -43,7 +43,6 @@ body {
     .dropdown {
         position: relative;
         display: inline-block;
-        
     }
 
 
@@ -224,10 +223,10 @@ body {
     }
 
     .item img {
-    width: 20px;
-    height: 20px;
-    filter: brightness(0) invert(1); 
-}
+        width: 20px;
+        height: 20px;
+        filter: brightness(0) invert(1); 
+    }
 
     .conteúdo p {
         font-family: 'Fraunces';
