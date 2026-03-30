@@ -130,7 +130,7 @@ body {
         display: inline-block;
         padding: 10px 30px;
         background-color: #281822;
-        border-radius: 20px;
+        border-radius: 12px;
         color: #F8F8F8 !important;    
         text-decoration: none;         
         font-family: 'Inter', sans-serif;
@@ -139,7 +139,8 @@ body {
         transition: 0.3s;
     }
     .botão:hover {
-        color: #b6b6b1 !important;    
+        color: #b6b6b1 !important;
+        transform: scale(1.05);    
     }
 
     .albuns {
@@ -180,6 +181,10 @@ body {
         margin: 20px 0;          
     }
 
+    .img:hover{
+        transform: scale(1.05);    
+    }
+
     p{
         font-family: 'Fraunces', sans-serif;
         font-size: 25px;
@@ -191,7 +196,7 @@ body {
     }
 
     .avaliações h2 {
-        font-family: 'Outfit', sans-serif;
+        font-family: 'Inter', sans-serif;
         font-weight: 550;
         color: #281822;
         font-size: 18px;

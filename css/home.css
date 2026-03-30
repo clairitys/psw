@@ -216,8 +216,8 @@ body {
     }
 
     .img:hover {
-       transform: scale(1.05); /* Subtle lift effect */
-}
+       transform: scale(1.05);
+    }
 
     .img {
         width: 150px;
@@ -253,12 +253,13 @@ body {
         background: #281822; 
         border-radius: 8px;
         overflow: hidden;
-        transition: 0.3s;
     }
 
     .amigos:hover {
        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+       transform: scale(1.05);
     }
+
 
     .pp{
         width: 150px; 
@@ -270,17 +271,15 @@ body {
      .user {
         display: flex;
         align-items: center;
-        gap: 8px;
-        justify-content: flex-start;
-        flex: 1;
-        padding: 5px 0;
+        gap: 6px;
+        height: 30px;
+        padding: 0 10px;
         box-sizing: border-box;
-       
     }
 
     .pfp1 {
-        width: 16px;
-        height: 16px;
+        width: 18px;
+        height: 18px;
         filter: brightness(0) invert(1);
         object-fit: cover;
         flex-shrink: 0;
@@ -288,12 +287,17 @@ body {
 
     .username {
         font-family: 'Outfit', sans-serif !important;
-        color: #F8F8F8;
-        font-size: 14px;
-        font-weight: 500;
-        margin: 0;
+        color: #F8F8F8 !important;
+        font-size: 15px !important;
+        font-weight: 400 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        line-height: 1 !important; 
+        display: block;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
-    
 
     .rodape {
         width: 100%;
