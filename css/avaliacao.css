@@ -182,7 +182,7 @@ body {
 
     .album-artist {
         font-family: 'Outfit', sans-serif;
-        font-size: 20px;
+        font-size: 25px;
         font-weight: 450;
         text-align: left;
         text-align: top;
@@ -209,7 +209,7 @@ body {
 
     .info-column p {
         font-family: 'Inter', sans-serif;
-        font-size: 16px;
+        font-size: 20px;
         text-align: left;
         margin-bottom: 6px;
         margin-top: 0;
@@ -230,12 +230,13 @@ body {
     }
 
     .star-icon {
-        width: 20px;
-        height: 20px;
+        width: 25px;
+        height: 25px;
     }
 
     .rating-score {
-        font-family: 'Inter', sans-serif;    
+        font-family: 'Inter', sans-serif;
+        font-size: 24px;    
     }
 
     .userspace {
@@ -257,7 +258,7 @@ body {
 
     .usuario {
         font-family: 'Outfit', sans-serif !important;
-        font-size: 17px;
+        font-size: 20px;
         font-weight: 500;
         padding: 0 ! important;
         margin: -4px !important;
@@ -265,7 +266,7 @@ body {
 
     .stars {
         color: #281822;
-        font-size: 20px;
+        font-size: 30px;
         margin: 0! important;
         line-height: 1;
         display: flex;        
