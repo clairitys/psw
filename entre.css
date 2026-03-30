@@ -1,0 +1,472 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@700&family=Inter:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #F8F8F8;
+    padding-top: 70px; 
+}
+
+.container {
+    width: 100%;
+    height: 70px;
+    background-color: #281822;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+    .container h1 {
+        font-family: 'Fraunces', serif;
+        color: #F8F8F8;
+        font-size: 35px;
+        margin: 0;
+    }
+
+    .direita {
+        display: flex;
+        gap: 25px;
+    } 
+
+    .direita a {
+        color: #F8F8F8 !important;    
+        text-decoration: none;         
+        font-family: 'Inter', sans-serif;
+        font-weight: 400; 
+        font-size: 18px;
+        transition: 0.3s;
+    }
+
+    .direita a:hover {
+        color: #b6b6b1 !important;    
+    }
+
+    .container2 {
+        width: 100%;
+        height: 160px;
+        background-color: #b6b6b1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 40px;
+        box-sizing: border-box;
+        flex-direction: column;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+    }
+
+    .busca {
+        width: 100%;
+        max-width: 700px; 
+        text-align: center;
+        margin-top: 50px; 
+    }
+
+    .busca h2 {
+        font-family: 'Fraunces', serif;
+        color: #281822;
+        margin-bottom: 25px;
+        font-size: 32px;
+    }
+
+    .barra{
+        display: flex;
+        background-color: white;
+        padding: 5px;
+        border-radius: 50px; 
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
+        border: 1px solid #ddd;
+    }
+
+    .barra input {
+        flex: 1; 
+        border: none;
+        padding: 15px 25px;
+        border-radius: 50px;
+        outline: none; 
+        font-family: 'Inter', sans-serif;
+        font-size: 16px;
+    }
+
+    .barra button {
+        background-color: #281822;
+        color: white;
+        border: none;
+        padding: 10px 30px;
+        border-radius: 50px;
+        cursor: pointer;
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        transition: 0.3s;
+    }
+
+    .barra button:hover {
+        background-color: #452a3a;
+    }
+
+    p{
+        font-family: 'Fraunces', sans-serif;
+        font-size: 30px;
+        font-weight: 400;
+        color:#281822;
+        text-align: center;
+        margin: 40px 0;
+    }
+
+    .Cbotão{
+        text-align: center;
+        margin: 20px 20px;
+    }
+
+    .botão{
+        display: inline-block;
+        padding: 10px 30px;
+        background-color: #281822;
+        border-radius: 20px;
+        color: #F8F8F8 !important;    
+        text-decoration: none;         
+        font-family: 'Inter', sans-serif;
+        font-weight: 500; 
+        font-size: 18px;
+        transition: 0.3s;
+    }
+    .botão:hover {
+        color: #b6b6b1 !important;    
+    }
+
+    .albuns {
+        display: flex;
+        flex-wrap: nowrap;      
+        overflow-x: auto;       
+        scroll-snap-type: x mandatory;
+        gap: 20px;
+        padding: 20px 40px;
+        margin: 0;   
+        text-align: center;
+        scrollbar-width: thin; 
+        scrollbar-color: #281822 #f8f8f8;
+    }
+
+    
+    .albuns::-webkit-scrollbar {
+        height: 4px; 
+    }
+
+    .albuns::-webkit-scrollbar-thumb {
+        background: #E9E9E7;
+        border-radius: 10px;
+    }
+
+    .albuns::-webkit-scrollbar-track {
+        background: #281822;
+        margin: 0 100px;
+    }
+
+    .img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+        flex-shrink: 0;         
+        scroll-snap-align: center;
+        margin: 20px 0;          
+    }
+
+    p{
+        font-family: 'Fraunces', sans-serif;
+        font-size: 25px;
+        font-weight: 400;
+        color:#281822;
+        text-align: center;
+        margin: 40px 20px;
+        margin-bottom: 40px;
+    }
+
+    .avaliações h2 {
+        font-family: 'Inter', sans-serif;
+        font-weight: 550;
+        color: #281822;
+        font-size: 18px;
+        padding: 0 40px;
+        margin-bottom: 10px;
+    }
+
+    hr {
+        width: 96%;
+        height: 1.5px;
+        border: none;
+        background-color: #281822;
+        opacity: 0.3;
+        margin-bottom: 10px;
+    }
+
+    .cards {
+        display: flex;
+        flex-wrap: wrap; 
+        gap: 20px;
+        padding: 20px 40px;
+    }
+
+    .avCT {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        flex: 1;
+        min-width: 400px;
+        margin-bottom: 30px;
+        background: #E9E9E7;
+        padding: 15px;
+        border-radius: 12px;
+    }
+
+    .img1 {
+        width: 200px; 
+        height: 200px;
+        object-fit: cover;
+        border-radius: 4px;
+        margin-right: 20px;
+    }
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        justify-content: flex-start; 
+        height: 200px; 
+        box-sizing: border-box;
+        padding: 5px 0;
+    }
+
+    .avCT h1 {
+        font-family: 'Fraunces', serif;
+        font-size: 22px;
+        color: #281822;
+        margin: 0;
+    }
+
+    .subtitulo {
+        font-family: 'Outfit', sans-serif !important;
+        font-size: 18px;
+        font-weight: 600;
+        color: #281822;
+        flex-direction: column; 
+        margin-left: -40px;
+        margin-top: 0;
+    }
+
+    .user {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+
+    .img2 {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%; 
+        object-fit: cover;
+    }
+
+    .username {
+        font-family: 'Outfit', sans-serif !important;
+        font-size: 15px;
+        font-weight: 700;
+        margin: -40px !important;
+    }
+
+    .stars {
+        color: #281822;
+        font-size: 20px;
+        margin: 0;
+        line-height: 1;
+        
+    }
+
+    .avCT p {
+        font-family: 'Outfit', sans-serif;
+        color: #281822;
+        font-size: 16px;
+        line-height: 1.4;
+        margin: 5px 0;
+        flex-grow: 1;
+    }
+
+    .data {
+        font-family: 'Outfit', sans-serif;
+        font-size: 12px;
+        color: #666;  
+        margin-top: auto;
+    }
+
+
+    .rodape {
+        width: 100%;
+        height: 180px;
+        background-color: #281822;
+        display: flex;
+        flex-direction: row;   
+        align-items: center;  
+        justify-content: space-between;   
+        padding: 0 40px;             
+        box-sizing: border-box;    
+        margin-top: 60px;
+    }
+    
+    .esquerdo{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .redes{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-end;
+    }
+
+    .item{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        color:#F8F8F8;
+        font-family: 'Inter', sans-serif;
+        font-size: 15px;
+        text-decoration: none;
+    }
+
+    .item img {
+        width: 20px;
+        height: 20px;
+        filter: brightness(0) invert(1); 
+    }
+
+    .conteúdo p {
+        font-family: 'Fraunces';
+        font-size: 15px;
+        color: #F8F8F8;
+        margin: 0! important;      
+        text-align: left; 
+    }
+
+    .links {
+        display: flex;
+        gap: 25px;    
+        margin-top: 20px;             
+        margin-bottom: 90px;
+        margin: 0;        
+    }
+
+    .links a {
+        color: #F8F8F8 !important;
+        text-decoration: none;
+        font-family: 'Inter', sans-serif;
+        font-size: 15px;
+        font-weight: 500;
+        margin: 0;                 
+        line-height: 1;            
+    }
+
+    .estatico {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        filter: brightness(0.8); 
+    }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0);
+        backdrop-filter: blur(5px);          
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999; 
+    }
+
+    .entrar {
+        background-color: #E9E9E7;
+        padding: 40px;
+        border-radius: 12px;
+        width: 100%;
+        max-width: 400px; 
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        font-family: 'Outfit', sans-serif;
+    }
+
+    .entrar h2 {
+        font-family: 'Fraunces', serif;
+        color: #281822;
+        margin-bottom: 30px;
+        font-size: 25px !important;
+    }
+
+    .entrar form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .entrar input {
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 16px;
+        font-family: 'Inter', sans-serif;
+        outline: none;
+        transition: 0.3s;
+    }
+
+    .entrar input:focus {
+        border-color: #281822;
+        box-shadow: 0 0 5px rgba(40, 24, 34, 0.2);
+    }
+
+    .submit-button {
+        background-color: #281822;
+        color: white;
+        border: none;
+        padding: 15px;
+        border-radius: 8px;
+        font-size: 18px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 10px;
+    }
+
+    .submit-button:hover {
+        color: #b6b6b1 !important;    
+    }    
+
+    .voltar {
+        display: block;
+        margin-top: 20px;
+        color: #666;
+        text-decoration: none;
+        font-size: 14px;
+        transition: 0.3s;
+    }
+
+    .voltar:hover {
+        color: #281822;
+        text-decoration: underline;
+    }
