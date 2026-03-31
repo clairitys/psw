@@ -299,6 +299,105 @@ body {
         text-overflow: ellipsis;
     }
 
+        .cards {
+        display: flex;
+        flex-wrap: wrap; 
+        gap: 20px;
+        padding: 20px 40px;
+    }
+
+    /*.avCT {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        flex: 1;
+        min-width: 400px;
+        margin-bottom: 30px;
+        background: #E9E9E7;
+        padding: 15px;
+        border-radius: 12px;
+    }
+
+    .img1 {
+        width: 200px; 
+        height: 200px;
+        object-fit: cover;
+        border-radius: 4px;
+        margin-right: 20px;
+    }
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        justify-content: flex-start; 
+        height: 200px; 
+        box-sizing: border-box;
+        padding: 5px 0;
+    }
+
+    .avCT h1 {
+        font-family: 'Fraunces', serif;
+        font-size: 22px;
+        color: #281822;
+        margin: 0;
+    }
+
+    .subtitulo {
+        font-family: 'Outfit', sans-serif !important;
+        font-size: 18px;
+        font-weight: 600;
+        color: #281822;
+        flex-direction: column; 
+        margin-left: -40px;
+        margin-top: 0;
+    }
+
+    .user {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+
+    .img2 {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%; 
+        object-fit: cover;
+    }
+
+    .username {
+        font-family: 'Outfit', sans-serif !important;
+        font-size: 15px;
+        font-weight: 700;
+        margin: -40px !important;
+    }
+
+    .stars {
+        color: #281822;
+        font-size: 20px;
+        margin: 0;
+        line-height: 1;
+        
+    }
+
+    .avCT p {
+        font-family: 'Outfit', sans-serif;
+        color: #281822;
+        font-size: 16px;
+        line-height: 1.4;
+        margin: 5px 0;
+        flex-grow: 1;
+    }
+
+    .data {
+        font-family: 'Outfit', sans-serif;
+        font-size: 12px;
+        color: #666;  
+        margin-top: auto;
+    }*/
+
     .rodape {
         width: 100%;
         height: 180px;
