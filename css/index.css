@@ -147,7 +147,7 @@ body {
 
     p{
         font-family: 'Outfit', sans-serif !important;
-        font-size: 25px !important;
+        font-size: 25px;
         font-weight: 550 !important;
         color:#281822;
         text-align: center;
