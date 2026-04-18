@@ -1,11 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@700&family=Inter:wght@400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
-body {
+html, body {
+    max-width: 100%;
+    overflow-x: hidden; 
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    padding-top: 70px;
     background-color: #F8F8F8;
-    padding-top: 70px; 
+    /*padding-top: 70px; */
 }
 
 .container {
@@ -54,6 +66,27 @@ body {
         background-color: #b6b6b1;
         display: flex;
         align-items: center;
+        justify-content: center; /* Centraliza a barra de busca */
+        padding: 0 40px;
+        box-sizing: border-box;
+        margin-top: 0 !important;
+        position: relative; /* Garante que não haja espaço entre o header e ela */
+    }
+
+    .busca {
+        width: 100%;
+        max-width: 700px; 
+        text-align: center;
+        margin-top: 0; /* Removido o margin-top de 50px que empurrava o conteúdo para baixo */
+    }
+    
+
+    /*.container2 {
+        width: 100%;
+        height: 160px;
+        background-color: #b6b6b1;
+        display: flex;
+        align-items: center;
         justify-content: space-between;
         padding: 0 40px;
         box-sizing: border-box;
@@ -61,14 +94,14 @@ body {
         top: 0;
         left: 0;
         z-index: 1000;
-    }
+    }*/
 
-    .busca {
+    /*.busca {
         width: 100%;
         max-width: 700px; 
         text-align: center;
         margin-top: 50px; 
-    }
+    }*/
 
     .busca h2 {
         font-family: 'Fraunces', serif;
@@ -109,7 +142,7 @@ body {
     }
 
     .barra button:hover {
-        background-color: #452a3a;
+        background-color: #b6b6b1;
     }
 
     p{
@@ -139,7 +172,6 @@ body {
         transition: 0.3s;
     }
     .botão:hover {
-        color: #b6b6b1 !important;
         transform: scale(1.05);    
     }
 
@@ -195,8 +227,9 @@ body {
         margin-bottom: 40px;
     }
 
-    .avaliações h2 {
-        font-family: 'Inter', sans-serif;
+      .avaliações h2 {
+        font-family: 'Outfit', sans-serif;
+        font-weight: 550;
         font-weight: 550;
         color: #281822;
         font-size: 18px;
@@ -243,18 +276,21 @@ body {
     .info {
         display: flex;
         flex-direction: column;
-        gap: 5px;
+        gap: 8px;
         justify-content: flex-start; 
+        align-items: flex-start;
         height: 200px; 
         box-sizing: border-box;
-        padding: 5px 0;
+        padding: 0;
     }
 
     .avCT h1 {
         font-family: 'Fraunces', serif;
         font-size: 22px;
         color: #281822;
-        margin: 0;
+        margin: 0! important;
+        padding: 0;
+        line-height: 1.2;
     }
 
     .subtitulo {
@@ -263,8 +299,10 @@ body {
         font-weight: 600;
         color: #281822;
         flex-direction: column; 
-        margin-left: -40px;
-        margin-top: 0;
+        margin: 0 !important;
+        padding: 0;
+        display: block;
+        text-align: left;
     }
 
     .user {
@@ -285,7 +323,6 @@ body {
         font-family: 'Outfit', sans-serif !important;
         font-size: 15px;
         font-weight: 700;
-        margin: -40px !important;
     }
 
     .stars {
@@ -293,7 +330,6 @@ body {
         font-size: 20px;
         margin: 0;
         line-height: 1;
-        
     }
 
     .avCT p {
@@ -312,7 +348,6 @@ body {
         margin-top: auto;
     }
 
-
     .rodape {
         width: 100%;
         height: 180px;
@@ -324,7 +359,9 @@ body {
         padding: 0 40px;             
         box-sizing: border-box;    
         margin-top: 60px;
-    }
+        position:static;
+       }
+
     
     .esquerdo{
         display: flex;
@@ -380,4 +417,531 @@ body {
         font-weight: 500;
         margin: 0;                 
         line-height: 1;            
+    }
+
+    /* ============================================
+       MEDIA QUERIES - RESPONSIVIDADE
+       ============================================ */
+
+    /* Desktop médio (992px - 1199px) */
+    @media (max-width: 1199px) {
+        .container {
+            padding: 0 30px;
+        }
+
+        .direita {
+            gap: 20px;
+        }
+
+        .direita a {
+            font-size: 16px;
+        }
+
+        .container h1 {
+            font-size: 30px;
+        }
+
+        .albuns {
+            padding: 20px 30px;
+        }
+
+        .img {
+            width: 180px;
+            height: 180px;
+        }
+
+        .cards {
+            padding: 20px 30px;
+        }
+
+        .avCT {
+            min-width: 350px;
+        }
+
+        .img1 {
+            width: 180px;
+            height: 180px;
+        }
+
+        .info {
+            height: 180px;
+        }
+
+        .rodape {
+            padding: 0 30px;
+        }
+    }
+
+    /* Tablet (768px - 991px) */
+    @media (max-width: 991px) {
+        body {
+            padding-top: 0 !important;
+        }
+
+        .container {
+            height: 60px;
+            padding: 0 20px;
+        }
+
+        .container h1 {
+            font-size: 26px;
+        }
+
+        .direita {
+            gap: 15px;
+        }
+
+        .direita a {
+            font-size: 14px;
+        }
+
+        .container2 {
+            height: 140px;
+            padding: 0 20px;
+            margin: 0;
+            padding-top: 60px;
+        }
+
+        .busca {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .barra input {
+            padding: 12px 20px;
+            font-size: 14px;
+        }
+
+        .barra button {
+            padding: 8px 20px;
+            font-size: 14px;
+        }
+
+        p {
+            font-size: 22px;
+            margin: 30px 15px;
+        }
+
+        .albuns {
+            padding: 20px;
+            gap: 15px;
+        }
+
+        .img {
+            width: 160px;
+            height: 160px;
+        }
+
+        .avaliações h2 {
+            padding: 0 20px;
+            font-size: 16px;
+        }
+
+        hr {
+            width: calc(100% - 40px);
+            margin-left: 20px;
+        }
+
+        .cards {
+            padding: 15px 20px;
+            gap: 15px;
+        }
+
+        .avCT {
+            min-width: 100%;
+            flex-direction: row;
+        }
+
+        .img1 {
+            width: 150px;
+            height: 150px;
+        }
+
+        .info {
+            height: auto;
+            min-height: 150px;
+        }
+
+        .avCT h1 {
+            font-size: 18px;
+        }
+
+        .subtitulo {
+            font-size: 15px;
+            margin-left: 0;
+            text-align: left; /* Garante que fique alinhado com o título do álbum */
+        }
+
+        .rodape {
+            height: auto;
+            padding: 30px 20px;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .esquerdo {
+            align-items: center;
+            text-align: center;
+        }
+
+        .links {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .conteúdo p {
+            text-align: center;
+        }
+
+        .redes {
+            align-items: center;
+        }
+    }
+
+    /* Mobile grande (576px - 767px) */
+    @media (max-width: 767px) {
+        body {
+            padding-top: 0 !important;        }
+
+        .container {
+            height: 55px;
+            padding: 0 15px;
+            flex-wrap: wrap;
+        }
+
+        .container h1 {
+            font-size: 22px;
+        }
+
+        .direita {
+            gap: 10px;
+        }
+
+        .direita a {
+            font-size: 12px;
+        }
+
+        .container2 {
+            height: 120px;
+            padding: 0 15px;
+        }
+
+        .busca {
+            margin-top: 30px;
+            max-width: 100%;
+        }
+
+        .barra {
+            flex-direction: column;
+            padding: 10px;
+            border-radius: 20px;
+        }
+
+        .barra input {
+            padding: 10px 15px;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .barra button {
+            width: 100%;
+            padding: 8px 15px;
+            font-size: 13px;
+            margin-top: 8px;
+        }
+
+        p {
+            font-size: 18px;
+            margin: 25px 10px;
+            line-height: 1.5;
+        }
+
+        .Cbotão {
+            margin: 15px 10px;
+        }
+
+        .botão {
+            padding: 8px 25px;
+            font-size: 16px;
+        }
+
+        .albuns {
+            padding: 15px;
+            gap: 12px;
+        }
+
+        .img {
+            width: 140px;
+            height: 140px;
+        }
+
+        .avaliações h2 {
+            padding: 0 15px;
+            font-size: 15px;
+        }
+
+        hr {
+            width: calc(100% - 30px);
+            margin-left: 15px;
+        }
+
+        .cards {
+            padding: 10px 15px;
+            gap: 12px;
+        }
+
+        .avCT {
+            min-width: 100%;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 15px 10px;
+        }
+
+        .img1 {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            aspect-ratio: 1;
+            margin-right: 0;
+        }
+
+        .info {
+            align-items: center;
+            width: 100%;
+            padding: 0; 
+            gap: 2px;  
+        }
+
+        /*.info {
+            align-items: center;
+            width: 100%;
+            padding: 10px 0;
+        }*/
+
+        .avCT h1 {
+            font-size: 16px;
+        }
+
+        .subtitulo {
+            font-size: 14px;
+            margin-left: 0;
+        }
+
+        .user {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;       
+            margin: 2px 0;  
+        }
+
+
+        .stars {
+        font-size: 14px; /* Estrelas um pouco menores para não empurrar a linha */
+        }
+
+
+        /*.user {
+            justify-content: center;
+        }*/
+
+        .username {
+            margin: 0 !important;
+        }
+
+        .avCT p {
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .rodape {
+            padding: 25px 15px;
+        }
+
+        .links {
+            gap: 15px;
+        }
+
+        .links a {
+            font-size: 13px;
+        }
+
+        .item {
+            font-size: 13px;
+        }
+
+        .conteúdo p {
+            font-size: 13px;
+        }
+    }
+
+    /* Mobile pequeno (<576px) */
+    @media (max-width: 575px) {
+        body {
+            padding-top: 0 !important;
+        }
+
+        .container {
+            position: relative;
+            height: auto;
+            padding: 15px;
+            /*min-height: 50px;
+            flex-direction: column;
+            padding: 10px 15px;*/
+            }
+
+        .container h1 {
+            font-size: 24px;
+        }
+
+        .direita {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .direita a {
+            font-size: 11px;
+            padding: 4px 8px;
+        }
+
+        .container2 {
+            margin-top: 0! important;
+            height: auto;
+            min-height: 100px;
+            padding: 15px;
+        }
+
+        .busca {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .barra {
+            padding: 8px;
+        }
+
+        .barra input {
+            padding: 8px 12px;
+            font-size: 12px;
+        }
+
+        .barra button {
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+
+        p {
+            font-size: 16px;
+            margin: 20px 10px;
+            line-height: 1.4;
+        }
+
+        .botão {
+            padding: 8px 20px;
+            font-size: 14px;
+        }
+
+        .albuns {
+            padding: 10px;
+            gap: 10px;
+        }
+
+        .img {
+            width: 120px;
+            height: 120px;
+        }
+
+        .avaliações h2 {
+            padding: 0 10px;
+            font-size: 14px;
+        }
+
+        hr {
+            width: calc(100% - 20px);
+            margin-left: 10px;
+        }
+
+        .cards {
+            padding: 10px;
+        }
+
+        .avCT {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .img1 {
+            max-width: 150px;
+        }
+
+        .avCT h1 {
+            font-size: 14px;
+        }
+
+        .subtitulo {
+            font-size: 12px;
+        }
+
+        .img2 {
+            width: 25px;
+            height: 25px;
+        }
+
+        .username {
+            font-size: 12px;
+        }
+
+        .stars {
+            font-size: 16px;
+        }
+
+        .info {
+            height: auto;
+            align-items: center;
+        }
+
+
+        .user {
+            justify-content: center;
+        }
+
+        .avCT p {
+            font-size: 13px;
+        }
+
+        .data {
+            font-size: 11px;
+        }
+
+        .rodape {
+            padding: 20px 10px;
+            margin-top: 40px;
+        }
+
+        .links {
+            gap: 12px;
+        }
+
+        .links a {
+            font-size: 12px;
+        }
+
+        .item {
+            font-size: 12px;
+            gap: 8px;
+        }
+
+        .item img {
+            width: 16px;
+            height: 16px;
+        }
+
+        .conteúdo p {
+            font-size: 11px;
+        }
     }

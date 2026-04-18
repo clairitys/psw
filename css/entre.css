@@ -451,10 +451,14 @@ body {
         cursor: pointer;
         transition: 0.3s;
         margin-top: 10px;
+        display: inline-block;
+        text-decoration: none; 
+        text-align: center
     }
 
     .submit-button:hover {
         color: #b6b6b1 !important;    
+        text-decoration: none;
     }    
 
     .voltar {
