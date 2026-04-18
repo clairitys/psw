@@ -265,22 +265,22 @@ body {
         gap: 18px;
     }
 
-    .musica {
-        display: flex;
-        align-items: center;
-        font-family: 'Outfit', sans-serif;
-        font-size: 25px;
-    }
-
     .infoMusica {
         display: flex;
         align-items: center;
         align-items: top;
         margin-top: 0;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
         font-family: 'Outfit', sans-serif;
         font-size: 16px;
         color: #555;
+    }
+
+    .musica {
+        display: flex;
+        align-items: center;
+        font-family: 'Outfit', sans-serif;
+        font-size: 25px;
     }
 
     .numero {

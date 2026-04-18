@@ -191,6 +191,14 @@ body {
         color: #555;
     }
 
+    .album-artist:hover .artist-name {
+        text-decoration: underline;
+    }
+
+    .album-artist:hover {
+        cursor: pointer; 
+    }
+
     .artist-name {
         font-family: 'Outfit', sans-serif;
         color: #222;
@@ -254,7 +262,7 @@ body {
         display: flex;
         font-family: 'Outfit', sans-serif;
         flex-direction: column;
-        gap: 22px;
+        gap: 18px;
     }
 
     .musica {
