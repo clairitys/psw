@@ -1,11 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@700&family=Inter:wght@400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
-body {
+html, body {
+    max-width: 100%;
+    overflow-x: hidden; 
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    padding-top: 70px;
     background-color: #F8F8F8;
-    padding-top: 70px; 
+    overflow-x: hidden;
+    /*padding-top: 70px;*/
 }
 
 .container {
@@ -128,20 +141,18 @@ body {
         background-color: #b6b6b1;       
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
         padding: 0 40px;
         box-sizing: border-box;
-        flex-direction: column;
-        top: 0;
-        left: 0;
-        z-index: 1000;
+        margin-top: 0 !important;
+        position: relative;
     }
 
     .busca {
         width: 100%;
         max-width: 700px; 
         text-align: center;
-        margin-top: 50px; 
+        margin-top: 0; 
     }
 
     .busca h2 {
@@ -183,16 +194,15 @@ body {
     }
 
     .barra button:hover {
-        background-color: #452a3a;
+        background-color: #b6b6b1;
     }
 
     p{
-        font-family: 'Outfit', serif;
+        font-family: 'Outfit', sans-serif;
         font-weight: 550;
-        font-size: 25px;
+        font-size: 22px;
         text-align: center;
-        margin: 40px 20px;
-        margin-bottom: 40px;
+        margin: 60px;
     }
 
    .avaliações h2 {
@@ -205,7 +215,7 @@ body {
         margin-bottom: 10px;
     }
 
-    hr {
+    .avaliações hr {
         width: 96%;
         height: 1.5px;
         border: none;
@@ -215,12 +225,11 @@ body {
     }
 
      .albuns {
-        height: 150px;
         display: flex;
         gap: 11px;
         padding: 20px 40px;
-        margin-top: 0;   
-        margin-bottom: 20px;
+        margin-top: 0; 
+        margin-bottom: 30px;
         text-align: center;
     }
 
@@ -233,9 +242,8 @@ body {
         height: 150px;
         object-fit: cover;
         border-radius: 8px;
-        margin: 20px 0;   
+        margin-bottom: 30px;
         margin-top: 0;      
-        margin-bottom: 20px; 
     }
 
     .popular h2{
@@ -244,7 +252,16 @@ body {
         color: #281822;
         font-size: 18px;
         padding: 0 40px;
-        margin-top: 40px;
+        margin-top: 30px;
+        margin-bottom: 10px;
+    }
+
+    .popular hr {
+        width: 96%;
+        height: 1.5px;
+        border: none;
+        background-color: #281822;
+        opacity: 0.3;
         margin-bottom: 10px;
     }
 
@@ -257,20 +274,19 @@ body {
 
     .amigos {
         display: flex;
+        margin-bottom: 30px;
         flex-direction: column; 
         width: 150px;
         height: 180px;
         background: #281822; 
         border-radius: 8px;
         overflow: hidden;
-        margin-bottom: 20px;
     }
 
     .amigos:hover {
        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
        transform: scale(1.05);
     }
-
 
     .pp{
         width: 150px; 
@@ -316,7 +332,16 @@ body {
         color: #281822;
         font-size: 18px;
         padding: 0 40px;
-        margin-top: 40px;
+        margin-top: 30px;
+        margin-bottom: 10px;
+    }
+
+    .generos hr {
+        width: 96%;
+        height: 1.5px;
+        border: none;
+        background-color: #281822;
+        opacity: 0.3;
         margin-bottom: 10px;
     }
     
@@ -325,11 +350,13 @@ body {
         align-items: center;
         margin-left: 42px;
         background-color: #b6b6b1; 
+        margin-top: 22px !important;
         width: 95%;
+        height: 200px;
         border-radius: 4px; 
         overflow: hidden;   
         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        margin-bottom: 60px !important;
+        margin-bottom: 70px !important;
     }
 
     .image img {
@@ -375,7 +402,16 @@ body {
         color: #281822;
         font-size: 18px;
         padding: 0 40px;
+        margin-top: 30px !important;
         margin-bottom: 10px;
+    }
+
+    .avaliações2 hr {
+        width: 96%;
+        height: 1.5px;
+        border: none;
+        background-color: #281822;
+        opacity: 0.3;
     }
 
     .cards2 {
@@ -383,6 +419,7 @@ body {
         flex-wrap: wrap; 
         gap: 20px;
         padding: 20px 40px;
+        margin-top: 0 !important;
     }
 
     .avCT {
@@ -395,6 +432,7 @@ body {
         background: #E9E9E7;
         padding: 15px;
         border-radius: 12px;
+        margin-top: 0 !important;
     }
 
     .img1 {
@@ -549,5 +587,734 @@ body {
         margin: 0;                 
         line-height: 1;            
     }
-    
 
+/* ============================================
+   MEDIA QUERIES - RESPONSIVIDADE AJUSTADA
+   ============================================ */
+
+/* Desktop médio (992px - 1199px) */
+@media (max-width: 1199px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    .albuns::-webkit-scrollbar,
+    .cards::-webkit-scrollbar {
+        display: none;
+    }
+
+    .albuns,
+    .cards {
+        -ms-overflow-style: none;  /* IE e Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+
+     .container {
+            padding: 0 30px;
+        }
+
+        .direita {
+            gap: 20px;
+        }
+
+        .direita a {
+            font-size: 16px;
+        }
+
+        .container h1 {
+            font-size: 30px;
+        }
+
+        /* Ativa o dropdown ao toque */
+        .dropdown:active .dropdownCT, 
+        .dropdown:focus-within .dropdownCT {
+            display: flex !important;
+            flex-direction: column;
+        }
+
+         .albuns {
+            display: flex;
+            flex-wrap: nowrap; /* Força ficar um ao lado do outro */
+            overflow-x: auto;  /* Habilita o scroll lateral */
+            overflow-y: inherit;
+            gap: 15px;
+            padding: 15px 20px;
+            -webkit-overflow-scrolling: touch; /* Scroll suave no iOS */
+        }
+
+        .img {
+            flex: 0 0 auto; /* Impede os cards de esmagarem */
+            width: 150px;
+        }
+       
+        .cards {
+            display: flex;
+            flex-wrap: nowrap; /* Força ficar um ao lado do outro */
+            overflow-x: auto;  /* Habilita o scroll lateral */
+            gap: 15px;
+            padding: 15px 20px;
+            -webkit-overflow-scrolling: touch; /* Scroll suave no iOS */
+        }
+
+        .amigos {
+            flex: 0 0 auto; /* Impede os cards de esmagarem */
+            width: 150px;
+        }
+
+        .container {
+            height: auto; /* Permite que o conteúdo respire se o menu quebrar */
+            padding: 10px 20px;
+        }
+        
+        .img {
+            width: 150px;
+            height: 150px;
+        }
+    
+        .genCard { 
+            width: 90%; 
+            margin-left: auto; 
+            margin-right: auto; 
+        }
+
+        .image img { 
+            width: 300px;
+            height: 200px; 
+        }
+
+        .cards {
+            padding: 20px 30px;
+        }
+        
+        .img1 {
+            width: 180px;
+            height: 180px;
+        }
+
+        .avCT { 
+            min-width: 350%; 
+        }
+
+         .info {
+            height: 180px;
+        }
+
+        .rodape {
+            padding: 0 30px;
+        }
+}
+
+/* Tablet (768px - 991px) */
+@media (max-width: 991px) {
+    body {
+        padding-top: 0 !important;
+        overflow-x: hidden;
+    }
+    .container {
+            height: 60px;
+            padding: 0 20px;
+        }
+
+        .container h1 {
+            font-size: 26px;
+        }
+
+        .direita {
+            gap: 15px;
+        }
+
+        .direita a {
+            font-size: 14px;
+        }
+
+        .container2 {
+            height: 140px;
+            padding: 0 20px;
+            margin: 0;
+            padding-top: 60px;
+        }
+
+        .busca {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .barra input {
+            padding: 12px 20px;
+            font-size: 14px;
+        }
+
+        .barra button {
+            padding: 8px 20px;
+            font-size: 14px;
+        }
+        
+        p {
+            font-size: 20px;
+            margin: 30px 15px;
+        }
+
+         .albuns {
+            padding: 20px;
+            gap: 15px;
+        }
+
+        .img {
+            width: 160px;
+            height: 160px;
+        }
+
+       .genCard {
+            flex-direction: row;
+            width: 95%;
+            height: 100%;
+            align-items: center;
+            text-align: center;
+        }
+
+        .title {  
+            font-size: 19px;
+            margin: 0 !important; 
+            text-align: justify;
+            width: 100%;
+       }
+
+        .conteudo p {
+            line-height: 1.5;   
+            font-size: 13px;
+            margin: 0 !important; 
+            text-align: justify; 
+            font-family: 'Outfit', sans-serif !important;   
+            width: 100%;
+        }
+
+        .image img {
+            width: auto;
+            height: 200px !important;
+            object-fit: cover;
+        }
+
+        .avaliações h2 {
+            padding: 0 20px;
+            font-size: 16px;
+        }
+
+        .avaliações2 h2 {
+            padding: 0 20px;
+            font-size: 16px;
+        }
+
+        .generos h2 {
+            padding: 0 20px;
+            font-size: 16px;
+        }
+
+        .popular h2 {
+            padding: 0 20px;
+            font-size: 16px;
+        }
+
+        hr {
+            width: calc(100% - 40px);
+            margin-left: 20px;
+        }
+
+        .cards {
+            padding: 15px 20px;
+            gap: 15px;
+        }
+
+        .avCT {
+            min-width: 100%;
+            flex-direction: row;
+        }
+
+        .img1 {
+            width: 150px;
+            height: 150px;
+        }
+
+        .info {
+            height: auto;
+            min-height: 150px;
+        }
+
+        .avCT h1 {
+            font-size: 18px;
+        }
+
+        .subtitulo {
+            font-size: 15px;
+            margin-left: 0;
+            text-align: left; 
+        }
+
+        .rodape {
+            height: auto;
+            padding: 30px 20px;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .esquerdo {
+            align-items: center;
+            text-align: center;
+        }
+
+        .links {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .conteúdo p {
+            text-align: center;
+        }
+
+        .redes {
+            align-items: center;
+        }
+}
+
+/* Mobile grande (576px - 767px) */
+@media (max-width: 767px) {
+      body {
+        padding-top: 0 !important;  
+        overflow-x: hidden;     
+      }
+
+        .container {
+            height: 55px;
+            padding: 0 15px;
+            flex-wrap: wrap;
+        }
+
+        .container h1 {
+            font-size: 22px;
+        }
+
+        .direita {
+            gap: 10px;
+        }
+
+        .direita a {
+            font-size: 12px;
+        }
+
+        .container2 {
+            height: 120px;
+            padding: 0 15px;
+        }
+
+        .busca {
+            margin-top: 30px;
+            max-width: 100%;
+        }
+
+        .barra {
+            flex-direction: column;
+            padding: 10px;
+            border-radius: 20px;
+        }
+
+        .barra input {
+            padding: 10px 15px;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .barra button {
+            width: 100%;
+            padding: 8px 15px;
+            font-size: 13px;
+            margin-top: 8px;
+        }
+    
+        p {
+            font-size: 16px;
+            margin: 30px 15px;
+        }
+
+        .genCard {
+            flex-direction: column;
+            width: 90% !important;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .image img {
+            margin-top: 25px;
+            object-fit: fill !important;
+            height: fit;
+        }
+
+        .conteudo {
+             text-align: center;
+             align-items: center;
+            }
+
+        .img1 { 
+            width: 120px; 
+            height: 120;
+        }
+
+        .albuns {
+            padding: 15px;
+            gap: 12px;
+        }
+
+        .img {
+            width: 120px;
+            height: 120px !important;
+        }
+
+        .cards {
+            padding: 15px 20px;
+            gap: 15px;
+        }
+
+        .amigos {
+            width: 120px;
+            height: 150px;
+        }
+
+        .pp{
+            width: 120px;
+            height: 120px;
+        }
+
+        .avaliações h2 {
+            padding: 0 15px;
+            font-size: 15px;
+        }
+
+        hr {
+            width: calc(100% - 30px);
+            margin-left: 15px;
+        }
+
+        .avaliações2 h2 {
+            padding: 0 15px;
+            font-size: 15px;
+        }
+
+         .popular h2 {
+            padding: 0 15px;
+            font-size: 15px;
+        }
+
+        .generos h2 {
+            padding: 0 15px;
+            font-size: 15px;
+        }
+
+        .cards {
+            padding: 10px 15px;
+            gap: 12px;
+        }
+
+        .avCT {
+            min-width: 100%;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 15px 10px;
+        }
+
+        .img1 {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            aspect-ratio: 1;
+            margin-right: 0;
+        }
+
+        .info {
+            align-items: center;
+            width: 100%;
+            padding: 0; 
+            gap: 2px;  
+        }
+
+        /*.info {
+            align-items: center;
+            width: 100%;
+            padding: 10px 0;
+        }*/
+
+        .avCT h1 {
+            font-size: 16px;
+        }
+
+        .subtitulo {
+            font-size: 14px;
+            margin-left: 0;
+        }
+
+        .usuario2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;       
+            margin: 2px 0; 
+            font-size: 12px !important; 
+        }
+
+
+        .stars {
+            font-size: 14px; /* Estrelas um pouco menores para não empurrar a linha */
+        }
+
+
+        /*.user {
+            justify-content: center;
+        }*/
+
+        .nome {
+            margin: 0 !important;
+        }
+
+        .avCT p {
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .rodape {
+            padding: 25px 15px;
+        }
+
+        .links {
+            gap: 15px;
+        }
+
+        .links a {
+            font-size: 13px;
+        }
+
+        .item {
+            font-size: 13px;
+        }
+
+        .conteúdo p {
+            font-size: 13px;
+        }
+    }
+
+    /* Mobile pequeno (<576px) */
+    @media (max-width: 575px) {
+        body {
+            padding-top: 0 !important;
+            overflow-x: hidden;
+        }
+
+        .container {
+            position: relative;
+            height: auto;
+            padding: 15px;
+            /*min-height: 50px;
+            flex-direction: column;
+            padding: 10px 15px;*/
+            }
+
+        .container h1 {
+            font-size: 24px;
+        }
+
+        .direita {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .direita a {
+            font-size: 11px;
+            padding: 4px 8px;
+        }
+
+        .container2 {
+            margin-top: 0! important;
+            height: auto;
+            min-height: 100px;
+            padding: 15px;
+        }
+
+        .busca {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .barra {
+            padding: 8px;
+        }
+
+        .barra input {
+            padding: 8px 12px;
+            font-size: 12px;
+        }
+
+        .barra button {
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+
+        p {
+            font-size: 16px;
+            margin: 20px 10px;
+            line-height: 1.4;
+        }
+
+        .botão {
+            padding: 8px 20px;
+            font-size: 14px;
+        }
+
+        .albuns {
+            padding: 10px;
+            gap: 10px;
+        }
+
+        .img {
+            width: 120px;
+            height: 120px;
+        }
+
+        .avaliações h2 {
+            margin-left: 5px;
+            padding: 0 10px;
+            font-size: 14px;
+        }
+
+        hr {
+            width: calc(100% - 20px);
+            margin-left: 10px;
+        }
+
+        .genCard {
+            flex-direction: column;
+            width: 80%;
+            height: 100%;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .title {  
+            font-size: 19px;
+            margin: 0 !important; 
+            text-align: justify;
+            width: 100%;
+       }
+
+        .conteudo p {
+            line-height: 1.5;   
+            font-size: 13px;
+            margin: 0 !important; 
+            text-align: justify; 
+            font-family: 'Outfit', sans-serif !important;   
+            width: 100%;
+        }
+
+
+        .avaliações2 h2 {
+            margin-left: 5px;
+            padding: 0 10px;
+            font-size: 14px;
+        }
+
+        .generos h2 {
+            margin-left: 5px;
+            padding: 0 10px;
+            font-size: 14px;
+        }
+
+        .popular h2 {
+            margin-left: 5px;
+            padding: 0 10px;
+            font-size: 14px;
+        }
+
+        .cards {
+            padding: 10px;
+        }
+
+        .avCT {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .img1 {
+            max-width: 150px;
+        }
+
+        .avCT h1 {
+            font-size: 14px;
+        }
+
+        .subtitulo {
+            font-size: 12px;
+        }
+
+        .img2 {
+            width: 25px;
+            height: 25px;
+        }
+
+        .nome {
+            font-size: 12px;
+        }
+
+        .stars {
+            font-size: 14x;
+        }
+
+        .info {
+            height: auto;
+            align-items: center;
+        }
+
+
+        .user {
+            justify-content: center;
+        }
+
+        .avCT p {
+            font-size: 13px;
+        }
+
+        .data {
+            font-size: 11px;
+        }
+
+        .rodape {
+            padding: 20px 10px;
+            margin-top: 40px;
+        }
+
+        .links {
+            gap: 12px;
+        }
+
+        .links a {
+            font-size: 12px;
+        }
+
+        .item {
+            font-size: 12px;
+            gap: 8px;
+        }
+
+        .item img {
+            width: 16px;
+            height: 16px;
+        }
+
+        .conteúdo p {
+            font-size: 11px;
+        }
+    }
+
+    
