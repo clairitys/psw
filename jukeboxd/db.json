@@ -1,0 +1,117 @@
+{
+  "albuns": [
+    {
+      "id": "2",
+      "titulo": "Believe",
+      "artista": "Justin Bieber",
+      "capa": "img/justin.jpg",
+      "data": "2012"
+    },
+    {
+      "id": "3",
+      "titulo": "White Pony",
+      "artista": "Deftones",
+      "capa": "img/deftones.jpg",
+      "data": "2000"
+    },
+    {
+      "id": "4",
+      "titulo": "Brat",
+      "artista": "Charli XCX",
+      "capa": "img/brat.jpg",
+      "data": "2024"
+    },
+    {
+      "id": "5",
+      "titulo": "Ashes to Light",
+      "artista": "Ateez",
+      "capa": "img/ateez.jpg",
+      "data": "2025"
+    },
+    {
+      "id": "6",
+      "titulo": "Desire, I Want to Turn Into You",
+      "artista": "Caroline Polacheck",
+      "capa": "img/caroline.jpg",
+      "data": "2023"
+    },
+    {
+      "id": "7",
+      "titulo": "MAYHEM",
+      "artista": "Lady Gaga",
+      "capa": "img/gaga.jpg",
+      "data": "2025"
+    },
+    {
+      "id": "8",
+      "titulo": "Wasteland, Baby!",
+      "artista": "Hozier",
+      "capa": "img/hozier.jpg",
+      "data": "2019"
+    },
+    {
+      "id": "9",
+      "titulo": "Ultraviolence",
+      "artista": "Lana Del Rey",
+      "capa": "img/lana.jpg",
+      "data": "2014"
+    },
+    {
+      "id": "10",
+      "titulo": "Hollow",
+      "artista": "Stary Kids",
+      "capa": "img/skz.jpg",
+      "data": "2025"
+    },
+    {
+      "id": "11",
+      "titulo": "Harry's House",
+      "artista": "Harry Styles",
+      "capa": "img/harry.jpg",
+      "data": "2022"
+    },
+    {
+      "id": "12",
+      "titulo": "Fine Line",
+      "artista": "Harry Styles",
+      "capa": "img/harry.jpg",
+      "data": "2024"
+    },
+    {
+      "id": "13",
+      "titulo": "After Hours",
+      "artista": "The Weeknd",
+      "capa": "img/fimDeSemana.jpg",
+      "data": "2020"
+    },
+    {
+      "titulo": "Abbey Road",
+      "artista": "The Beatles",
+      "capa": "img/beatles.jpg",
+      "data": "1969",
+      "id": "1"
+    }
+  ],
+  "artistas": [],
+  "musicas": [],
+  "avaliacoes": [
+    {
+      "id": "1",
+      "albumId": "1",
+      "username": "Ciclano123",
+      "estrelas": 5,
+      "comentario": "AAAA",
+      "data": "15/03/2026"
+    },
+    {
+      "id": "2",
+      "albumId": "1",
+      "username": "Ciclano123",
+      "estrelas": 5,
+      "comentario": "Perfeito...",
+      "data": "15/03/2026"
+    }
+  ],
+  "sugestoes": [],
+  "$schema": "./node_modules/json-server/schema.json"
+}
