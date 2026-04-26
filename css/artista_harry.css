@@ -112,7 +112,7 @@ body {
         background-color: #452a3a;
     }
 
-    p{
+    p {
         font-family: 'Fraunces', sans-serif;
         font-size: 30px;
         font-weight: 400;
@@ -147,23 +147,23 @@ body {
     .artista {
         display: flex;
         flex-wrap: nowrap;      
-        overflow-x: auto; 
-        border-radius: px;      
+        overflow-x: auto;      
         gap: 20px;
-        padding: 20px 40px;
-        margin: 0;   
+        padding: 20px 40px; 
         text-align: center;
+        align-items:top;
     }
 
     .img {
-        width: 250px;
-        height: 250px;
+        width: 240px;
+        height: 240px;
         object-fit: cover;
         flex-shrink: 0;         
         scroll-snap-align: center;
         margin: 20px 0;   
         border-radius: 50%; 
-        object-fit: cover;       
+        object-fit: cover; 
+        border: 1px solid rgba(255, 255, 255, 0.2);       
     }
 
     .img:hover{
@@ -176,31 +176,29 @@ body {
         text-align: left;
         font-weight: 400;
         color: #281822;
-        margin-top: 20px;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        flex: 1;
         display: flex;
+        margin-bottom: 8px;
         justify-content: flex-start;
-        flex-direction: column;
     }
 
-
-    .infos {
-        font-family: 'Outfit', sans-serif !important;
+    .info-artista {
+        flex-direction: column;
         display: flex;
-        align-items:start;
+        flex-wrap: wrap; 
+        gap: 10px;
+        padding: 20px 40px;
+    }
+
+    .biografia {
+        display: flex;
+        align-items: flex-start;
         gap: 15px;
         flex: 1;
-        min-width: 400px;
+        width:max-content;
         margin-bottom: 30px;
         background: #E9E9E7;
         padding: 15px;
         border-radius: 12px;
-        
-    }
-
-    .biografia {
         font-family: 'Outfit', sans-serif !important;
         font-size: 18px;
         font-weight: 600;
@@ -220,8 +218,7 @@ body {
         margin: 20px 0;
         gap: 10px;
         margin: 0;
-        margin-left: 20px;   
-                 
+        margin-left: 20px;            
     }
 
     .img3:hover{
