@@ -496,26 +496,51 @@ body {
    RESPONSIVIDADE (MEDIA QUERIES)
    ========================================= */
 
-/* Para tablets e telas médias (até 768px) */
-@media (max-width: 768px) {
-    /* Ajustes no cabeçalho */
-    .container {
-        padding: 0 20px;
-    }
-    
-    .container h1 {
-        font-size: 28px;
-    }
+/* Para tablets(768px - 991px) */
+@media (max-width: 991px) {
+        body {
+            padding-top: 0 !important;
+        }
 
-    .direita {
-        gap: 15px;
-    }
+        .container {
+            height: 60px;
+            padding: 0 20px;
+        }
 
-    .direita a {
-        font-size: 16px;
-    }
+        .container h1 {
+            font-size: 26px;
+        }
 
-    /* Empilha a capa do álbum e os detalhes */
+        .direita {
+            gap: 15px;
+        }
+
+        .direita a {
+            font-size: 14px;
+        }
+
+        .container2 {
+            height: 140px;
+            padding: 0 20px;
+            margin: 0;
+            padding-top: 60px;
+        }
+
+        .busca {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .barra input {
+            padding: 12px 20px;
+            font-size: 14px;
+        }
+
+        .barra button {
+            padding: 8px 20px;
+            font-size: 14px;
+        }
+
     .album-header {
         flex-direction: column; 
         align-items: center;
@@ -547,45 +572,74 @@ body {
     }
 
     /* Ajustes nas avaliações */
-    .avCT {
-        min-width: 100%;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
+    .avaliações h2 {
+            padding: 0 20px;
+            font-size: 16px;
+        }
 
-    .img1 {
-        margin-right: 0;
-        margin-bottom: 15px;
-        width: 100%;
-        max-width: 250px;
-    }
+        hr {
+            width: calc(100% - 40px);
+            margin-left: 20px;
+        }
 
-    .subtitulo {
-        margin-left: 0;
-    }
+        .cards {
+            padding: 15px 20px;
+            gap: 15px;
+        }
 
-    .user {
-        justify-content: center;
-    }
+        .avCT {
+            min-width: 100%;
+            flex-direction: row;
+        }
+
+        .img1 {
+            width: 150px;
+            height: 150px;
+        }
+
+        .info {
+            height: auto;
+            min-height: 150px;
+        }
+
+        .avCT h1 {
+            font-size: 18px;
+        }
+
+        .subtitulo {
+            font-size: 15px;
+            margin-left: 0;
+            text-align: left; /* Garante que fique alinhado com o título do álbum */
+        }
 
     /* Ajustes no rodapé */
     .rodape {
-        flex-direction: column;
-        height: auto;
-        padding: 30px 20px;
-        gap: 30px;
-        text-align: center;
-    }
+            height: auto;
+            padding: 30px 20px;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
 
-    .redes {
-        align-items: center;
-    }
+        .esquerdo {
+            align-items: center;
+            text-align: center;
+        }
 
-    .links {
-        justify-content: center;
+        .links {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .conteúdo p {
+            text-align: center;
+        }
+
+        .redes {
+            align-items: center;
+        }
     }
-}
 
 /* Para celulares pequenos (até 480px) */
 @media (max-width: 480px) {
