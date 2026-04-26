@@ -89,26 +89,6 @@ body {
         color: #c49ba7;
     }
 
-    .grid {
-        display: grid;
-        grid-template-columns: 50% 50%;
-        gap: 20px;
-        width: 100%;
-    }
-
-    .linha {
-        display: flex;
-        gap: 10px;
-    }
-
-    .caneta {
-        transform: scaleX(-1);
-        display: flex;
-        align-items: center;
-        font-size: 20px;
-        cursor: pointer; 
-    }
-
     input[type="text"],
     input[type="email"],
     textarea,
@@ -124,18 +104,6 @@ body {
         margin-left: 20px;
         margin-top: 0px;
         border: 1px solid #ddd;
-    }
-
-    label {
-        font-family: 'Outfit', sans-serif;
-        text-align: left;
-        margin-left: 25px;
-        color: #6f6b6b;
-    }
-
-    textarea {
-        resize: vertical;
-        min-height: 80px;
     }
 
     .editar {
