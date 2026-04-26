@@ -1,0 +1,752 @@
+    .home-container {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh; 
+    }
+    
+    .conteudo-principal {
+        flex: 1; 
+    }
+
+    .resultados-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        width: 100%;
+    }
+        
+    .resultados-container h2{
+        font-family: 'Outfit', sans-serif;
+        text-align: center;
+        font-weight: 550;
+        font-weight: 550;
+        color: #281822;
+        font-size: 20px;
+        padding: 0 40px;
+        margin-bottom: 10px;
+        margin-top: 20px;
+
+    }
+
+    .cards-busca {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 900px;
+        gap: 20px;
+        margin-bottom: 30px;
+        padding: 20px;
+        align-items: center;
+    }
+
+    .album-card-busca {
+        display: flex;
+        align-items: center;
+        padding: 15px;       
+        gap: 20px;
+        width: 100%;
+        background-color: #E9E9E7; 
+        border: 1px solid #ddd;   
+        border-radius: 8px;     
+        box-sizing: border-box;   
+        transition: transform 0.2s ease;
+    }
+
+    .album-card-busca:hover {
+        transform: scale(1.02); 
+    }
+
+    .album-card-link, .vitrine-link {
+        text-decoration: none;
+        color: inherit;
+        display: contents; 
+    }
+
+    .capa-container img {
+        width: 120px;  
+        height: 120px;
+        object-fit: cover;
+        border-radius: 4px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .info-album {
+        line-height: 24px;
+        text-align: left;
+    }
+
+    .info-album h3 {
+        font-size: 1.2rem; 
+        font-family: 'Outfit', sans-serif !important;
+        margin: 0;
+        color: #281822;
+    }
+
+    .info-album p {
+        font-family: 'Outfit', sans-serif;
+        text-align: left;
+        font-size: 0.95rem;
+        color: #281822;
+        margin: 0;
+        opacity: 0.8; 
+    }
+
+    .data-lancamento {
+        font-family: 'Outfit', sans-serif;
+        font-weight: 450;
+        opacity: 0.4;
+    }
+
+   
+   .texto-chamada{
+        font-family: 'Outfit', sans-serif !important;
+        font-size: 25px;
+        font-weight: 550 !important;
+        color:#281822;
+        text-align: center;
+        margin-top: 50px;
+        margin-bottom: 0;
+    }
+
+    .texto-chamada2{
+        font-family: 'Outfit', sans-serif !important;
+        font-size: 25px;
+        font-weight: 550 !important;
+        color:#281822;
+        text-align: center;
+        margin-top: 20px !important;
+        margin-bottom: 30px;
+    }
+
+    .Cbotão{
+        text-align: center;
+        margin: 20px 20px;
+    }
+
+    .botão{
+        display: inline-block;
+        padding: 10px 30px;
+        background-color: #281822;
+        border-radius: 12px;
+        color: #F8F8F8 !important;    
+        text-decoration: none;         
+        font-family: 'Inter', sans-serif;
+        font-weight: 500; 
+        font-size: 18px;
+        transition: 0.3s;
+        margin-bottom: 20px;
+    }
+    .botão:hover {
+        transform: scale(1.05);    
+    }
+
+    .albuns {
+        display: flex;
+        flex-wrap: nowrap;      
+        overflow-x: auto;       
+        scroll-snap-type: x mandatory;
+        gap: 20px;
+        padding: 20px 40px;
+        margin: 0;   
+        text-align: center;
+        clear: both;
+        scrollbar-width: thin; 
+        scrollbar-color: #281822 #f8f8f8;
+    }
+
+    
+    .albuns::-webkit-scrollbar {
+        height: 4px; 
+    }
+
+    .albuns::-webkit-scrollbar-thumb {
+        background: #E9E9E7;
+        border-radius: 10px;
+    }
+
+    .albuns::-webkit-scrollbar-track {
+        background: #281822;
+        margin: 0 100px;
+    }
+
+    .img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+        flex-shrink: 0;         
+        scroll-snap-align: center;
+        display: block;
+        max-width: 100%;
+        margin: 20px 0;          
+    }
+
+    .img:hover{
+        transform: scale(1.05);    
+    }
+
+    p{
+        font-family: 'Fraunces', sans-serif;
+        font-size: 25px;
+        font-weight: 400;
+        color:#281822;
+        text-align: center;
+        margin: 40px 20px;
+        margin-bottom: 40px;
+    }
+
+    /* ============================================
+       MEDIA QUERIES - RESPONSIVIDADE
+       ============================================ */
+
+    /* Desktop médio (992px - 1199px) */
+    @media (max-width: 1199px) {
+        .container {
+            padding: 0 30px;
+        }
+
+        .direita {
+            gap: 20px;
+        }
+
+        .link-style-btn {
+            font-size: 16px; 
+        }
+
+        .direita a {
+            font-size: 16px;
+        }
+
+        .container h1 {
+            font-size: 30px;
+        }
+
+        .albuns {
+            padding: 20px 30px;
+        }
+
+        .img {
+            width: 180px;
+            height: 180px;
+        }
+
+        .cards {
+            padding: 20px 30px;
+        }
+
+        .avCT {
+            min-width: 350px;
+        }
+
+        .img1 {
+            width: 180px;
+            height: 180px;
+        }
+
+        .info {
+            font-family: 'Outfit';
+            height: 180px;
+        }
+
+        .rodape {
+            padding: 0 30px;
+        }
+    }
+
+    /* Tablet (768px - 991px) */
+    @media (max-width: 991px) {
+        body {
+            padding-top: 0 !important;
+        }
+
+        .container {
+            height: 60px;
+            padding: 0 20px;
+        }
+
+        .container h1 {
+            font-size: 26px;
+        }
+
+        .direita {
+            gap: 15px;
+        }
+
+        .direita a {
+            font-size: 14px;
+        }
+
+        .botao-log {
+            padding: 6px 14px;
+            font-size: 14px;
+        }
+
+        .link-style-btn {
+            font-size: 14px; 
+        }
+
+        .container2 {
+            height: 140px;
+            padding: 0 20px;
+            margin: 0;
+            padding-top: 60px;
+        }
+
+        .busca {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .barra input {
+            padding: 12px 20px;
+            font-size: 14px;
+        }
+
+        .barra button {
+            padding: 8px 20px;
+            font-size: 14px;
+        }
+
+        p {
+            font-size: 22px;
+            margin: 30px 15px;
+        }
+
+        .albuns {
+            padding: 20px;
+            gap: 15px;
+        }
+
+        .img {
+            width: 160px;
+            height: 160px;
+        }
+
+        .avaliações h2 {
+            padding: 0 20px;
+            font-size: 16px;
+        }
+
+        hr {
+            width: calc(100% - 40px);
+            margin-left: 20px;
+        }
+
+        .cards {
+            padding: 15px 20px;
+            gap: 15px;
+        }
+
+        .avCT {
+            min-width: 100%;
+            flex-direction: row;
+        }
+
+        .img1 {
+            width: 150px;
+            height: 150px;
+        }
+
+        .info {
+            height: auto;
+            min-height: 150px;
+        }
+
+        .avCT h1 {
+            font-size: 18px;
+        }
+
+        .subtitulo {
+            font-size: 15px;
+            margin-left: 0;
+            text-align: left; /* Garante que fique alinhado com o título do álbum */
+        }
+
+        .rodape {
+            height: auto;
+            padding: 30px 20px;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .esquerdo {
+            align-items: center;
+            text-align: center;
+        }
+
+        .links {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .conteúdo p {
+            text-align: center;
+        }
+
+        .redes {
+            align-items: center;
+        }
+    }
+
+    /* Mobile grande (576px - 767px) */
+    @media (max-width: 767px) {
+        body {
+            padding-top: 0 !important;        }
+
+        .container {
+            height: 55px;
+            padding: 0 15px;
+            flex-wrap: wrap;
+        }
+
+        .container h1 {
+            font-size: 22px;
+        }
+
+        .direita {
+            gap: 10px;
+        }
+
+        .direita a {
+            font-size: 12px;
+        }
+
+        .botao-log {
+            padding: 6px 14px;
+            font-size: 14px;
+        }
+
+        .link-style-btn {
+            font-size: 12px; 
+        }
+
+        .container2 {
+            height: 120px;
+            padding: 0 15px;
+        }
+
+        .busca {
+            margin-top: 30px;
+            max-width: 100%;
+        }
+
+        .barra {
+            flex-direction: column;
+            padding: 10px;
+            border-radius: 20px;
+        }
+
+        .barra input {
+            padding: 10px 15px;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .barra button {
+            width: 100%;
+            padding: 8px 15px;
+            font-size: 13px;
+            margin-top: 8px;
+        }
+
+        p {
+            font-size: 18px;
+            margin: 25px 10px;
+            line-height: 1.5;
+        }
+
+        .Cbotão {
+            margin: 15px 10px;
+        }
+
+        .botão {
+            padding: 8px 25px;
+            font-size: 16px;
+        }
+
+        .albuns {
+            padding: 15px;
+            gap: 12px;
+        }
+
+        .img {
+            width: 140px;
+            height: 140px;
+        }
+
+        .avaliações h2 {
+            padding: 0 15px;
+            font-size: 15px;
+        }
+
+        hr {
+            width: calc(100% - 30px);
+            margin-left: 15px;
+        }
+
+        .cards {
+            padding: 10px 15px;
+            gap: 12px;
+        }
+
+        .avCT {
+            min-width: 100%;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 15px 10px;
+        }
+
+        .img1 {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            aspect-ratio: 1;
+            margin-right: 0;
+        }
+
+        .info {
+            align-items: center;
+            width: 100%;
+            padding: 0; 
+            gap: 2px;  
+        }
+
+        /*.info {
+            align-items: center;
+            width: 100%;
+            padding: 10px 0;
+        }*/
+
+        .avCT h1 {
+            font-size: 16px;
+        }
+
+        .subtitulo {
+            font-size: 14px;
+            margin-left: 0;
+        }
+
+        .user {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;       
+            margin: 2px 0;  
+        }
+
+
+        .stars {
+        font-size: 14px; /* Estrelas um pouco menores para não empurrar a linha */
+        }
+
+
+        /*.user {
+            justify-content: center;
+        }*/
+
+        .username {
+            margin: 0 !important;
+        }
+
+        .avCT p {
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .rodape {
+            padding: 25px 15px;
+        }
+
+        .links {
+            gap: 15px;
+        }
+
+        .links a {
+            font-size: 13px;
+        }
+
+        .item {
+            font-size: 13px;
+        }
+
+        .conteúdo p {
+            font-size: 13px;
+        }
+    }
+
+    /* Mobile pequeno (<576px) */
+    @media (max-width: 575px) {
+        body {
+            padding-top: 0 !important;
+        }
+
+        .container {
+            position: relative;
+            height: auto;
+            padding: 15px;
+            /*min-height: 50px;
+            flex-direction: column;
+            padding: 10px 15px;*/
+            }
+
+        .container h1 {
+            font-size: 24px;
+        }
+
+        .direita {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .direita a {
+            font-size: 11px;
+            padding: 4px 8px;
+        }
+
+        .botao-log {
+            padding: 4px 10px;
+            font-size: 12px;
+            border-radius: 4px; 
+        }
+
+        .container2 {
+            margin-top: 0! important;
+            height: auto;
+            min-height: 100px;
+            padding: 15px;
+        }
+
+        .busca {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .barra {
+            padding: 8px;
+        }
+
+        .barra input {
+            padding: 8px 12px;
+            font-size: 12px;
+        }
+
+        .barra button {
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+
+        p {
+            font-size: 16px;
+            margin: 20px 10px;
+            line-height: 1.4;
+        }
+
+        .botão {
+            padding: 8px 20px;
+            font-size: 14px;
+        }
+
+        .albuns {
+            padding: 10px;
+            gap: 10px;
+        }
+
+        .img {
+            width: 120px;
+            height: 120px;
+        }
+
+        .avaliações h2 {
+            padding: 0 10px;
+            font-size: 14px;
+        }
+
+        hr {
+            width: calc(100% - 20px);
+            margin-left: 10px;
+        }
+
+        .cards {
+            padding: 10px;
+        }
+
+        .avCT {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .img1 {
+            max-width: 150px;
+        }
+
+        .avCT h1 {
+            font-size: 14px;
+        }
+
+        .subtitulo {
+            font-size: 12px;
+        }
+
+        .img2 {
+            width: 25px;
+            height: 25px;
+        }
+
+        .username {
+            font-size: 12px;
+        }
+
+        .stars {
+            font-size: 16px;
+        }
+
+        .info {
+            height: auto;
+            align-items: center;
+        }
+
+
+        .user {
+            justify-content: center;
+        }
+
+        .avCT p {
+            font-size: 13px;
+        }
+
+        .data {
+            font-size: 11px;
+        }
+
+        .rodape {
+            padding: 20px 10px;
+            margin-top: 40px;
+        }
+
+        .links {
+            gap: 12px;
+        }
+
+        .links a {
+            font-size: 12px;
+        }
+
+        .item {
+            font-size: 12px;
+            gap: 8px;
+        }
+
+        .item img {
+            width: 16px;
+            height: 16px;
+        }
+
+        .conteúdo p {
+            font-size: 11px;
+        }
+    }
