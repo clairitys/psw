@@ -1,0 +1,255 @@
+/* CONTAINER DE BUSCA PADRÃO DO SITE */
+/* Estilos do Perfil */
+.info-usuario-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.user-bio {
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    color: #555;
+    margin: 5px 0 15px 0;
+    max-width: 450px;
+    line-height: 1.4;
+}
+
+/* Grid e Animação dos Favoritos */
+.grid-favoritos-pf {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.link-favorito {
+    text-decoration: none;
+    display: inline-block;
+}
+
+.link-favorito img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    
+    /* ANIMAÇÃO DE LEVANTAR */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.link-favorito img:hover {
+    transform: translateY(-8px); /* "Levanta" o álbum */
+    box-shadow: 0 12px 25px rgba(0,0,0,0.25); /* Sombra mais profunda ao subir */
+}
+
+.msg-vazio {
+    font-family: 'Outfit', sans-serif;
+    color: #999;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+/* Ajuste da linha */
+.linha-separadora {
+    border: none;
+    border-top: 1px solid #d1d1d1;
+    margin: 0 0 30px 0;
+}
+
+.linha-separadora {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0; /* Remova o padding aqui para o HR encostar nas bordas se desejar */
+}
+
+.secao-perfil-listas h2{
+    font-family: 'Outfit', sans-serif;
+    font-size: 20px;
+}
+
+.usuario-page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* O 'flex: 1' faz o main "empurrar" o rodapé para baixo */
+.conteudo-principal {
+    flex: 1;
+}
+
+.resultados-busca-perfil {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.grid-resultados {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding: 10px 0;
+}
+
+.card-resultado-mini {
+    width: 120px;
+    text-decoration: none;
+    color: #281822;
+    text-align: center;
+}
+
+.card-resultado-mini img {
+    width: 100%;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.card-resultado-mini img:hover {
+    transform: scale(1.05);
+}
+
+.btn-limpar {
+    background: none;
+    border: 1px solid #281822;
+    padding: 5px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.container-card-clicavel {
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.container-card-clicavel:hover {
+    transform: translateY(-3px);
+}
+
+
+.container-busca-padrao {
+    width: 100%;
+    height: 160px;
+    background-color: #b6b6b1; /* Cor padrão do site */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.busca-interna {
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+}
+
+.busca-interna h2 {
+    font-family: 'Fraunces', serif;
+    color: #281822;
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.barra-busca-padrao {
+    display: flex;
+    background-color: white;
+    padding: 5px;
+    border-radius: 50px; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.barra-busca-padrao input {
+    flex: 1;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 50px;
+    outline: none;
+    font-size: 16px;
+}
+
+.barra-busca-padrao button {
+    background-color: #281822;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* LAYOUT DO PERFIL */
+.perfil-layout-restrito {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.usuario-header {
+    margin-top: 80px;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.user-img-pfp {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.nome-display{
+    font-family: 'Outfit', sans-serif;
+    font-size: 28px;
+}
+
+.botão-editar {
+    display: inline-block;
+    padding: 8px 20px;
+    background: #e9e9e7;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    color: #281822;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.categorias-perfil {
+    display: flex;
+    gap: 30px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+    color: #666;
+}
+
+.cat-item.active {
+    color: #281822;
+    border-bottom: 2px solid #281822;
+}
+
+.lista-feed-perfil {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+.grid-favoritos-pf {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.grid-favoritos-pf img {
+    width: 150px;
+    height: 150px;
+    border-radius: 8px;
+    object-fit: cover;
+}

@@ -1,0 +1,1290 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ocupa no mínimo a altura da tela */
+}
+
+/* Esta classe deve envolver todo o conteúdo acima do Rodape */
+.conteudo-principal {
+    flex: 1 0 auto; /* Faz este container crescer e empurrar o rodapé */
+}
+
+.rodape {
+    flex-shrink: 0; /* Impede o rodapé de "amassar" */
+}
+
+.container {
+    width: 100%;
+    height: 70px;
+    background-color: #281822;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+    .container h1 {
+        font-family: 'Fraunces', serif;
+        color: #F8F8F8;
+        font-size: 35px;
+        margin: 0;
+    }
+
+    .seta {
+        width: 0; 
+        height: 0; 
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid #F8F8F8; 
+        transition: 0.3s; 
+        margin-left: 5px;
+    }
+
+
+    .dropdown {
+        position: relative;
+        display: inline-block;   
+    }
+
+
+    .dropdown:hover .seta {
+        transform: rotate(180deg);
+    }
+
+    .userTrigger {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+    }
+
+    .dropdown:hover .dropdownCT {
+        display: flex !important;
+        flex-direction: column;
+}
+
+    .dropdownCT{
+        display: none; 
+        position: absolute;
+        right: 0;
+        top: 100%; 
+        background-color: #281822; 
+        min-width: 160px;
+        z-index: 9999;
+        border-radius: 0 0 8px 8px; 
+        box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        padding: 10px 0;
+    }
+
+    .dropdownCT a{
+        color: #F8F8F8 !important;
+        text-decoration: none;
+        display: block;
+        padding: 10px 20px;
+        font-size: 15px;
+    }
+
+   /*.dropdownCT a:hover {
+        background-color: #452a3a; 
+    } não sei se gosto dessa ideia, prefiro da forma que está agora, parecido com as outras opções*/ 
+
+
+    .dropdownCT hr {
+        border: none;
+        border-top: 1px solid #452a3a;
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .pfp {
+        width: 30px;
+        height: 30px;
+        border-radius: 180px;
+    }
+
+    .direita {
+        display: flex;
+        gap: 25px;
+        align-items: center;
+    } 
+
+    .direita a {
+        color: #F8F8F8 !important;    
+        text-decoration: none;         
+        font-family: 'Inter', sans-serif;
+        font-weight: 400; 
+        font-size: 18px;
+        transition: 0.3s;
+    }
+
+    .direita a:hover {
+        color: #b6b6b1 !important;    
+    }
+    
+
+    .container2{
+        width: 100%;
+        height: 160px;
+        background-color: #b6b6b1;       
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 40px;
+        box-sizing: border-box;
+        margin-top: 0 !important;
+        position: relative;
+    }
+
+    .busca {
+        width: 100%;
+        max-width: 700px; 
+        text-align: center;
+        margin-top: 0; 
+    }
+
+    .busca h2 {
+        font-family: 'Fraunces', serif;
+        color: #281822;
+        margin-bottom: 25px;
+        font-size: 32px;
+    }
+
+    .barra{
+        display: flex;
+        background-color: white;
+        padding: 5px;
+        border-radius: 50px; 
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
+        border: 1px solid #ddd;
+    }
+
+    .barra input {
+        flex: 1; 
+        border: none;
+        padding: 15px 25px;
+        border-radius: 50px;
+        outline: none; 
+        font-family: 'Inter', sans-serif;
+        font-size: 16px;
+    }
+
+    .barra button {
+        background-color: #281822;
+        color: white;
+        border: none;
+        padding: 10px 30px;
+        border-radius: 50px;
+        cursor: pointer;
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        transition: 0.3s;
+    }
+
+    .barra button:hover {
+        background-color: #b6b6b1;
+    }
+
+    .home-container {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh; 
+    }
+    
+    .resultados-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+}
+
+.cards-busca {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 850px;
+    gap: 15px;
+    padding: 20px;
+}
+
+/* O CARD (Mesmo comportamento da página Início) */
+.album-card-busca {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 12px 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+    border: 1px solid transparent;
+}
+
+/* Efeito Hover igual ao Início */
+.album-card-busca:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(40, 24, 34, 0.1);
+    border-color: rgba(40, 24, 34, 0.1);
+}
+
+.album-card-busca img {
+    width: 70px;
+    height: 70px;
+    border-radius: 6px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.info-album h3 {
+    margin: 0;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.1rem;
+    color: #281822;
+    font-weight: 600;
+}
+
+.info-album p {
+    margin: 4px 0 0 0;
+    font-family: 'Outfit', sans-serif;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.album-card-link {
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+}
+  
+    .resultados-container h2{
+        font-family: 'Outfit', sans-serif;
+        text-align: center;
+        font-weight: 550;
+        font-weight: 550;
+        color: #281822;
+        font-size: 20px;
+        padding: 0 40px;
+        margin-bottom: 10px;
+        margin-top: 20px;
+
+    }
+
+    .cards-busca {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 900px;
+        gap: 20px;
+        margin-bottom: 30px;
+        padding: 20px;
+        align-items: center;
+    }
+
+    .album-card-busca {
+        display: flex;
+        align-items: center;
+        padding: 15px;       
+        gap: 20px;
+        width: 100%;
+        background-color: #E9E9E7; 
+        border: 1px solid #ddd;   
+        border-radius: 8px;     
+        box-sizing: border-box;   
+        transition: transform 0.2s ease;
+    }
+
+    .album-card-busca:hover {
+        transform: scale(1.02); 
+    }
+
+    .album-card-link, .vitrine-link {
+        text-decoration: none;
+        color: inherit;
+        display: contents; 
+    }
+
+    .capa-container img {
+        width: 120px;  
+        height: 120px;
+        object-fit: cover;
+        border-radius: 4px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .info-album {
+        line-height: 24px;
+        text-align: left;
+    }
+
+    .info-album h3 {
+        font-size: 1.2rem; 
+        font-family: 'Outfit', sans-serif !important;
+        margin: 0;
+        color: #281822;
+    }
+
+    .info-album p {
+        font-family: 'Outfit', sans-serif;
+        text-align: left;
+        font-size: 0.95rem;
+        color: #281822;
+        margin: 0;
+        opacity: 0.8; 
+    }
+
+    .data-lancamento {
+        font-family: 'Outfit', sans-serif;
+        font-weight: 450;
+        opacity: 0.4;
+    }
+
+
+    p{
+        font-family: 'Outfit', sans-serif;
+        font-weight: 550;
+        font-size: 22px;
+        text-align: center;
+        margin: 60px;
+    }
+
+   .avaliações h2 {
+        font-family: 'Outfit', sans-serif;
+        font-weight: 550;
+        color: #281822;
+        font-size: 18px;
+        padding: 0 40px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    .avaliações hr {
+        width: 96%;
+        height: 1.5px;
+        border: none;
+        background-color: #281822;
+        opacity: 0.3;
+        margin-bottom: 10px;
+    }
+
+     .albuns {
+        display: flex;
+        gap: 11px;
+        padding: 20px 40px;
+        margin-top: 0; 
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .img:hover {
+       transform: scale(1.05);
+    }
+
+    .img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 30px;
+        margin-top: 0;      
+    }
+
+    .popular h2{
+        font-family: 'Outfit', sans-serif;
+        font-weight: 550;
+        color: #281822;
+        font-size: 18px;
+        padding: 0 40px;
+        margin-top: 30px;
+        margin-bottom: 10px;
+    }
+
+    .popular hr {
+        width: 96%;
+        height: 1.5px;
+        border: none;
+        background-color: #281822;
+        opacity: 0.3;
+        margin-bottom: 30px !important;
+    }
+
+    .cards {
+        display: flex;
+        flex-wrap: wrap;       
+        justify-content: flex-start; 
+        align-items: flex-start;
+        gap: 11px; 
+        padding: 20px 40px;  
+        margin: 0;           
+        width: 100%;           
+        box-sizing: border-box;
+    }
+
+    .amigos {
+        display: flex;
+        margin-bottom: 30px !important;
+        flex-direction: column; 
+        width: 150px;
+        height: 180px;
+        background: #281822; 
+        border-radius: 8px;
+        overflow: hidden;
+        align-items: start;
+        margin-left: 0;
+    }
+
+    .amigos:hover {
+       box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+       transform: scale(1.05);
+    }
+
+    .pp{
+        width: 150px; 
+        height: 150px;
+        object-fit: cover;
+        display: block;
+    }
+
+     .user {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        height: 30px;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+
+    .pfp1 {
+        width: 18px;
+        height: 18px;
+        filter: brightness(0) invert(1);
+        object-fit: cover;
+        flex-shrink: 0;
+    }
+
+    .username {
+        font-family: 'Outfit', sans-serif !important;
+        color: #F8F8F8 !important;
+        font-size: 15px !important;
+        font-weight: 400 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        line-height: 1 !important; 
+        display: block;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .generos h2{
+        font-family: 'Outfit', sans-serif;
+        font-weight: 550;
+        color: #281822;
+        font-size: 18px;
+        padding: 0 40px;
+        margin-top: 30px;
+        margin-bottom: 10px;
+    }
+
+    .generos hr {
+        width: 96%;
+        height: 1.5px;
+        border: none;
+        background-color: #281822;
+        opacity: 0.3;
+        margin-bottom: 30px;
+    }
+    
+    .genCard {
+        display: flex;
+        align-items: center;
+        margin-left: 42px;
+        background-color: #b6b6b1; 
+        margin-top: 22px !important;
+        width: 95%;
+        height: 200px;
+        border-radius: 4px; 
+        overflow: hidden;   
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        margin-bottom: 70px !important;
+    }
+
+    .image img {
+        display: block;
+        width: 300px;       
+        height: 100%;
+        object-fit: cover; 
+    }
+
+    .conteudo {
+        padding: 30px 20px;
+        font-family: 'Outfit', sans-serif;
+        color: #2d1a1e;  
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; 
+        text-align: left;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .title {
+        line-height: 1.5;   
+        font-size: 22px;
+        margin: 0 !important; 
+        text-align: justify; 
+        font-family: 'Fraunces', sans-serif !important;   
+        width: 100%;
+    }
+
+    .conteudo p {
+        line-height: 1.5;   
+        font-size: 16px;
+        margin: 0 !important; 
+        text-align: justify; 
+        font-family: 'Outfit', sans-serif !important;   
+        width: 100%;
+    }
+
+    .avaliações2 hr {
+        width: 96%;
+        height: 1.5px;
+        border: none;
+        background-color: #281822;
+        opacity: 0.3;
+        margin-bottom: 30px;
+    }
+
+/* ============================================
+   MEDIA QUERIES - RESPONSIVIDADE AJUSTADA
+   ============================================ */
+
+/* Desktop médio (992px - 1199px) */
+@media (max-width: 1199px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    .albuns::-webkit-scrollbar,
+    .cards::-webkit-scrollbar {
+        display: none;
+    }
+
+    .albuns,
+    .cards {
+        -ms-overflow-style: none;  /* IE e Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+
+     .container {
+            padding: 0 30px;
+        }
+
+        .direita {
+            gap: 20px;
+        }
+
+        .direita a {
+            font-size: 16px;
+        }
+
+        .container h1 {
+            font-size: 30px;
+        }
+
+        /* Ativa o dropdown ao toque */
+        .dropdown:active .dropdownCT, 
+        .dropdown:focus-within .dropdownCT {
+            display: flex !important;
+            flex-direction: column;
+        }
+
+         .albuns {
+            display: flex;
+            flex-wrap: nowrap; /* Força ficar um ao lado do outro */
+            overflow-x: auto;  /* Habilita o scroll lateral */
+            overflow-y: inherit;
+            gap: 15px;
+            padding: 15px 20px;
+            -webkit-overflow-scrolling: touch; /* Scroll suave no iOS */
+        }
+
+        .img {
+            flex: 0 0 auto; /* Impede os cards de esmagarem */
+            width: 150px;
+        }
+       
+        .cards {
+            display: flex;
+            flex-wrap: nowrap; /* Força ficar um ao lado do outro */
+            overflow-x: auto;  /* Habilita o scroll lateral */
+            gap: 15px;
+            padding: 15px 20px;
+            -webkit-overflow-scrolling: touch; /* Scroll suave no iOS */
+        }
+
+        .amigos {
+            flex: 0 0 auto; /* Impede os cards de esmagarem */
+            width: 150px;
+        }
+
+        .container {
+            height: auto; /* Permite que o conteúdo respire se o menu quebrar */
+            padding: 10px 20px;
+        }
+        
+        .img {
+            width: 150px;
+            height: 150px;
+        }
+    
+        .genCard { 
+            width: 90%; 
+            margin-left: auto; 
+            margin-right: auto; 
+        }
+
+        .image img { 
+            width: 300px;
+            height: 200px; 
+        }
+
+        .cards {
+            padding: 20px 30px;
+        }
+        
+        .img1 {
+            width: 180px;
+            height: 180px;
+        }
+
+        .avCT { 
+            min-width: 350%; 
+        }
+
+         .info {
+            height: 180px;
+        }
+
+        .rodape {
+            padding: 0 30px;
+        }
+}
+
+/* Tablet (768px - 991px) */
+@media (max-width: 991px) {
+    body {
+        padding-top: 0 !important;
+        overflow-x: hidden;
+    }
+    .container {
+            height: 60px;
+            padding: 0 20px;
+        }
+
+        .container h1 {
+            font-size: 26px;
+        }
+
+        .direita {
+            gap: 15px;
+        }
+
+        .direita a {
+            font-size: 14px;
+        }
+
+        .container2 {
+            height: 140px;
+            padding: 0 20px;
+            margin: 0;
+            padding-top: 60px;
+        }
+
+        .busca {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .barra input {
+            padding: 12px 20px;
+            font-size: 14px;
+        }
+
+        .barra button {
+            padding: 8px 20px;
+            font-size: 14px;
+        }
+        
+        p {
+            font-size: 20px;
+            margin: 30px 15px;
+        }
+
+         .albuns {
+            padding: 20px;
+            gap: 15px;
+        }
+
+        .img {
+            width: 160px;
+            height: 160px;
+        }
+
+       .genCard {
+            flex-direction: row;
+            width: 95%;
+            height: 100%;
+            align-items: center;
+            text-align: center;
+        }
+
+        .title {  
+            font-size: 19px;
+            margin: 0 !important; 
+            text-align: justify;
+            width: 100%;
+       }
+
+        .conteudo p {
+            line-height: 1.5;   
+            font-size: 13px;
+            margin: 0 !important; 
+            text-align: justify; 
+            font-family: 'Outfit', sans-serif !important;   
+            width: 100%;
+        }
+
+        .image img {
+            width: auto;
+            height: 200px !important;
+            object-fit: cover;
+        }
+
+        .avaliações h2 {
+            padding: 0 20px;
+            font-size: 16px;
+        }
+
+        .avaliações2 h2 {
+            padding: 0 20px;
+            font-size: 16px;
+        }
+
+        .generos h2 {
+            padding: 0 20px;
+            font-size: 16px;
+        }
+
+        .popular h2 {
+            padding: 0 20px;
+            font-size: 16px;
+        }
+
+        hr {
+            width: calc(100% - 40px);
+            margin-left: 20px;
+        }
+
+        .cards {
+            padding: 15px 20px;
+            gap: 15px;
+        }
+
+        .avCT {
+            min-width: 100%;
+            flex-direction: row;
+        }
+
+        .img1 {
+            width: 150px;
+            height: 150px;
+        }
+
+        .info {
+            height: auto;
+            min-height: 150px;
+        }
+
+        .avCT h1 {
+            font-size: 18px;
+        }
+
+        .subtitulo {
+            font-size: 15px;
+            margin-left: 0;
+            text-align: left; 
+        }
+
+        .rodape {
+            height: auto;
+            padding: 30px 20px;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .esquerdo {
+            align-items: center;
+            text-align: center;
+        }
+
+        .links {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .conteúdo p {
+            text-align: center;
+        }
+
+        .redes {
+            align-items: center;
+        }
+}
+
+/* Mobile grande (576px - 767px) */
+@media (max-width: 767px) {
+      body {
+        padding-top: 0 !important;  
+        overflow-x: hidden;     
+      }
+
+        .container {
+            height: 55px;
+            padding: 0 15px;
+            flex-wrap: wrap;
+        }
+
+        .container h1 {
+            font-size: 22px;
+        }
+
+        .direita {
+            gap: 10px;
+        }
+
+        .direita a {
+            font-size: 12px;
+        }
+
+        .container2 {
+            height: 120px;
+            padding: 0 15px;
+        }
+
+        .busca {
+            margin-top: 30px;
+            max-width: 100%;
+        }
+
+        .barra {
+            flex-direction: column;
+            padding: 10px;
+            border-radius: 20px;
+        }
+
+        .barra input {
+            padding: 10px 15px;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .barra button {
+            width: 100%;
+            padding: 8px 15px;
+            font-size: 13px;
+            margin-top: 8px;
+        }
+    
+        p {
+            font-size: 16px;
+            margin: 30px 15px;
+        }
+
+        .genCard {
+            flex-direction: column;
+            width: 90% !important;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .image img {
+            margin-top: 25px;
+            object-fit: fill !important;
+            height: fit;
+        }
+
+        .conteudo {
+             text-align: center;
+             align-items: center;
+            }
+
+        .img1 { 
+            width: 120px; 
+            height: 120;
+        }
+
+        .albuns {
+            padding: 15px;
+            gap: 12px;
+        }
+
+        .img {
+            width: 120px;
+            height: 120px !important;
+        }
+
+        .cards {
+            padding: 15px 20px;
+            gap: 15px;
+        }
+
+        .amigos {
+            width: 120px;
+            height: 150px;
+        }
+
+        .pp{
+            width: 120px;
+            height: 120px;
+        }
+
+        .avaliações h2 {
+            padding: 0 15px;
+            font-size: 15px;
+        }
+
+        hr {
+            width: calc(100% - 30px);
+            margin-left: 15px;
+        }
+
+        .avaliações2 h2 {
+            padding: 0 15px;
+            font-size: 15px;
+        }
+
+         .popular h2 {
+            padding: 0 15px;
+            font-size: 15px;
+        }
+
+        .generos h2 {
+            padding: 0 15px;
+            font-size: 15px;
+        }
+
+        .cards {
+            padding: 10px 15px;
+            gap: 12px;
+        }
+
+        .avCT {
+            min-width: 100%;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 15px 10px;
+        }
+
+        .img1 {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            aspect-ratio: 1;
+            margin-right: 0;
+        }
+
+        .info {
+            align-items: center;
+            width: 100%;
+            padding: 0; 
+            gap: 2px;  
+        }
+
+        /*.info {
+            align-items: center;
+            width: 100%;
+            padding: 10px 0;
+        }*/
+
+        .avCT h1 {
+            font-size: 16px;
+        }
+
+        .subtitulo {
+            font-size: 14px;
+            margin-left: 0;
+        }
+
+        .usuario2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;       
+            margin: 2px 0; 
+            font-size: 12px !important; 
+        }
+
+
+        .stars {
+            font-size: 14px; /* Estrelas um pouco menores para não empurrar a linha */
+        }
+
+
+        /*.user {
+            justify-content: center;
+        }*/
+
+        .nome {
+            margin: 0 !important;
+        }
+
+        .avCT p {
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .rodape {
+            padding: 25px 15px;
+        }
+
+        .links {
+            gap: 15px;
+        }
+
+        .links a {
+            font-size: 13px;
+        }
+
+        .item {
+            font-size: 13px;
+        }
+
+        .conteúdo p {
+            font-size: 13px;
+        }
+    }
+
+    /* Mobile pequeno (<576px) */
+    @media (max-width: 575px) {
+        body {
+            padding-top: 0 !important;
+            overflow-x: hidden;
+        }
+
+        .container {
+            position: relative;
+            height: auto;
+            padding: 15px;
+            /*min-height: 50px;
+            flex-direction: column;
+            padding: 10px 15px;*/
+            }
+
+        .container h1 {
+            font-size: 24px;
+        }
+
+        .direita {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .direita a {
+            font-size: 11px;
+            padding: 4px 8px;
+        }
+
+        .container2 {
+            margin-top: 0! important;
+            height: auto;
+            min-height: 100px;
+            padding: 15px;
+        }
+
+        .busca {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .barra {
+            padding: 8px;
+        }
+
+        .barra input {
+            padding: 8px 12px;
+            font-size: 12px;
+        }
+
+        .barra button {
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+
+        p {
+            font-size: 16px;
+            margin: 20px 10px;
+            line-height: 1.4;
+        }
+
+        .botão {
+            padding: 8px 20px;
+            font-size: 14px;
+        }
+
+        .albuns {
+            padding: 10px;
+            gap: 10px;
+        }
+
+        .img {
+            width: 120px;
+            height: 120px;
+        }
+
+        .avaliações h2 {
+            margin-left: 5px;
+            padding: 0 10px;
+            font-size: 14px;
+        }
+
+        hr {
+            width: calc(100% - 20px);
+            margin-left: 10px;
+        }
+
+        .genCard {
+            flex-direction: column;
+            width: 80%;
+            height: 100%;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .title {  
+            font-size: 19px;
+            margin: 0 !important; 
+            text-align: justify;
+            width: 100%;
+       }
+
+        .conteudo p {
+            line-height: 1.5;   
+            font-size: 13px;
+            margin: 0 !important; 
+            text-align: justify; 
+            font-family: 'Outfit', sans-serif !important;   
+            width: 100%;
+        }
+
+
+        .avaliações2 h2 {
+            margin-left: 5px;
+            padding: 0 10px;
+            font-size: 14px;
+        }
+
+        .generos h2 {
+            margin-left: 5px;
+            padding: 0 10px;
+            font-size: 14px;
+        }
+
+        .popular h2 {
+            margin-left: 5px;
+            padding: 0 10px;
+            font-size: 14px;
+        }
+
+        .cards {
+            padding: 10px;
+        }
+
+        .avCT {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .img1 {
+            max-width: 150px;
+        }
+
+        .avCT h1 {
+            font-size: 14px;
+        }
+
+        .subtitulo {
+            font-size: 12px;
+        }
+
+        .img2 {
+            width: 25px;
+            height: 25px;
+        }
+
+        .nome {
+            font-size: 12px;
+        }
+
+        .stars {
+            font-size: 14x;
+        }
+
+        .info {
+            height: auto;
+            align-items: center;
+        }
+
+
+        .user {
+            justify-content: center;
+        }
+
+        .avCT p {
+            font-size: 13px;
+        }
+
+        .data {
+            font-size: 11px;
+        }
+
+        .rodape {
+            padding: 20px 10px;
+            margin-top: 40px;
+        }
+
+        .links {
+            gap: 12px;
+        }
+
+        .links a {
+            font-size: 12px;
+        }
+
+        .item {
+            font-size: 12px;
+            gap: 8px;
+        }
+
+        .item img {
+            width: 16px;
+            height: 16px;
+        }
+
+        .conteúdo p {
+            font-size: 11px;
+        }
+    }
+
+    

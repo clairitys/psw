@@ -1,0 +1,26 @@
+/* Adicione ao seu arquivo CSS existente */
+.comment-input {
+    width: 100%;
+    min-height: 100px;
+    margin-top: 15px;
+    padding: 15px;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    font-family: 'Outfit', sans-serif;
+    resize: vertical;
+}
+
+.save-review-btn {
+    background-color: #281822;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    margin-top: 10px;
+}
+
+.save-review-btn:hover {
+    background-color: #452a3a;
+}

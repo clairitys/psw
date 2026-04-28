@@ -1,0 +1,79 @@
+/* Container que envolve tudo */
+.auth-wrapper2 {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+}
+
+.overlay2 {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85); 
+    backdrop-filter: blur(8px);          
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.entrar2 {
+    background-color: #E9E9E7;
+    padding: 40px;
+    border-radius: 12px;
+    width: 90%; /* Ajuste para mobile */
+    max-width: 400px; 
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-family: 'Outfit', sans-serif;
+}
+
+.entrar2 h2 {
+    color: #281822;
+    margin-bottom: 30px;
+    font-size: 25px;
+}
+
+.entrar2 form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.entrar2 input {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+}
+
+.submit-button1 {
+    background-color: #281822;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit-button1:hover {
+    color: #b6b6b1;    
+}    
+
+.voltar2 {
+    background: none;
+    border: none;
+    margin: 20px auto 0;
+    cursor: pointer;
+    color: #666;
+    font-size: 14px;
+    font-weight: 600;
+    display: block;
+}
+
+.voltar2:hover {
+    color: #281822;
+}
