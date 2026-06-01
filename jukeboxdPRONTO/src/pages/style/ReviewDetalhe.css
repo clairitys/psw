@@ -1,0 +1,357 @@
+/* ==========================================================================
+   1. Estrutura Base e Layout Fluido (Garante o Rodapé embaixo)
+   ========================================================================== */
+.sua-avaliacao-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* O miolo da página agora se adapta dinamicamente */
+.conteudo-principal.review-detalhe-layout {
+    flex: 1 0 auto; /* Permite crescer mas define uma base estável */
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 40px;
+    margin: 40px auto 60px auto !important;
+    padding: 0 24px;
+    max-width: 1400px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ==========================================================================
+   2. Painel Esquerdo - Crítica Principal
+   ========================================================================== */
+.review-principal-container {
+    background: #cec2c8a8;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(40, 24, 34, 0.05);
+    height: fit-content;
+    box-sizing: border-box;
+}
+
+.review-header-filme {
+    display: flex;
+    gap: 24px;
+}
+
+.capa-album-review {
+    width: 150px;
+    height: 150px;
+    min-width: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+.review-meta-dados {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex: 1;
+    min-width: 0; /* Impede que textos longos quebrem o flexbox */
+}
+
+.review-subtitulo-voce {
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #18191d;
+    opacity: 0.6;
+}
+
+.review-user-linha {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 6px 0 14px 0;
+}
+
+.avatar-autor {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.autor-nome {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #18191d;
+}
+
+.review-titulo-musica {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(22px, 4vw, 32px);
+    color: #18191d;
+    margin: 0 !important;
+    line-height: 1.2;
+    text-align: left;
+    word-break: break-word; /* Evita que o título vaze a tela no mobile */
+}
+
+.review-artista-nome {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #18191d;
+    margin: 4px 0 !important;
+}
+
+.artist-name {
+    font-weight: 600;
+}
+
+.review-estrelas-grandes {
+    color: #18191d;
+    font-size: 22px;
+    margin-top: 4px;
+}
+
+.review-corpo-texto {
+    margin: 35px 0 25px 0;
+    border-left: 3px solid #18191d;
+    padding-left: 20px;
+}
+
+.comentario-texto-exibicao {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(15px, 2.5vw, 19px) !important;
+    line-height: 1.5;
+    font-weight: 500;
+    color: #18191d;
+    text-align: left !important;
+    margin-left: 0;
+    margin-bottom: 12px !important;
+}
+
+.data-publicacao-review {
+    font-size: 12px;
+    color: #666;
+    display: block;
+    text-align: left;
+}
+
+.review-acoes-barra {
+    border-top: 1px solid rgba(40, 24, 34, 0.1);
+    padding-top: 20px;
+    display: flex;
+}
+
+.botao-acao-curtir {
+    background: #FFFFFF;
+    border: 1px solid rgba(40, 24, 34, 0.15);
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #18191d;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* ==========================================================================
+   3. Painel Direito - Feed de Comentários
+   ========================================================================== */
+.secao-comentarios-letterboxd {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.secao-comentarios-letterboxd h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    color: #18191d;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.linha-divisoria-comentarios {
+    width: 100%;
+    height: 1.5px;
+    border: none;
+    background-color: #18191d;
+    opacity: 0.3;
+    margin-bottom: 20px;
+}
+
+.lista-comentarios {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    max-height: 380px;
+    overflow-y: auto;
+    padding-right: 6px;
+    margin-bottom: 20px;
+}
+
+.comentario-item {
+    display: flex;
+    gap: 12px;
+    background: #FFFFFF;
+    padding: 14px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    border: 1px solid rgba(0,0,0,0.03);
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.comentario-avatar {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.comentario-conteudo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 0;
+}
+
+.comentario-meta {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 4px;
+    gap: 10px;
+}
+
+.comentario-autor {
+    font-size: 14px;
+    font-weight: 600;
+    color: #18191d;
+}
+
+.comentario-data {
+    font-size: 11px;
+    color: #888;
+    white-space: nowrap;
+}
+
+.comentario-texto-corpo {
+    font-size: 14px !important;
+    line-height: 1.4;
+    color: #333 !important;
+    text-align: left !important;
+    margin: 0 !important;
+    word-break: break-word;
+}
+
+.formulario-comentario {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+    box-sizing: border-box;
+}
+
+.formulario-comentario .comment-input {
+    width: 100% !important;
+    box-sizing: border-box;
+    margin-top: 0px !important;
+    resize: vertical;
+}
+
+/* ==========================================================================
+   4. Media Queries Universais Refinadas
+   ========================================================================== */
+
+/* Tablets e Telas Médias (Até 850px) */
+@media (max-width: 850px) {
+    .conteudo-principal.review-detalhe-layout {
+        grid-template-columns: 1fr; /* Quebra o Grid em uma única coluna fluida */
+        margin: 20px auto 40px auto !important;
+        gap: 30px;
+    }
+    
+    .review-principal-container,
+    .secao-comentarios-letterboxd {
+        width: 100%;
+    }
+}
+
+/* Smartphones Gerais (Até 480px) - Correção Crítica do Colapso */
+@media (max-width: 480px) {
+    .conteudo-principal.review-detalhe-layout {
+        display: flex; /* Mudança estratégica de Grid para Flex vertical no mobile */
+        flex-direction: column;
+        padding: 0 16px;
+        gap: 24px;
+    }
+
+    .review-principal-container {
+        padding: 20px;
+    }
+
+    .review-header-filme {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 16px;
+    }
+
+    .review-meta-dados {
+        align-items: center;
+        text-align: center;
+    }
+
+    .review-titulo-musica {
+        text-align: center;
+    }
+
+    .review-corpo-texto {
+        margin: 20px 0;
+        border-left: none;
+        border-top: 1px solid rgba(40, 24, 34, 0.15);
+        padding-left: 0;
+        padding-top: 16px;
+    }
+
+    .comentario-texto-exibicao {
+        text-align: center !important;
+    }
+
+    .data-publicacao-review {
+        text-align: center;
+    }
+
+    .review-acoes-barra {
+        justify-content: center;
+    }
+
+    .lista-comentarios {
+        max-height: none; /* Permite expandir naturalmente sem travar rolagem interna dupla */
+    }
+}
+
+/* Smartphones muito pequenos (Até 320px) */
+@media (max-width: 320px) {
+    .capa-album-review {
+        width: 120px;
+        height: 120px;
+        min-width: 120px;
+    }
+
+    .comentario-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}
