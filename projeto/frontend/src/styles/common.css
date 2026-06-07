@@ -1,0 +1,29 @@
+/* Shared variables and basic utilities */
+:root{
+  --brand:#060d0c;
+  --muted:#666;
+  --card-bg:#E9E9E7;
+  --card-border:#ddd;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.capa-container img, .card-img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.info-album h3, .card-title {
+  margin: 0;
+  color: var(--brand);
+  font-family: 'Outfit', sans-serif;
+}
+
+.muted { color: var(--muted); }

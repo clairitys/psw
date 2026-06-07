@@ -1,0 +1,152 @@
+.sua-avaliacao-page .album-select-block {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.album-select-label {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #e8e8e8;
+  margin-bottom: 0.5rem;
+}
+
+.album-select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.65rem 0.85rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid #5a4a52;
+  border-radius: 8px;
+  background-color: #1a1216;
+  color: #f5f5f5;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+}
+
+.album-select:focus {
+  outline: none;
+  border-color: #c9a87c;
+  box-shadow: 0 0 0 2px rgba(201, 168, 124, 0.25);
+}
+
+.album-select {
+  cursor: pointer;
+  appearance: auto;
+}
+
+.album-select option {
+  background-color: #1a1216;
+  color: #f5f5f5;
+}
+
+.input-erro {
+  border-color: #ff6b6b !important;
+}
+
+.album-select-hint,
+.album-select-placeholder {
+  font-size: 0.85rem;
+  color: #aaa;
+  margin: 0.35rem 0 0;
+}
+
+.album-select-placeholder {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.campo-erro {
+  display: block;
+  font-size: 0.75rem;
+  color: #ff6b6b;
+  margin-top: 0.25rem;
+}
+
+.msg-sucesso {
+  color: #4caf50;
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.msg-erro {
+  color: #ff6b6b;
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.review-label {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.review-label--comentario {
+  margin-top: 20px;
+}
+
+.stars-row {
+  font-size: 2rem;
+  gap: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+.star {
+  cursor: pointer;
+  color: #666;
+  transition: color 0.2s;
+  font-size: 2.5rem;
+}
+
+.star--active {
+  color: #ffd700;
+}
+
+.comment-input {
+  width: 100%;
+  min-height: 100px;
+  margin-top: 15px;
+  padding: 15px;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  font-family: 'Outfit', sans-serif;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.save-review-btn {
+  background-color: #060d0c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  margin-top: 15px;
+}
+
+.save-review-btn:hover:not(:disabled) {
+  background-color: #452a3a;
+}
+
+.save-review-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .comment-input {
+    min-height: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .save-review-btn {
+    width: 100%;
+  }
+}

@@ -1,0 +1,6 @@
+.artist-card-comp { text-decoration: none; color: inherit; display: block; }
+.artist-card-body-comp { background: #E9E9E7; padding: 12px; border-radius: 8px; display: flex; gap: 12px; align-items: center; border: 1px solid #ddd; }
+.artist-card-body-comp img { width: 96px; height: 96px; object-fit: cover; border-radius: 6px; flex-shrink: 0 }
+.artist-card-info h3 { margin: 0 0 6px; font-size: 1rem; color: #060d0c }
+.artist-card-info p { margin: 0 0 8px; color: #666; font-size: 0.9rem; max-width: 320px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
+.artist-card-info span { display: block; color: #999; font-size: 0.85rem }

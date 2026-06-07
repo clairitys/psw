@@ -1,0 +1,72 @@
+.artistas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.artista-card {
+  text-decoration: none;
+  color: inherit;
+}
+
+.artista-card-body {
+  background: #e9e9e7;
+  padding: 12px;
+  border-radius: 8px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  color: #060d0c;
+  border: 1px solid #ddd;
+}
+
+.artista-card-body img {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.artista-card-body h2 {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+  color: #060d0c;
+}
+
+.artista-card-body p {
+  margin: 0 0 8px;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.artista-card-body span {
+  display: block;
+  color: #999;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+  .artistas-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .artista-card-body img {
+    width: 72px;
+    height: 72px;
+  }
+}
+
+@media (max-width: 480px) {
+  .artistas-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .artista-card-body {
+    flex-direction: column;
+    text-align: center;
+  }
+}
