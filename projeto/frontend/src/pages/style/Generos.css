@@ -1,0 +1,223 @@
+/* --- RESET E COMPORTAMENTO VISUAL EDITORIAL --- */
+.journal-page-wrapper {
+  background-color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  color: #1c1c1c;
+}
+
+/* --- BANNER SUPERIOR (HERO) COMPLETAMENTE HORIZONTAL --- */
+.journal-hero-banner {
+  margin-top: -15px !important;
+  background-color: #060d0cf9 !important; 
+  color: #ffffff;
+  padding: 40px 0; /* REDUZIDO: de 60px para 40px (diminui o espaço vertical do topo) */
+  width: 100%;
+}
+
+.journal-hero-container {
+  max-width: 1100px; /* REDUZIDO: de 1300px para 1100px para deixar o container mais compacto */
+  height: auto;       /* AJUSTADO: de 200px fixo para auto para o conteúdo interno não estourar */
+  margin: 0 auto !important; /* Centraliza o container compacto na tela */
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr; /* Invertido/Ajustado para dar uma proporção melhor ao texto */
+  gap: 40px; /* REDUZIDO: de 60px para 40px para aproximar a imagem do texto */
+  align-items: center;
+}
+
+.journal-hero-image-wrapper {
+  width: 100%;
+  margin-top: 0 !important;
+  height: 280px; /* REDUZIDO: de 400px para 280px para diminuir drasticamente a imagem de destaque */
+  overflow: hidden;
+  border-radius: 4px; 
+}
+
+.journal-hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(15%) contrast(105%);
+}
+
+.journal-hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.journal-editorial-tag {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px; /* REDUZIDO: de 13px para 12px */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #6a6b71;
+  margin-bottom: 10px; /* REDUZIDO: de 15px para 10px */
+  font-weight: 600;
+}
+
+.journal-hero-title {
+  font-family: 'Fraunces', serif; 
+  font-size: 30px !important; /* REDUZIDO: de 42px para 34px para harmonizar com a imagem menor */
+  line-height: 1.15;
+  margin: 0 0 15px 0; /* REDUZIDO: margem inferior de 25px para 15px */
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.journal-hero-lead {
+  font-size: 15px; /* REDUZIDO: de 17px para 15px */
+  line-height: 1.5;
+  margin: 0 0 12px 0; /* REDUZIDO: de 20px para 12px */
+  color: #e2e8f0;
+  font-weight: 400;
+}
+
+.journal-hero-paragraph {
+  font-size: 14px; /* REDUZIDO: de 15px para 14px */
+  line-height: 1.5;
+  margin: 0;
+  color: #cbd5e1;
+  opacity: 0.9;
+}
+
+
+/* --- SEÇÃO DO FEED ABAIXO (BRANCO) --- */
+.journal-feed-section {
+  background-color: #ffffff;
+  padding: 50px 0; /* REDUZIDO: de 80px para 50px */
+  width: 100%;
+}
+
+.journal-feed-container {
+  max-width: 1100px; /* REDUZIDO: de 1300px para 1100px acompanhando o container superior */
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* Grade de itens lado a lado simétricos */
+.journal-grid-feed {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 30px; /* REDUZIDO: de 40px para 30px para juntar mais os cards menores */
+}
+
+/* Card Individual Estilo Artigo de Jornal */
+.journal-article-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: #1c1c1c;
+  transition: opacity 0.25s ease;
+}
+
+/* Box da imagem acima do texto (Controle dos gêneros futuros vindo do banco) */
+.journal-card-image-box {
+  width: 100%;
+  height: 180px; /* REDUZIDO: de 240px para 180px. Diminui consideravelmente todas as imagens que virão do banco */
+  overflow: hidden;
+  margin-bottom: 15px; /* REDUZIDO: de 20px para 15px */
+  background-color: #f3f4f6;
+  border-radius: 4px; /* Adicionado um leve arredondamento para combinar */
+}
+
+.journal-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.journal-article-card:hover .journal-card-image {
+  transform: scale(1.02);
+}
+
+/* Detalhes e textos do card */
+.journal-card-meta {
+  margin-bottom: 8px;
+}
+
+.journal-card-tag {
+  font-size: 11px; /* REDUZIDO: de 12px para 11px */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #6b7280;
+  font-weight: 600;
+}
+
+.journal-card-title {
+  font-family: 'Fraunces', serif;
+  font-size: 20px; /* REDUZIDO: de 24px para 20px */
+  line-height: 1.2;
+  margin: 0 0 8px 0; /* REDUZIDO: de 12px para 8px */
+  font-weight: 700;
+  color: #060d0c;
+}
+
+.journal-card-excerpt {
+  font-size: 13.5px; /* REDUZIDO: de 14.5px para 13.5px */
+  line-height: 1.5;
+  color: #4b5563;
+  margin: 0 0 15px 0; /* REDUZIDO: de 20px para 15px */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+} 
+
+.journal-card-footer-wrapper {
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+/* O botão redondo estilizado */
+.journal-card-btn-cta {
+  font-family: 'Outfit';
+  display: inline-block;
+  background-color: #060d0c; 
+  color: #ffffff;
+  font-size: 13px; /* REDUZIDO: de 14px para 13px */
+  font-weight: 600;
+  padding: 8px 18px; /* REDUZIDO: tamanho do botão ligeiramente menor */
+  border-radius: 50px; 
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+}
+
+.journal-article-card:hover .journal-card-btn-cta {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(24, 25, 29, 0.15); 
+}
+
+.journal-article-card:hover {
+  opacity: 1; 
+}
+
+/* --- RESPONSIVIDADE PRECISA --- */
+@media (max-width: 1024px) {
+  .journal-hero-container {
+    grid-template-columns: 1fr; 
+    gap: 25px;
+  }
+  
+  .journal-hero-image-wrapper {
+    height: 240px; /* Reduzido no tablet */
+  }
+
+  .journal-grid-feed {
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 25px;
+  }
+}
+
+@media (max-width: 640px) {
+  .journal-hero-container, .journal-feed-container {
+    padding: 0 20px;
+  }
+
+  .journal-hero-title {
+    font-size: 26px; /* Reduzido no mobile */
+  }
+
+  .journal-grid-feed {
+    grid-template-columns: 1fr; 
+  }
+}
