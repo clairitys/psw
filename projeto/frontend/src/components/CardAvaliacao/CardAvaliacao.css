@@ -1,0 +1,194 @@
+.avaliações h2 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 550;
+    color: #060d0c;
+    font-size: 18px;
+    padding: 0 40px;
+    margin-bottom: 10px;
+}
+
+hr {
+    width: 96%;
+    height: 1.5px;
+    border: none;
+    background-color: #060d0c;
+    opacity: 0.3;
+    margin: 0 auto 10px auto;
+    margin-bottom: 30px;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 20px;
+    padding: 20px 40px;
+    justify-content: center;
+}
+
+.avCT {
+    position: relative; 
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    flex: 1;
+    /* ===== REDUZIDO: Larguras menores para encolher o card ===== */
+    min-width: 320px;   /* Antes era 400px */
+    max-width: 420px;   /* Antes era 500px */
+    margin-top: 0px;
+    margin-bottom: 10px;
+    background: #E9E9E7;
+    padding: 12px;      /* Reduzido o espaçamento interno para aproveitar mais espaço */
+    border-radius: 12px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}   
+
+.avCT:hover {
+    transform: translateY(-8px); 
+    box-shadow: 0 10px 20px rgba(40, 24, 34, 0.15); 
+}
+
+.img1 {
+    /* ===== REDUZIDO: Capa do álbum menor e proporcional ===== */
+    width: 150px;       /* Antes era 150px */
+    height: 150px;      /* Antes era 150px */
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;           /* Reduzido o espaço vertical entre os textos */
+    justify-content: flex-start; 
+    align-items: flex-start;
+    height: 150px;      /* REDUZIDO: Antes era 200px (evita o vão vazio abaixo) */
+    box-sizing: border-box;
+    padding: 0;
+    flex-grow: 1;
+}
+
+.avCT h1 {
+    font-family: 'Fraunces', serif;
+    /* ===== REDUZIDO: Título do álbum ===== */
+    font-size: 18px;    /* Antes era 22px */
+    color: #060d0c;
+    margin: 0 !important;
+    padding: 0;
+    line-height: 1.2;
+}
+
+.subtitulo {
+    font-family: 'Inter', sans-serif !important;
+    /* ===== REDUZIDO: Nome do artista ===== */
+    font-size: 15px;    /* Antes era 18px */
+    font-weight: 600;
+    color: #060d0c;
+    margin-top: -2px !important;
+    margin-bottom: 6px;
+    padding: 0;
+    display: block;
+    text-align: left;
+}
+
+.user {
+    display: flex;
+    color: #060d0c;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.img2 {
+    width: 24px;        /* Reduzido levemente o avatar do usuário */
+    height: 24px;
+    border-radius: 50%; 
+    object-fit: cover;
+    margin-left: -13px;
+}
+
+.usuario {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 13px;    /* Reduzido de 15px para 13px */
+    color: #060d0c;
+    font-weight: 550;
+}
+
+.stars {
+    color: #060d0c;
+    font-size: 16px;    /* Reduzido de 20px para 16px */
+    margin: 0;
+    line-height: 1;
+}
+
+.avCT p.comentario {
+    font-family: 'Inter', sans-serif !important;
+    color: #060d0c;
+    /* ===== REDUZIDO: Texto do comentário ===== */
+    font-size: 14px !important; /* Antes era 18px (estava muito grande) */
+    line-height: 1.4;
+    font-weight: 500;
+    margin: 4px 0;
+    flex-grow: 1;
+    text-align: left;
+    word-break: break-word;
+}
+
+.data {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: #666;  
+    margin-top: auto;
+}
+
+.btn-delete-review {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    z-index: 5;
+}
+
+.btn-delete-review:hover:not(:disabled) {
+    background-color: #ff5252;
+}
+
+.btn-delete-review:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+@media (max-width: 575px) {
+    .avCT {
+        flex-direction: column;
+        min-width: 100%;
+        align-items: center;
+    }
+    .img1 {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .info {
+        height: auto;
+        align-items: center;
+    }
+    .avCT p.comentario {
+        text-align: center;
+    }
+    .subtitulo {
+        text-align: center;
+    }
+}

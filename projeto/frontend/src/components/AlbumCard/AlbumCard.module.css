@@ -1,0 +1,5 @@
+.albumCard { display: flex; align-items: center; padding: 12px; gap: 16px; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 8px; text-decoration: none; color: inherit }
+.capa img { width: 120px; height: 120px; object-fit: cover; border-radius: 4px }
+.info { line-height: 24px }
+.info h3 { margin:0; font-family: 'Outfit', sans-serif; color: var(--brand); font-size:1.1rem }
+.info p { margin:4px 0 0 0; color: var(--muted); font-size:0.95rem }

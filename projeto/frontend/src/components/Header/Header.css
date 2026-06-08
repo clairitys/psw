@@ -1,0 +1,253 @@
+.container {
+    width: 100%;
+    border-bottom:1.5px solid rgba(99, 97, 90, 0.13);;
+    height: 55px !important;
+    background-color: #060d0c !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    margin-bottom: 0px ! important;
+}
+
+    .container h1 {
+        font-family: 'Fraunces', serif;
+        color: white;
+        font-size: 30px !important;
+        margin: 0;
+    }
+
+    .direita1 {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+    } 
+
+    .direita1 a {
+        color: #e2e3ea !important;    
+        text-decoration: none;         
+        font-family: 'Outfit', sans-serif !important;
+        font-weight: 350; 
+        font-size: 16px;
+        transition: 0.3s;
+    }
+    .direita1 a:hover {
+        color: white !important;    
+    }
+    
+
+    .link-style-btn {
+        background: transparent;   
+        border: none;                
+        padding: 0;                  
+        margin: 0;
+        color: #e2e3ea !important;
+        font-family: 'Outfit', sans-serif !important; 
+        font-weight: 400;
+        font-size: 16px; 
+        cursor: pointer;
+        transition: 0.3s;
+        display: inline-block;
+    }
+
+    .link-style-btn:hover{
+        color: white !important;
+    }
+
+
+    .botao-log {
+        background-color: white; 
+        font-family: 'Outfit', sans-serif;
+        color: #060d0c;
+        border: none;
+        padding: 4px 14px;
+        border-radius: 20px;
+        font-weight: 800 !important;
+        cursor: pointer;
+        font-size: 18px;
+        transition: 0.2s;
+    }
+
+    .botao-log:hover {
+        background-color: #e2e3ea;
+        transform: translateY(-1px);
+    }
+
+    .dropdown1 {
+    position: relative; /* Garante que o menu flutue baseado no botão */
+    display: inline-block;   
+}
+
+.dropdown1:hover .seta {
+    transform: rotate(180deg);
+}
+
+.userTrigger {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+/* Caixa principal do Dropdown que aparece abaixo do nome */
+.dropdownCT1 {
+    display: flex !important; 
+    flex-direction: column; /* Força os links a ficarem um abaixo do outro */
+    position: absolute;
+    right: 0;
+    top: 100%; 
+    background-color: #060d0c; /* Cor escura igual ao header */
+    min-width: 160px;
+    z-index: 9999;
+    border-radius: 0 0 8px 8px; 
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    padding: 10px 0;
+}
+
+/* Links de dentro do Dropdown */
+.dropdownCT1 a {
+    color: white !important; /* Texto claro para dar leitura */
+    text-decoration: none;
+    display: block;
+    padding: 10px 20px;
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    transition: 0.2s;
+    text-align: left; /* Garante alinhamento à esquerda */
+}
+
+.dropdownCT1 a:hover {
+    background-color: rgba(255, 255, 255, 0.03); /* Efeito sutil ao passar o mouse */
+}
+
+.dropdownCT1 hr {
+    border: none;
+    border-top: 1px solid rgba(240, 237, 229, 0.2); /* Linha divisória discreta */
+    width: 100%;
+    margin: 5px 0;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+
+/* Tablets (991px e abaixo) */
+@media (max-width: 991px) {
+    .container {
+        padding: 0 30px;
+        height: 65px;
+    }
+
+    .container h1 {
+        font-size: 28px;
+    }
+
+    .direita {
+        gap: 20px;
+    }
+
+    .direita a {
+        font-size: 16px;
+    }
+
+    .link-style-btn {
+        font-size: 16px;
+    }
+
+    .botao-log {
+        padding: 7px 15px;
+        font-size: 14px;
+    }
+}
+
+/* Tablets Pequenos (767px e abaixo) */
+@media (max-width: 767px) {
+    .container {
+        padding: 0 20px;
+        height: 60px;
+    }
+
+    .container h1 {
+        font-size: 22px;
+    }
+
+    .direita {
+        gap: 15px;
+    }
+
+    .direita a {
+        font-size: 14px;
+    }
+
+    .link-style-btn {
+        font-size: 14px;
+    }
+
+    .botao-log {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
+
+/* Smartphones (575px e abaixo) */
+@media (max-width: 575px) {
+    .container {
+        padding: 0 15px;
+        height: 55px;
+    }
+
+    .container h1 {
+        font-size: 18px;
+    }
+
+    .direita {
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .direita a {
+        font-size: 12px;
+    }
+
+    .link-style-btn {
+        font-size: 12px;
+    }
+
+    .botao-log {
+        padding: 5px 10px;
+        font-size: 11px;
+    }
+}
+
+/* Smartphones Pequenos (360px e abaixo) */
+@media (max-width: 360px) {
+    .container {
+        padding: 0 10px;
+        height: 50px;
+    }
+
+    .container h1 {
+        font-size: 16px;
+    }
+
+    .direita {
+        gap: 8px;
+    }
+
+    .direita a {
+        font-size: 11px;
+    }
+
+    .link-style-btn {
+        font-size: 11px;
+    }
+
+    .botao-log {
+        padding: 4px 8px;
+        font-size: 10px;
+    }
+}
+
