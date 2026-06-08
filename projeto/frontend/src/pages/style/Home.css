@@ -386,7 +386,7 @@ body {
         font-family: 'Outfit', sans-serif;
         font-weight: 550;
         color: #060d0c;
-        font-size: 18px;
+        font-size: 16px;
         padding: 0 40px;
         margin-top: 20px;
         margin-bottom: 10px;
@@ -427,7 +427,7 @@ body {
         font-family: 'Outfit', sans-serif;
         font-weight: 550;
         color: #060d0c;
-        font-size: 18px;
+        font-size: 16px;
         padding: 0 40px;
         margin-top: 30px;
         margin-bottom: 10px;
@@ -505,11 +505,11 @@ body {
         text-overflow: ellipsis;
     }
 
-    .generos h2{
+    /* .generos h2{
         font-family: 'Outfit', sans-serif;
         font-weight: 550;
         color: #060d0c;
-        font-size: 18px;
+        font-size: 16px !important;
         padding: 0 40px;
         margin-top: 30px;
         margin-bottom: 10px;
@@ -528,7 +528,7 @@ body {
         display: flex;
         align-items: center;
         margin-left: 42px;
-        background-color: #b6b6b1; 
+        background-color: #E9E9E7; 
         margin-top: 22px !important;
         width: 95%;
         height: 200px;
@@ -548,7 +548,7 @@ body {
     .conteudo {
         padding: 30px 20px;
         font-family: 'Outfit', sans-serif;
-        color: #2d1a1e;  
+        color: #060d0c;  
         display: flex;
         flex-direction: column;
         align-items: flex-start; 
@@ -574,6 +574,8 @@ body {
         font-family: 'Outfit', sans-serif !important;   
         width: 100%;
     }
+
+    */
 
     .avaliações2 hr {
         width: 96%;

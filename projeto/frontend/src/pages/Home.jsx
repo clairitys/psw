@@ -110,7 +110,7 @@ export function Home() {
               </div>
             </section>
 
-            <section className="generos">
+           {/* <section className="generos">
               <h2>Gêneros procurados</h2>
               <hr />
               <div className="genCard">
@@ -120,7 +120,7 @@ export function Home() {
                   <p>Movimento musical brasileiro surgido no Rio de Janeiro...</p>
                 </div>
               </div>
-            </section>
+            </section> */} 
 
             <section className="avaliações">
               <h2>Principais avaliações da semana</h2>

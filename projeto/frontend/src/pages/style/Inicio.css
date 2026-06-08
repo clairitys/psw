@@ -101,7 +101,7 @@
    
    .texto-chamada{
         font-family: 'Fraunces', sans-serif !important;
-        font-size: 28px;
+        font-size: 25px;
         font-weight: 700 !important;
         color:#060d0c;
         text-align: center;
@@ -182,10 +182,12 @@
         display: block;
         max-width: 100%;
         margin: 20px 0;          
+        transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .img:hover{
-        transform: scale(1.05);    
+        transform: translateY(-8px); 
+        box-shadow: 0 10px 20px rgba(40, 24, 34, 0.15); 
     }
 
     p{
@@ -247,7 +249,6 @@
 }
 
 .seta-carrossel:hover {
-    background-color: #26272d;
     /* Mantém a centralização vertical ativa enquanto aplica o leve aumento de tamanho */
     transform: translateY(-50%) scale(1.08) !important;
 }

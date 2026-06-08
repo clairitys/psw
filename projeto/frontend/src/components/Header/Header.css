@@ -65,18 +65,17 @@
         font-family: 'Outfit', sans-serif;
         color: #060d0c;
         border: none;
-        padding: 4px 14px;
+        padding: 3px 10px !important;
         border-radius: 20px;
-        font-weight: 800 !important;
+        font-weight: 700 !important;
         cursor: pointer;
-        font-size: 18px;
+        font-size: 17px;
         transition: 0.2s;
     }
 
     .botao-log:hover {
-        background-color: #e2e3ea;
-        transform: translateY(-1px);
-    }
+        transform: scale(1.0);  
+    } 
 
     .dropdown1 {
     position: relative; /* Garante que o menu flutue baseado no botão */
