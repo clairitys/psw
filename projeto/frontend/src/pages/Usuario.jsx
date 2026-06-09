@@ -8,10 +8,12 @@ import { CardAvaliacao } from '../components/CardAvaliacao/CardAvaliacao';
 import './style/Usuario.css'; 
 
 export function Usuario() {
-    const { albuns, artistas, reviews, fetchDados } = useAlbumStore();
+  const { albuns, artistas, reviews, fetchDados } = useAlbumStore();
   
   const [termo, setTermo] = useState('');
   const [termoAtivo, setTermoAtivo] = useState('');
+  // Estado para controlar qual aba está visível: 'perfil', 'albuns' ou 'avaliacoes'
+  const [abaAtiva, setAbaAtiva] = useState('perfil');
 
   // Recupera dados do usuário logado
   const user = JSON.parse(localStorage.getItem('authUser') || '{}');
@@ -38,60 +40,85 @@ export function Usuario() {
       <Header />
       
       <main className="conteudo-principal">
-        {/* CONTAINER DA BUSCA PADRONIZADO (Igual à Home) */}
-        <section className="container-busca-padrao">
-            <div className="busca-interna">
-                <h2>Olá, {nomeUsuario}! Pesquise algo novo:</h2>
-                <div className="barra-busca-padrao">
-                    <input 
-                        type="text" 
-                        placeholder="Pesquisar álbuns, artistas..." 
-                        value={termo}
-                        onChange={(e) => setTermo(e.target.value)}
-                    />
-                    <button onClick={lidarComBusca}>buscar</button>
-                </div>
-            </div>
-        </section>
+        {/* CONTAINER DA BUSCA PADRONIZADO (Estilizado para o tema escuro) */}
 
         <div className="perfil-layout-restrito">
-            {/* Header do Usuário (Foto e Nome) */}
+            {/* Header do Usuário (Foto, Nome e as Contagens do Letterboxd) */}
             <section className="usuario-header">
-                <img src={user?.avatar || "/img/icon.jpg"} className="user-img-pfp" alt="Perfil" />
-                <div className="info-usuario-container">
-                    <h1 className="nome-display">{nomeUsuario}</h1>
-                    <div className="Cbotão">
-                        <Link to="/editar-perfil" className="botão-editar">EDITAR PERFIL</Link>
-                    </div>   
+                <div className="usuario-perfil-esquerda">
+                    <img src={user?.avatar || "/img/icon.jpg"} className="user-img-pfp" alt="Perfil" />
+                    <div className="info-usuario-container">
+                        <div className="nome-acoes-linha">
+                            <h1 className="nome-display">{nomeUsuario}</h1>
+                            <Link to="/editar-perfil" className="botão-editar">EDITAR PERFIL</Link>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Métricas do lado direito baseadas na referência */}
+                <div className="usuario-estatisticas">
+                    <div className="estatistica-item">
+                        <span className="estatistica-numero">{minhasReviews.length}</span>
+                        <span className="estatistica-label">ÁLBUNS</span>
+                    </div>
+                    <div className="estatistica-item">
+                        <span className="estatistica-numero">{minhasReviews.length}</span> {/* Ou métrica específica */}
+                        <span className="estatistica-label">ESTE ANO</span>
+                    </div>
+                    <div className="estatistica-item">
+                        <span className="estatistica-numero">0</span>
+                        <span className="estatistica-label">SEGUINDO</span>
+                    </div>
+                    <div className="estatistica-item">
+                        <span className="estatistica-numero">0</span>
+                        <span className="estatistica-label">SEGUIDORES</span>
+                    </div>
                 </div>
             </section>
 
-            {/* Menu de Categorias */}
+            {/* Menu de Categorias Clicáveis */}
             <div className="categorias-perfil">
-                <div className="cat-item active">Perfil</div>
-                <div className="cat-item">Álbuns ({minhasReviews.length})</div>
-                <div className="cat-item">Minhas Avaliações</div>
+                <div 
+                    className={`cat-item ${abaAtiva === 'perfil' ? 'active' : ''}`} 
+                    onClick={() => setAbaAtiva('perfil')}
+                >
+                    Perfil
+                </div>
+                <div 
+                    className={`cat-item ${abaAtiva === 'albuns' ? 'active' : ''}`} 
+                    onClick={() => setAbaAtiva('albuns')}
+                >
+                    Álbuns ({minhasReviews.length})
+                </div>
+                <div 
+                    className={`cat-item ${abaAtiva === 'avaliacoes' ? 'active' : ''}`} 
+                    onClick={() => setAbaAtiva('avaliacoes')}
+                >
+                    Minhas Avaliações
+                </div>
             </div>
             <hr className="linha-separadora" />
 
-            {/* Seção de Favoritos (Destaque visual) */}
-            <section className="secao-perfil-listas">
-                <h2>Álbuns Favoritos</h2>
-                <div className="grid-favoritos-pf">
-                    <img src="/img/ateez.jpg" alt="Fav 1" />
-                    <img src="/img/hs2.png" alt="Fav 2" />
-                    <img src="/img/gaga.jpg" alt="Fav 3" />
-                    <img src="/img/lana.jpg" alt="Fav 4" />
-                </div>
-            </section>
+            {/* RENDERIZAÇÃO DINÂMICA DAS ABAS */}
+            
+            {abaAtiva === 'perfil' && (
+                <>
+                    {/* Seção de Favoritos */}
+                    <section className="secao-perfil-listas">
+                        <h2 className="titulo-secao-letter">ÁLBUNS FAVORITOS</h2>
+                        <div className="grid-favoritos-pf">
+                            <div className="moldura-album"><img src="/img/ateez.jpg" alt="Fav 1" /></div>
+                            <div className="moldura-album"><img src="/img/hs2.png" alt="Fav 2" /></div>
+                            <div className="moldura-album"><img src="/img/gaga.jpg" alt="Fav 3" /></div>
+                            <div className="moldura-album"><img src="/img/lana.jpg" alt="Fav 4" /></div>
+                        </div>
+                    </section>
 
-            {/* SEÇÃO DINÂMICA: MINHAS AVALIAÇÕES (Onde caem as do modal) */}
-            <section className="secao-perfil-listas">
-                <h2>Minhas Avaliações Recentes</h2>
-                <hr className="linha-sub" />
-                <div className="lista-feed-perfil">
-                    {minhasReviews.length > 0 ? (
-                        minhasReviews.map(review => (
+                    {/* Resumo rápido das últimas avaliações na home do perfil */}
+                    <section className="secao-perfil-listas">
+                        <h2 className="titulo-secao-letter">AVALIAÇÕES RECENTES</h2>
+                        <div className="lista-feed-perfil">
+                            {minhasReviews.slice(0, 3).map(review => (
                                 <CardAvaliacao 
                                     key={getEntityId(review)}
                                     id={review.id}
@@ -103,12 +130,56 @@ export function Usuario() {
                                     user={review.user}
                                     createdAt={review.createdAt}
                                 />
-                        ))
-                    ) : (
-                        <p className="msg-vazio">Você ainda não fez nenhuma avaliação.</p>
-                    )}
-                </div>
-            </section>
+                            ))}
+                            {minhasReviews.length === 0 && (
+                                <p className="msg-vazio">Você ainda não fez nenhuma avaliação.</p>
+                            )}
+                        </div>
+                    </section>
+                </>
+            )}
+
+            {abaAtiva === 'albuns' && (
+                <section className="secao-perfil-listas">
+                    <h2 className="titulo-secao-letter">TODOS OS ÁLBUNS AVALIADOS</h2>
+                    <div className="grid-favoritos-pf tudo-avaliado">
+                        {minhasReviews.length > 0 ? (
+                            minhasReviews.map(review => (
+                                <div key={getEntityId(review)} className="moldura-album" title={review.album}>
+                                    <img src={review.album?.cover || "/img/gaga.jpg"} alt={review.album} />
+                                </div>
+                            ))
+                        ) : (
+                            <p className="msg-vazio">Nenhum álbum registrado ainda.</p>
+                        )}
+                    </div>
+                </section>
+            )}
+
+            {abaAtiva === 'avaliacoes' && (
+                <section className="secao-perfil-listas">
+                    <h2 className="titulo-secao-letter">TODAS AS MINHAS AVALIÇÕES</h2>
+                    <div className="lista-feed-perfil">
+                        {minhasReviews.length > 0 ? (
+                            minhasReviews.map(review => (
+                                <CardAvaliacao 
+                                    key={getEntityId(review)}
+                                    id={review.id}
+                                    _id={review._id}
+                                    album={review.album}
+                                    artist={review.artist}
+                                    rating={review.rating}
+                                    comment={review.comment}
+                                    user={review.user}
+                                    createdAt={review.createdAt}
+                                />
+                            ))
+                        ) : (
+                            <p className="msg-vazio">Você ainda não fez nenhuma avaliação.</p>
+                        )}
+                    </div>
+                </section>
+            )}
         </div>
       </main>
       <Rodape />
