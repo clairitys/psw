@@ -301,9 +301,10 @@ export function EditarPerfil() {
       </nav>
 
 
-      <main className="grid-config">
+      <main className={activeTab === 'perfil' ? "grid-config" : "full-width-config"}>
         {/* Aba Perfil */}
         {activeTab === 'perfil' && (
+          <>
           <div className="editar-container">
             <h2>Editar Perfil</h2>
             <form className="form-perfil" onSubmit={handleProfileSubmit}>
@@ -388,6 +389,18 @@ export function EditarPerfil() {
               </button>
             </form>
           </div>
+
+          <section className="favoritos-edit">
+              <h3>ÁLBUNS FAVORITOS</h3>
+              <div className="posters-container">
+                <img src="img/ateez.jpg" alt="Fav 1" className="poster" />
+                <img src="img/hs2.png" alt="Fav 2" className="poster" />
+                <img src="img/gaga.jpg" alt="Fav 3" className="poster" />
+                <img src="img/lana.jpg" alt="Fav 4" className="poster" />
+              </div>
+              <p className="drag-hint">Arraste para reordenar.</p>
+            </section>
+          </>
         )}
 
         {/* Aba Avatar */}
@@ -408,7 +421,7 @@ export function EditarPerfil() {
 
               <div className="avatar-field" style={{ marginBottom: '20px' }}>
                 <label htmlFor="avatar-upload" className="avatar-field-label">
-                  Avatar
+                  
                 </label>
                 <input
                   id="avatar-upload"
@@ -489,7 +502,7 @@ export function EditarPerfil() {
                   value={senhaNova}
                   onChange={(e) => setSenhaNova(e.target.value)}
                   minLength="6"
-                  requiredgit add . 
+                  requiredgit 
                 />
                 {errors.senhaNova && (
                   <span style={{ fontSize: '0.75rem', color: '#ff6b6b', display: 'block', marginTop: '3px' }}>
@@ -507,7 +520,6 @@ export function EditarPerfil() {
                   onChange={(e) => setSenhaConfirm(e.target.value)}
                   minLength="6"
                   required
-                  style={{ borderColor: errors.senhaConfirm ? '#ff6b6b' : 'inherit' }}
                 />
                 {errors.senhaConfirm && (
                   <span style={{ fontSize: '0.75rem', color: '#ff6b6b', display: 'block', marginTop: '3px' }}>
@@ -527,16 +539,7 @@ export function EditarPerfil() {
           </div>
         )}
 
-        <section className="favoritos-edit">
-          <h3>ÁLBUNS FAVORITOS</h3>
-          <div className="posters-container">
-            <img src="img/ateez.jpg" alt="Fav 1" className="poster" />
-            <img src="img/hs2.png" alt="Fav 2" className="poster" />
-            <img src="img/gaga.jpg" alt="Fav 3" className="poster" />
-            <img src="img/lana.jpg" alt="Fav 4" className="poster" />
-          </div>
-          <p className="drag-hint">Arraste para reordenar.</p>
-        </section>
+        
       </main>
       <Rodape />
     </div>

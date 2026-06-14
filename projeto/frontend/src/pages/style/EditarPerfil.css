@@ -74,6 +74,18 @@
     padding: 2rem;
 }
 
+.full-width-config {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 2rem;
+}
+
+.full-width-config .editar-container {
+  width: 100%;
+  max-width: 1200px; 
+}
+
 /* ===== CONTAINER DE EDIÇÃO ===== */
 .editar-container {
     background: white;
@@ -243,6 +255,7 @@
 .drag-hint {
     color: #999;
     font-size: 0.9rem;
+    font-weight: 500;
     font-style: italic;
     margin: 0;
 }
