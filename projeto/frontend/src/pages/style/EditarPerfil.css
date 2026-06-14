@@ -13,20 +13,19 @@
     padding: 2rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
+    margin-top: 0px;
 }
 
 .textos-header h2 {
     color: #060d0c;
     font-size: 2rem;
     margin: 0;
-    font-family: 'Fraunces', serif;
+    font-family: 'Outfit', serif;
 }
 
 /* ===== NAVEGAÇÃO ===== */
 .navegaçao-config {
     border-bottom: 1px solid #c1c1c1;
-    background: white;
-    position: sticky;
     top: 90px;
     z-index: 100;
 }
@@ -41,34 +40,34 @@
 }
 
 .navegaçao-config li {
-    padding-bottom: 15px;
-    padding-top: 15px;
+    padding-bottom: 30px;
+    padding-top: 5px;
 }
 
 .navegaçao-config a {
     text-decoration: none;
     color: #666;
-    font-size: 0.95rem;
-    font-weight: 500;
+    font-size: 0.85rem;
+    font-weight: 400;
     letter-spacing: 0.5px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Outfit', sans-serif;
     transition: color 0.3s;
 }
 
 .navegaçao-config a:hover {
-    color: #c49ba7;
+    color: #9f86c0;
 }
 
 .navegaçao-config li.active a {
-    color: #c49ba7;
-    border-bottom: 2px solid #c49ba7;
-    padding-bottom: 15px;
+    color: #9f86c0;
+    border-bottom: 2px solid #9f86c0;
+    padding-bottom: 10px;
 }
 
 /* ===== GRID PRINCIPAL ===== */
 .grid-config {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1.2fr;
     gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
@@ -84,7 +83,7 @@
 }
 
 .editar-container h2 {
-    font-family: 'Fraunces', serif;
+    font-family: 'Outfit', serif;
     color: #060d0c;
     font-size: 1.8rem;
     margin: 0 0 1.5rem 0;
@@ -115,10 +114,11 @@
 .form-perfil textarea {
     width: 100%;
     border: 1px solid #ddd;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 12px;
     font-size: 1rem;
     font-family: 'Inter', sans-serif;
+    font-weight: 400;
     box-sizing: border-box;
     transition: border-color 0.3s;
 }
@@ -186,14 +186,14 @@
     color: white;
     border: none;
     padding: 12px 24px;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 700;
     cursor: pointer;
     transition: background-color 0.3s;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'outfit', sans-serif;
 }
 
 .submit-button:hover:not(:disabled) {
@@ -214,9 +214,9 @@
 }
 
 .favoritos-edit h3 {
-    font-family: 'Fraunces', serif;
+    font-family: 'Outfit', serif;
     color: #060d0c;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin: 0 0 1.5rem 0;
 }
 

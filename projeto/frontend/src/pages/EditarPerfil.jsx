@@ -16,6 +16,8 @@ export function EditarPerfil() {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [bio, setBio] = useState('');
+  
+  // Estado do formulário de avatar
   const [avatar, setAvatar] = useState('');
   const [avatarFile, setAvatarFile] = useState(null);
   const [avatarPreview, setAvatarPreview] = useState('');
@@ -32,6 +34,7 @@ export function EditarPerfil() {
   useEffect(() => {
     const hash = window.location.hash.replace('#', '');
     if (hash === 'senha') setActiveTab('senha');
+    else if (hash === 'avatar') setActiveTab('avatar');
     else if (hash === 'perfil') setActiveTab('perfil');
   }, []);
 
@@ -140,35 +143,63 @@ export function EditarPerfil() {
       const token = localStorage.getItem('token');
       const authHeaders = { Authorization: `Bearer ${token}` };
 
-      let response;
+      const updateData = {};
+      if (name) updateData.name = name;
+      if (email) updateData.email = email;
+      if (bio !== undefined) updateData.bio = bio;
 
-      if (avatarFile) {
-        const formData = new FormData();
-        if (name) formData.append('name', name);
-        if (email) formData.append('email', email);
-        formData.append('bio', bio);
-        formData.append('avatar', avatarFile);
+      const response = await fetch('/api/users/me', {
+        method: 'PUT',
+        headers: {
+          ...authHeaders,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updateData),
+      });
 
-        response = await fetch('/api/users/me', {
-          method: 'PUT',
-          headers: authHeaders,
-          body: formData,
-        });
+      const data = await response.json();
+
+      if (response.ok) {
+        const updatedUser = { ...JSON.parse(localStorage.getItem('authUser')), ...data.user };
+        localStorage.setItem('authUser', JSON.stringify(updatedUser));
+        localStorage.setItem('user', JSON.stringify(updatedUser));
+        
+        setSuccess('Perfil atualizado com sucesso!');
+        setTimeout(() => setSuccess(''), 3000);
       } else {
-        const updateData = {};
-        if (name) updateData.name = name;
-        if (email) updateData.email = email;
-        if (bio !== undefined) updateData.bio = bio;
-
-        response = await fetch('/api/users/me', {
-          method: 'PUT',
-          headers: {
-            ...authHeaders,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(updateData),
-        });
+        setErrors({ form: data.error || 'Erro ao atualizar perfil' });
       }
+    } catch (error) {
+      console.error('Erro:', error);
+      setErrors({ form: 'Erro ao atualizar perfil. Verifique a conexão.' });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  //Submeter formulário de avatar
+  const handleAvatarSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!avatarFile) {
+      setErrors({ form: 'Selecione uma imagem antes de enviar.' });
+      return;
+    }
+
+    setLoading(true);
+    setSuccess('');
+    setErrors({});
+
+    try {
+      const token = localStorage.getItem('token');
+      const formData = new FormData();
+      formData.append('avatar', avatarFile);
+
+      const response = await fetch('/api/users/me', {
+        method: 'PUT',
+        headers: { Authorization: `Bearer ${token}` },
+        body: formData,
+      });
 
       const data = await response.json();
 
@@ -180,14 +211,14 @@ export function EditarPerfil() {
         setAvatarFile(null);
         setAvatarPreview('');
 
-        setSuccess('Perfil atualizado com sucesso!');
+        setSuccess('Avatar atualizado com sucesso!');
         setTimeout(() => setSuccess(''), 3000);
       } else {
-        setErrors({ form: data.error || 'Erro ao atualizar perfil' });
+        setErrors({ form: data.error || 'Erro ao atualizar avatar' });
       }
     } catch (error) {
       console.error('Erro:', error);
-      setErrors({ form: 'Erro ao atualizar perfil. Verifique a conexão.' });
+      setErrors({ form: 'Erro ao atualizar avatar. Verifique a conexão.' });
     } finally {
       setLoading(false);
     }
@@ -260,10 +291,18 @@ export function EditarPerfil() {
           >
             <a href="#senha">SENHA</a>
           </li>
+          <li 
+            className={activeTab === 'avatar' ? 'active' : ''}
+            onClick={() => setActiveTab('avatar')}
+          >
+            <a href="#avatar">AVATAR</a>
+          </li>
         </ul>
       </nav>
 
+
       <main className="grid-config">
+        {/* Aba Perfil */}
         {activeTab === 'perfil' && (
           <div className="editar-container">
             <h2>Editar Perfil</h2>
@@ -285,7 +324,7 @@ export function EditarPerfil() {
                   type="text" 
                   value={username}
                   disabled
-                  style={{ backgroundColor: '#333', cursor: 'not-allowed' }}
+                  style={{ backgroundColor: '#d6d6d6', cursor: 'not-allowed' }}
                 />
               </div>
 
@@ -293,46 +332,16 @@ export function EditarPerfil() {
                 <label style={{ fontSize: '0.9rem', color: '#ccc' }}>Nome</label>
                 <input 
                   type="text" 
-                  placeholder="Nome completo" 
+                  placeholder="Nome" 
                   value={name}
                   onChange={(e) => setName(maskName(e.target.value))}
                   maxLength="100"
-                  style={{ borderColor: errors.name ? '#ff6b6b' : 'inherit' }}
                 />
                 {errors.name && (
                   <span style={{ fontSize: '0.75rem', color: '#ff6b6b', display: 'block', marginTop: '3px' }}>
                     {errors.name}
                   </span>
                 )}
-              </div>
-
-              <div className="avatar-field">
-                <label htmlFor="avatar-upload" className="avatar-field-label">
-                  Avatar
-                </label>
-                <input
-                  id="avatar-upload"
-                  type="file"
-                  accept="image/*"
-                  className="avatar-file-input"
-                  onChange={(e) => setAvatarFile(e.target.files[0] || null)}
-                />
-                {avatarFile && (
-                  <span className="avatar-file-name">{avatarFile.name}</span>
-                )}
-                <div className="avatar-preview-box">
-                  <img
-                    src={
-                      avatarPreview ||
-                      formatAvatarUrl(avatar)
-                    }
-                    alt="Pré-visualização do avatar"
-                    className="avatar-preview-img"
-                    onError={(e) => {
-                      e.target.src = '/img/user.jpg';
-                    }}
-                  />
-                </div>
               </div>
 
               <div className="linha-inputs">
@@ -343,7 +352,7 @@ export function EditarPerfil() {
                     placeholder="seu@email.com" 
                     value={email}
                     onChange={(e) => setEmail(maskEmail(e.target.value))}
-                    style={{ borderColor: errors.email ? '#ff6b6b' : 'inherit' }}
+
                   />
                   {errors.email && (
                     <span style={{ fontSize: '0.75rem', color: '#ff6b6b', display: 'block', marginTop: '3px' }}>
@@ -361,7 +370,7 @@ export function EditarPerfil() {
                   onChange={(e) => setBio(maskBio(e.target.value))}
                   maxLength="500"
                   rows="4"
-                  style={{ borderColor: errors.bio ? '#ff6b6b' : 'inherit' }}
+                  style={{ backgroundColor: '#ffffff'}}
                 />
                 {errors.bio && (
                   <span style={{ fontSize: '0.75rem', color: '#ff6b6b', display: 'block', marginTop: '3px' }}>
@@ -381,6 +390,66 @@ export function EditarPerfil() {
           </div>
         )}
 
+        {/* Aba Avatar */}
+        {activeTab === 'avatar' && (
+          <div className="editar-container">
+            <h2>Alterar Avatar</h2>
+            <form className="form-perfil" onSubmit={handleAvatarSubmit}>
+              {success && (
+                <div style={{ color: '#4CAF50', marginBottom: '15px', fontSize: '0.9rem' }}>
+                  ✓ {success}
+                </div>
+              )}
+              {errors.form && (
+                <div style={{ color: '#ff6b6b', marginBottom: '15px', fontSize: '0.9rem' }}>
+                  {errors.form}
+                </div>
+              )}
+
+              <div className="avatar-field" style={{ marginBottom: '20px' }}>
+                <label htmlFor="avatar-upload" className="avatar-field-label">
+                  Avatar
+                </label>
+                <input
+                  id="avatar-upload"
+                  type="file"
+                  accept="image/*"
+                  className="avatar-file-input"
+                  onChange={(e) => setAvatarFile(e.target.files[0] || null)}
+                />
+                {avatarFile && (
+                  <span className="avatar-file-name" style={{ display: 'block', marginTop: '8px' }}>
+                    {avatarFile.name}
+                  </span>
+                )}
+                <div className="avatar-preview-box" style={{ marginTop: '15px' }}>
+                  <img
+                    src={
+                      avatarPreview ||
+                      formatAvatarUrl(avatar)
+                    }
+                    alt="Pré-visualização do avatar"
+                    className="avatar-preview-img"
+                    onError={(e) => {
+                      e.target.src = '/img/user.jpg';
+                    }}
+                    style={{ width: '120px', height: '120px', borderRadius: '50%', objectFit: 'cover' }}
+                  />
+                </div>
+              </div>
+
+              <button 
+                type="submit" 
+                className="submit-button"
+                disabled={loading}
+              >
+                {loading ? 'Salvando...' : 'Atualizar Avatar'}
+              </button>
+            </form>
+          </div>
+        )}
+
+        {/* Aba Senha */}
         {activeTab === 'senha' && (
           <div className="editar-container">
             <h2>Alterar Senha</h2>
@@ -404,7 +473,6 @@ export function EditarPerfil() {
                   value={senhaAtual}
                   onChange={(e) => setSenhaAtual(e.target.value)}
                   required
-                  style={{ borderColor: errors.senhaAtual ? '#ff6b6b' : 'inherit' }}
                 />
                 {errors.senhaAtual && (
                   <span style={{ fontSize: '0.75rem', color: '#ff6b6b', display: 'block', marginTop: '3px' }}>
@@ -421,8 +489,7 @@ export function EditarPerfil() {
                   value={senhaNova}
                   onChange={(e) => setSenhaNova(e.target.value)}
                   minLength="6"
-                  required
-                  style={{ borderColor: errors.senhaNova ? '#ff6b6b' : 'inherit' }}
+                  requiredgit add . 
                 />
                 {errors.senhaNova && (
                   <span style={{ fontSize: '0.75rem', color: '#ff6b6b', display: 'block', marginTop: '3px' }}>
