@@ -4,7 +4,6 @@
 .config-page {
     background-color: #F8F8F8;
     min-height: 100vh;
-    padding-top: 90px;
     padding-bottom: 50px;
 }
 
@@ -55,12 +54,12 @@
 }
 
 .navegaçao-config a:hover {
-    color: #9f86c0;
+    color: #060d0c;
 }
 
 .navegaçao-config li.active a {
-    color: #9f86c0;
-    border-bottom: 2px solid #9f86c0;
+    color: #060d0c;
+    border-bottom: 2px solid #060d0c;
     padding-bottom: 10px;
 }
 

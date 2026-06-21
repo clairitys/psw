@@ -1,82 +1,22 @@
-/* Minimal artists page styles */
-.artistas-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:20px; padding:20px; }
-.artista-card { text-decoration:none; color:inherit; }
-/* Artista page styles */
-.artist-page { background: #fff; color: #222; min-height: 100vh; }
-.artist-main { max-width: 1100px; margin: 0 auto; padding: 20px; }
-
-.artist-hero { padding: 18px 0 30px; border-bottom: 1px solid #eee; }
-.artist-hero-inner { display:flex; gap:20px; align-items:center; }
-.artist-image img { width:150px; height:150px; object-fit:cover; border-radius:50%; border:4px solid #fff; box-shadow:0 6px 18px rgba(0,0,0,0.12); }
-.artist-meta { flex:1; }
-.artist-name { font-size:2.1rem; margin:0 0 8px; }
-.artist-sub { color:#666; margin:0 0 12px; }
-.artist-actions { display:flex; gap:10px; margin-bottom:12px; }
-.btn-bio, .btn-ver-albuns { background:#fff; border:1px solid #ddd; padding:8px 12px; border-radius:6px; cursor:pointer; color:#222; text-decoration:none }
-.btn-ver-albuns { background:#2b0f1a; color:#fff; border-color:#2b0f1a }
-.artist-bio p { margin:0; color:#333; line-height:1.5 }
-
-.artist-discography { margin-top:28px; }
-.discography-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap:14px; margin-top:12px; }
-.discography-item { text-decoration:none; color:inherit; display:flex; flex-direction:column; align-items:center }
-.discography-thumb img { width:120px; height:120px; object-fit:cover; border-radius:6px; }
-.discography-title { margin-top:8px; font-size:0.95rem; text-align:center }
-
-.artist-reviews { margin-top:28px; }
-.artist-review-link {
-    color: #2b0f1a;
-    text-decoration: none;
-    font-weight: 600;
-}
-.artist-review-link:hover {
-    text-decoration: underline;
-}
-.reviews-list { display:flex; flex-direction:column; gap:12px; }
-
-/* Responsive */
-@media (max-width: 800px) {
-    .artist-hero-inner { flex-direction:column; align-items:flex-start }
-    .artist-image img { width:110px; height:110px }
-    .artist-name { font-size:1.6rem }
-    .discography-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
+/* Container Geral da Página */
+.home-container {
+    background: #fff;
+    color: #222;
+    min-height: 100vh;
 }
 
-@media (max-width: 480px) {
-    .artist-main { padding: 12px; }
-    .artist-image img { width:96px; height:96px }
-    .discography-thumb img { width:100px; height:100px }
-}
-.artista {
-    display: flex;     
-    align-items: center; 
-    justify-content: center;
-    /* Alinha foto e textos verticalmente ao centro */
-    gap: 40px;
-    padding: 40px; 
-    margin: 10px auto;
-    max-width: 900px;
+.container3 {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
+/* Estrutura do Perfil do Artista */
 .artist-header {
     display: flex;
-    gap: 24px;
+    gap: 40px;
     align-items: flex-start;
-}
-
-.artistapfp,
-.artist-detail-image {
-    width: 180px;
-    height: 180px;
-    object-fit: cover;
-    flex-shrink: 0;
-    border-radius: 18px;
-    border: 2px solid #E9E9E7;
-    transition: transform 0.3s ease;
-}
-
-.artistapfp:hover,
-.artist-detail-image:hover {
-    transform: scale(1.03);
+    padding: 40px 0;
 }
 
 .artist-image-wrapper {
@@ -86,636 +26,160 @@
     min-width: 180px;
 }
 
-.nome {
-    margin-top: 0px;
-    font-family: 'Fraunces', serif;
-    font-size: 30px; /* Aumentado para destaque de título */
-    text-align: left;
-    font-weight: 400;
-    color: #060d0c;
+.artist-detail-image {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    flex-shrink: 0;
+    border-radius: 18px;
+    border: 2px solid #E9E9E7;
+    transition: transform 0.3s ease;
+}
+
+.artist-detail-image:hover {
+    transform: scale(1.03);
+}
+
+/* Informações e Biografia */
+.artist-info {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    overflow: hidden; /* Ajuda a conter o ellipsis se necessário */
 }
 
-.infos {
-    font-family: 'Outfit', sans-serif !important;
-    display: flex;
-    align-items: flex-start;
-    gap: 30px;
-    min-height: 200px;
-    margin-top: 20px;
-    background: #E9E9E7;
-    padding: 20px 30px;
-    border-radius: 12px;
+.artist-info h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    text-align: left;
+    font-weight: 400;
+    color: #060d0c;
+    margin: 0 0 15px 0;
 }
 
 .biografia {
     font-family: 'Outfit', sans-serif !important;
+    background: #E9E9E7;
+    padding: 25px 30px;
+    border-radius: 12px;
+    width: 100%;
+}
+
+.biografia span {
+    font-weight: 600;
+    font-size: 18px;
+    display: block;
+    margin-bottom: 10px;
+    color: #060d0c;
+}
+
+.biografia p {
     font-size: 16px;
-    font-weight: 400; 
-    gap: 20px;
+    font-weight: 400;
+    line-height: 1.6;
+    text-align: justify;
     margin: 0;
-    text-align: justify;
+    color: #333;
 }
 
-.biografia p{
-    margin-top: 30px;
-    margin-bottom: 40px !important;
-    font-size: 20px;
-    margin-top: 20px;
-    margin-left: 40px !important;
-    text-align: right;
-    font-family: 'Outfit', sans-serif;
+/* Seções e Listagens (Discografia e Avaliações) */
+.artist-albums, 
+.artist-reviews,
+.avaliações {
+    margin-top: 35px;
 }
 
-.biografia span{
-    text-align: justify;
-    font-family: 'Outfit', sans-serif;
-    margin: 10px;
-    margin-top: 10px;
-}
-
+/* Títulos das seções com divisor nativo por borda inferior */
+.artist-albums h2,
+.artist-reviews h2,
 .avaliações h2 {
     font-family: 'Outfit', sans-serif;
     font-weight: 550;
     color: #060d0c;
-    font-size: 18px;
-    padding: 0 40px;
-    margin-top: 30px !important;
-    margin-bottom: 10px;
+    font-size: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #E9E9E7;
+    width: 100%;
 }
 
-.username{
-    color: #060d0c !important;
+/* Organização perfeita em linha para exibir as capas lado a lado horizontalmente */
+.albuns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 10px 0;
 }
 
+/* Estilização das imagens de capa na discografia */
 .img3 {
-    width: 200px;
-    height: 200px;
+    width: 160px;
+    height: 160px;
     object-fit: cover;
     border-radius: 12px;
     flex-shrink: 0;         
-    transition: transform 0.3s ease;
-    margin-right: 20px; /* Espaçamento entre as capas */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .img3:hover {
     transform: scale(1.05);    
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 10px 0;
+}
+
+.username {
+    color: #060d0c !important;
+}
+
+.subtitulo {
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    color: #666;
 }
 
 /* ============================================
-   MEDIA QUERIES (Ajustes de layout)
+    MEDIA QUERIES (Responsividade)
    ============================================ */
-
 @media (max-width: 991px) {
-    .artista {
-        flex-direction: column; /* Foto em cima, texto embaixo no tablet/mobile */
-        text-align: center;
-        padding: 20px;
-    }
-
-    .nome {
-        text-align: center;
+    .artist-header {
+        flex-direction: column;
         align-items: center;
+        text-align: center;
+        gap: 25px;
     }
 
-    .nome h1 {
+    .artist-info h1 {
+        text-align: center;
         font-size: 32px;
-        white-space: normal; /* Permite quebra de nome em telas pequenas */
     }
-
-    .infos {
-        min-width: 100%;
+    
+    .biografia p {
+        text-align: center;
     }
 }
-/* ============================================
-       MEDIA QUERIES - RESPONSIVIDADE
-       ============================================ */
 
-    /* Desktop médio (992px - 1199px) */
-    @media (max-width: 1199px) {
-        .container {
-            padding: 0 30px;
-        }
-
-        .direita {
-            gap: 20px;
-        }
-
-        .direita a {
-            font-size: 16px;
-        }
-
-        .container h1 {
-            font-size: 30px;
-        }
-
-        .albuns {
-            padding: 20px 30px;
-        }
-
-        .img {
-            width: 180px;
-            height: 180px;
-        }
-
-        .cards {
-            padding: 20px 30px;
-        }
-
-        .avCT {
-            min-width: 350px;
-        }
-
-        .img1 {
-            width: 180px;
-            height: 180px;
-        }
-
-        .info {
-            height: 180px;
-        }
-
-        .rodape {
-            padding: 0 30px;
-        }
+@media (max-width: 575px) {
+    .container3 {
+        padding: 15px;
     }
 
-    /* Tablet (768px - 991px) */
-    @media (max-width: 991px) {
-        body {
-            padding-top: 0 !important;
-        }
-
-        .container {
-            height: 60px;
-            padding: 0 20px;
-        }
-
-        .container h1 {
-            font-size: 26px;
-        }
-
-        .direita {
-            gap: 15px;
-        }
-
-        .direita a {
-            font-size: 14px;
-        }
-
-        .container2 {
-            height: 140px;
-            padding: 0 20px;
-            margin: 0;
-            padding-top: 60px;
-        }
-
-        .busca {
-            margin-top: 15px;
-            margin-bottom: 15px;
-        }
-
-        .barra input {
-            padding: 12px 20px;
-            font-size: 14px;
-        }
-
-        .barra button {
-            padding: 8px 20px;
-            font-size: 14px;
-        }
-
-        p {
-            font-size: 22px;
-            margin: 30px 15px;
-        }
-
-        .albuns {
-            padding: 20px;
-            gap: 15px;
-        }
-
-        .img {
-            width: 160px;
-            height: 160px;
-        }
-
-        .avaliações h2 {
-            padding: 0 20px;
-            font-size: 16px;
-        }
-
-        hr {
-            width: calc(100% - 40px);
-            margin-left: 20px;
-        }
-
-        .cards {
-            padding: 15px 20px;
-            gap: 15px;
-        }
-
-        .avCT {
-            min-width: 100%;
-            flex-direction: row;
-        }
-
-        .img1 {
-            width: 150px;
-            height: 150px;
-        }
-
-        .info {
-            height: auto;
-            min-height: 150px;
-        }
-
-        .avCT h1 {
-            font-size: 18px;
-        }
-
-        .subtitulo {
-            font-size: 15px;
-            margin-left: 0;
-            text-align: left; /* Garante que fique alinhado com o título do álbum */
-        }
-
-        .rodape {
-            height: auto;
-            padding: 30px 20px;
-            flex-direction: column;
-            gap: 20px;
-            align-items: center;
-        }
-
-        .esquerdo {
-            align-items: center;
-            text-align: center;
-        }
-
-        .links {
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .conteúdo p {
-            text-align: center;
-        }
-
-        .redes {
-            align-items: center;
-        }
+    .artist-detail-image {
+        width: 160px;
+        height: 160px;
     }
 
-    /* Mobile grande (576px - 767px) */
-    @media (max-width: 767px) {
-        body {
-            padding-top: 0 !important;        }
-
-        .container {
-            height: 55px;
-            padding: 0 15px;
-            flex-wrap: wrap;
-        }
-
-        .container h1 {
-            font-size: 22px;
-        }
-
-        .direita {
-            gap: 10px;
-        }
-
-        .direita a {
-            font-size: 12px;
-        }
-
-        .container2 {
-            height: 120px;
-            padding: 0 15px;
-        }
-
-        .busca {
-            margin-top: 30px;
-            max-width: 100%;
-        }
-
-        .barra {
-            flex-direction: column;
-            padding: 10px;
-            border-radius: 20px;
-        }
-
-        .barra input {
-            padding: 10px 15px;
-            font-size: 13px;
-            text-align: center;
-        }
-
-        .barra button {
-            width: 100%;
-            padding: 8px 15px;
-            font-size: 13px;
-            margin-top: 8px;
-        }
-
-        p {
-            font-size: 18px;
-            margin: 25px 10px;
-            line-height: 1.5;
-        }
-
-        .Cbotão {
-            margin: 15px 10px;
-        }
-
-        .botão {
-            padding: 8px 25px;
-            font-size: 16px;
-        }
-
-        .albuns {
-            padding: 15px;
-            gap: 12px;
-        }
-
-        .img {
-            width: 140px;
-            height: 140px;
-        }
-
-        .avaliações h2 {
-            padding: 0 15px;
-            font-size: 15px;
-        }
-
-        hr {
-            width: calc(100% - 30px);
-            margin-left: 15px;
-        }
-
-        .cards {
-            padding: 10px 15px;
-            gap: 12px;
-        }
-
-        .avCT {
-            min-width: 100%;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 15px 10px;
-        }
-
-        .img1 {
-            width: 100%;
-            max-width: 200px;
-            height: auto;
-            aspect-ratio: 1;
-            margin-right: 0;
-        }
-
-        .info {
-            align-items: center;
-            width: 100%;
-            padding: 0; 
-            gap: 2px;  
-        }
-
-        /*.info {
-            align-items: center;
-            width: 100%;
-            padding: 10px 0;
-        }*/
-
-        .avCT h1 {
-            font-size: 16px;
-        }
-
-        .subtitulo {
-            font-size: 14px;
-            margin-left: 0;
-        }
-
-        .user {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;       
-            margin: 2px 0;  
-        }
-
-
-        .stars {
-        font-size: 14px; /* Estrelas um pouco menores para não empurrar a linha */
-        }
-
-
-        /*.user {
-            justify-content: center;
-        }*/
-
-        .username {
-            margin: 0 !important;
-        }
-
-        .avCT p {
-            font-size: 14px;
-            text-align: center;
-        }
-
-        .rodape {
-            padding: 25px 15px;
-        }
-
-        .links {
-            gap: 15px;
-        }
-
-        .links a {
-            font-size: 13px;
-        }
-
-        .item {
-            font-size: 13px;
-        }
-
-        .conteúdo p {
-            font-size: 13px;
-        }
+    .artist-info h1 {
+        font-size: 26px;
     }
 
-    /* Mobile pequeno (<576px) */
-    @media (max-width: 575px) {
-        body {
-            padding-top: 0 !important;
-        }
-
-        .container {
-            position: relative;
-            height: auto;
-            padding: 15px;
-            /*min-height: 50px;
-            flex-direction: column;
-            padding: 10px 15px;*/
-            }
-
-        .container h1 {
-            font-size: 24px;
-        }
-
-        .direita {
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .direita a {
-            font-size: 11px;
-            padding: 4px 8px;
-        }
-
-        .container2 {
-            margin-top: 0! important;
-            height: auto;
-            min-height: 100px;
-            padding: 15px;
-        }
-
-        .busca {
-            margin-top: 15px;
-            margin-bottom: 15px;
-        }
-
-        .barra {
-            padding: 8px;
-        }
-
-        .barra input {
-            padding: 8px 12px;
-            font-size: 12px;
-        }
-
-        .barra button {
-            padding: 6px 12px;
-            font-size: 12px;
-        }
-
-        p {
-            font-size: 16px;
-            margin: 20px 10px;
-            line-height: 1.4;
-        }
-
-        .botão {
-            padding: 8px 20px;
-            font-size: 14px;
-        }
-
-        .albuns {
-            padding: 10px;
-            gap: 10px;
-        }
-
-        .img {
-            width: 120px;
-            height: 120px;
-        }
-
-        .avaliações h2 {
-            padding: 0 10px;
-            font-size: 14px;
-        }
-
-        hr {
-            width: calc(100% - 20px);
-            margin-left: 10px;
-        }
-
-        .cards {
-            padding: 10px;
-        }
-
-        .avCT {
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .img1 {
-            max-width: 150px;
-        }
-
-        .avCT h1 {
-            font-size: 14px;
-        }
-
-        .subtitulo {
-            font-size: 12px;
-        }
-
-        .img2 {
-            width: 25px;
-            height: 25px;
-        }
-
-        .username {
-            font-size: 12px;
-        }
-
-        .stars {
-            font-size: 16px;
-        }
-
-        .info {
-            height: auto;
-            align-items: center;
-        }
-
-
-        .user {
-            justify-content: center;
-        }
-
-        .avCT p {
-            font-size: 13px;
-        }
-
-        .data {
-            font-size: 11px;
-        }
-
-        .rodape {
-            padding: 20px 10px;
-            margin-top: 40px;
-        }
-
-        .links {
-            gap: 12px;
-        }
-
-        .links a {
-            font-size: 12px;
-        }
-
-        .item {
-            font-size: 12px;
-            gap: 8px;
-        }
-
-        .item img {
-            width: 16px;
-            height: 16px;
-        }
-
-        .conteúdo p {
-            font-size: 11px;
-        }
+    .img3 {
+        width: 120px;
+        height: 120px;
     }
-
-/* ... Mantive as outras media queries conforme seu código original ... */
+}

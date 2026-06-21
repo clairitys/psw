@@ -8,7 +8,7 @@ import './Avaliacao.css';
 
 export function Avaliacao({ aoFechar }) {
   const { albuns, artistas, fetchAlbuns, fetchArtistas, adicionarReview } = useAlbumStore();
-  const [albumIdSelecionado, setAlbumIdSelecionado] = useState('');
+  const [termoBusca, setTermoBusca] = useState(''); // Estado para o texto digitado
   const [albumSelecionado, setAlbumSelecionado] = useState(null);
   const [nota, setNota] = useState(0);
   const [comentario, setComentario] = useState('');
@@ -22,30 +22,19 @@ export function Avaliacao({ aoFechar }) {
     fetchArtistas();
   }, [fetchAlbuns, fetchArtistas]);
 
-  const albunsOrdenados = useMemo(
-    () =>
-      [...albuns].sort((a, b) => (a.titulo || '').localeCompare(b.titulo || '', 'pt-BR')),
-    [albuns]
-  );
-
-  const labelAlbum = (album) => {
-    const artista = findArtistaForAlbum(artistas, album);
-    return `${album.titulo} — ${artista?.nome || 'Artista desconhecido'}`;
-  };
-
-  const continuarComAlbum = () => {
-    if (!albumIdSelecionado) {
-      setErro('Selecione um álbum na lista');
-      return;
-    }
-    const album = albuns.find((a) => getEntityId(a) === String(albumIdSelecionado));
-    if (!album) {
-      setErro('Álbum não encontrado');
-      return;
-    }
-    setErro('');
-    setAlbumSelecionado(album);
-  };
+  // Filtra os álbuns baseado no termo de busca (título do álbum ou nome do artista)
+  const albunsFiltrados = useMemo(() => {
+    if (!termoBusca.trim()) return []; // Se não digitou nada, não mostra a lista (ou mostre tudo trocando por [...albuns])
+    
+    const termo = termoBusca.toLowerCase();
+    return albuns.filter((album) => {
+      const artista = findArtistaForAlbum(artistas, album);
+      const tituloAlbum = (album.titulo || '').toLowerCase();
+      const nomeArtista = (artista?.nome || '').toLowerCase();
+      
+      return tituloAlbum.includes(termo) || nomeArtista.includes(termo);
+    });
+  }, [albuns, artistas, termoBusca]);
 
   const lidarComSalvar = async () => {
     if (!albumSelecionado) return;
@@ -102,37 +91,56 @@ export function Avaliacao({ aoFechar }) {
                     ×
                   </button>
                 </div>
+                
                 <div className="busca-corpo">
-                  <label htmlFor="avaliacao-select-album" className="album-select-label">
-                    Selecionar álbum
+                  <label htmlFor="busca-album-input" className="album-select-label">
+                    Buscar álbum ou artista
                   </label>
-                  <select
-                    id="avaliacao-select-album"
-                    className="album-select-modal"
+                  
+                  {/* Substituído o Select por este Input */}
+                  <input
+                    id="busca-album-input"
+                    type="text"
+                    placeholder="Digite o nome do álbum ou artista..."
                     autoFocus
-                    value={albumIdSelecionado}
+                    value={termoBusca}
                     onChange={(e) => {
-                      setAlbumIdSelecionado(e.target.value);
+                      setTermoBusca(e.target.value);
                       setErro('');
                     }}
-                  >
-                    <option value="">— Escolha um álbum —</option>
-                    {albunsOrdenados.map((album) => (
-                      <option key={getEntityId(album)} value={getEntityId(album)}>
-                        {labelAlbum(album)}
-                      </option>
-                    ))}
-                  </select>
+                  />
 
                   {albuns.length === 0 && (
-                    <p className="album-select-hint-modal">Carregando álbuns...</p>
+                    <p className="album-select-hint-modal">Carregando catálogo...</p>
                   )}
 
-                  {erro && <p className="erro-modal">{erro}</p>}
+                  {/* Container de Resultados usando seu CSS existente */}
+                  <div className="resultados-container">
+                    {albunsFiltrados.map((album) => {
+                      const artista = findArtistaForAlbum(artistas, album);
+                      return (
+                        <div
+                          key={getEntityId(album)}
+                          className="item-resultado"
+                          onClick={() => setAlbumSelecionado(album)}
+                        >
+                          <img src={formatCapaUrl(album.capa)} alt={album.titulo} />
+                          <div className="item-info">
+                            <strong>{album.titulo}</strong>
+                            <span className="res-artista">
+                              {artista?.nome || 'Artista desconhecido'}
+                            </span>
+                          </div>
+                        </div>
+                      );
+                    })}
 
-                  <button type="button" className="btn-continuar-album" onClick={continuarComAlbum}>
-                    Continuar
-                  </button>
+                    {termoBusca && albunsFiltrados.length === 0 && (
+                      <p className="album-select-hint-modal">Nenhum álbum encontrado.</p>
+                    )}
+                  </div>
+
+                  {erro && <p className="erro-modal">{erro}</p>}
                 </div>
               </div>
             ) : (

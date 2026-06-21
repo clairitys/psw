@@ -44,12 +44,20 @@
     font-size: 30px;
     background-color: #e9e9e7;
     border: none;
+}
+
+.btn-continuar-album:hover{
+    background-color: #060d0c !important;
+    color: white !important;
+    text-decoration: none;
+    transform: translateY(-3px) !important; 
+    box-shadow: 0 10px 16px rgba(0, 0, 0, 0.25);
 
 }
 
 .busca-corpo {
     font-family: 'Outfit', sans-serif;
-    font-weight: 500;
+    font-weight: 400;
     padding: 20px;
     flex: 1;
 }
@@ -61,7 +69,7 @@
     border-radius: 6px;
     background: #f8f8f8;
     font-family: 'Outfit', sans-serif;
-    font-size: 16px;
+    font-size: 15px;
     margin-top: 10px;
     margin-bottom: 15px;
 }
@@ -69,6 +77,13 @@
 .busca-corpo input:focus {
     outline: none; /* Remove o anel de foco padrão do navegador */
     box-shadow: 0 0 0 2px rgba(154, 154, 154, 0.2); /* Opcional: uma sombra verde bem sutil apenas para feedback */
+}
+
+                  
+.album-select-label
+{
+    font-weight: 350;
+    font-size: 16px !important;
 }
 
 .resultados-container {
@@ -189,6 +204,7 @@
     font-weight: 600;
     font-size: 18px;
     }
+
     .opcoes-rapidas {
         font-family: 'Outfit', sans-serif;
         font-size: 15px;
@@ -255,6 +271,14 @@ textarea {
     border-radius: 4px;
     font-weight: 550;
     cursor: pointer;
+}
+
+.save-btn:hover{
+    background-color: #060d0c !important;
+    color: white !important;
+    text-decoration: none;
+    transform: translateY(-3px) !important; 
+    box-shadow: 0 10px 16px rgba(0, 0, 0, 0.25);
 }
 
 .tela-feedback {

@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useAlbumStore } from '../store/useAlbumStore';
 import { Header } from '../components/Header/Header.jsx';
 import { Rodape } from '../components/Rodape/Rodape';
-import { AlbumCard } from '../components/AlbumCard/AlbumCard';
 import { CardAvaliacao } from '../components/CardAvaliacao/CardAvaliacao';
 import { formatAvatarUrl } from '../utils/format';
 import './style/Artista.css';
@@ -37,16 +36,23 @@ export function Artista() {
     }
   }, [artistaDetalhe?.nome, fetchReviewsPorArtista]);
 
+  // Garante valores padrão seguros em arrays para evitar ecrã em branco por dados ausentes
+  const listaAlbuns = albunsArtista || [];
+  const listaReviews = reviewsArtista || [];
+
   return (
     <div className="home-container">
       <Header />
+      
       <main className="container3">
         {loadingDetalhe ? (
-          <p>Carregando artista...</p>
+          <p className="subtitulo" style={{ textAlign: 'center', padding: '40px' }}>Carregando artista...</p>
         ) : error ? (
-          <p style={{ color: '#c42a3a' }}>{error}</p>
+          <p style={{ color: '#c42a3a', textAlign: 'center', padding: '40px' }}>{error}</p>
         ) : artistaDetalhe ? (
           <section className="artist-detail-page">
+            
+            {/* SEÇÃO DO PERFIL DO ARTISTA */}
             <div className="artist-header">
               <div className="artist-image-wrapper">
                 <img
@@ -57,40 +63,53 @@ export function Artista() {
               </div>
               <div className="artist-info">
                 <h1>{artistaDetalhe.nome}</h1>
-                <p>{artistaDetalhe.bio || 'Biografia não disponível.'}</p>
+                <div className="biografia">
+                  <span>sobre o artista ✭</span>
+                  <p>{artistaDetalhe.bio || 'Biografia não disponível.'}</p>
+                </div>
               </div>
             </div>
 
+            {/* SEÇÃO DOS ÁLBUNS (APENAS AS CAPAS - EM GRID HORIZONTAL) */}
             <div className="artist-albums">
               <h2>Álbuns do artista</h2>
-              {albunsArtista.length === 0 ? (
-                <p>Não há álbuns cadastrados para este artista.</p>
+              {listaAlbuns.length === 0 ? (
+                <p className="subtitulo">Não há álbuns cadastrados para este artista.</p>
               ) : (
-                <div className="artist-albums-grid">
-                  {albunsArtista.map((album) => (
-                    <AlbumCard key={album.id || album._id} album={album} />
+                <div className="albuns">
+                  {listaAlbuns.map((album) => (
+                    <Link to={`/album/${album.id || album._id}`} key={album.id || album._id}>
+                      <img 
+                        src={album.capa ? (album.capa.startsWith('http') || album.capa.startsWith('/') ? album.capa : `/${album.capa}`) : '/img/default-album.jpg'} 
+                        alt={album.titulo} 
+                        className="img3"
+                      />
+                    </Link>
                   ))}
                 </div>
               )}
             </div>
 
+            {/* SEÇÃO DAS AVALIAÇÕES */}
             <section id="artist-reviews-section" className="artist-reviews">
               <h2>Avaliações do artista</h2>
-              {reviewsArtista.length === 0 ? (
-                <p>Sem avaliações cadastradas para este artista.</p>
+              {listaReviews.length === 0 ? (
+                <p className="subtitulo">Sem avaliações cadastradas para este artista.</p>
               ) : (
-                <div className="reviews-list">
-                  {reviewsArtista.map((review) => (
+                <div className="cards">
+                  {listaReviews.map((review) => (
                     <CardAvaliacao key={review.id || review._id} {...review} />
                   ))}
                 </div>
               )}
             </section>
+
           </section>
         ) : (
-          <p>Artista não encontrado.</p>
+          <p className="subtitulo" style={{ textAlign: 'center', padding: '40px' }}>Artista não encontrado.</p>
         )}
       </main>
+      
       <Rodape />
     </div>
   );

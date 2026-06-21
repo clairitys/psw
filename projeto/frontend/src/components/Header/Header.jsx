@@ -44,7 +44,6 @@ export function Header() {
             /* LAYOUT QUANDO LOGADO (HOME / ALBUM) */
             <>
               <Link to="/artistas">artistas</Link>
-              <Link to="/albuns">álbuns</Link>
               <Link to="/generos">gêneros</Link>
               <Link to="/listas">listas</Link>
 
@@ -63,6 +62,7 @@ export function Header() {
 
                 {dropdownAberto && (
                   <div className="dropdownCT1">
+                    <Link to="/home">home</Link>
                     <Link to="/perfil">meu perfil</Link>
                     {/* CORREÇÃO AQUI TAMBÉM */}
                       <Link to="/editar-perfil">configurações</Link>
@@ -84,7 +84,6 @@ export function Header() {
               <button className="link-style-btn" onClick={() => setModalCadastro(true)}>criar conta</button>
               
               <Link to="/artistas">artistas</Link>
-              <Link to="/albuns">álbuns</Link>
                <Link to="/generos">gêneros</Link>
             </>
           )}

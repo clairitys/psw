@@ -2,6 +2,7 @@
 .usuario-page-container {
     background-color: #f8f8f8;
     color: #9ab;
+    margin-top: 30px;
     min-height: 100vh;
     font-family: 'Outfit', sans-serif;
 }
@@ -75,7 +76,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-left: 1px solid #24303c;
+    border-left: 2px solid #a6a6a6;
     padding-left: 20px;
 }
 
@@ -87,11 +88,11 @@
 .estatistica-numero {
     font-size: 24px;
     font-weight: bold;
-    color: #fff;
+    color: #060d0c;
 }
 
 .estatistica-label {
-    font-size: 10px;
+    font-size: 11px ! important;
     color: #667788;
     letter-spacing: 0.08em;
     margin-top: 2px;
@@ -102,29 +103,32 @@
     display: flex;
     gap: 25px;
     font-size: 14px;
-    border-bottom: 1px solid #24303c;
+    border-bottom: 2px solid #a6a6a6;
     padding-bottom: 10px;
 }
 
 .cat-item {
     cursor: pointer;
-    color: #9ab;
+    font-size: 15px;
+    font-weight: 400;
+    color: #6a6b71;
     padding-bottom: 10px;
     margin-bottom: -11px;
     transition: color 0.2s;
 }
 
 .cat-item:hover {
-    color: #fff;
+    color: #060d0c;
 }
 
 .cat-item.active {
-    color: #fff;
-    border-bottom: 2px solid #ff8000; /* Laranja de destaque */
+    color: #060d0c;
+    border-bottom: 3px solid #060d0c; /* Laranja de destaque */
     font-weight: 600;
 }
 
 .linha-separadora {
+    color: #a6a6a6;
     display: none; /* Substituído pela borda do contêiner */
 }
 
@@ -136,9 +140,9 @@
 
 .titulo-secao-letter {
     font-size: 12px;
-    color: #9ab;
+    color: #6a6b71;
     letter-spacing: 0.08em;
-    border-bottom: 1px solid #24303c;
+    border-bottom: 2px solid #a6a6a6;
     padding-bottom: 5px;
     margin-bottom: 15px;
     font-weight: 600;
@@ -152,17 +156,17 @@
 }
 
 .moldura-album {
-    background: #1c252d;
+    background: #1c1c1c;
     padding: 4px;
     border-radius: 4px;
-    border: 1px solid #2c3640;
+    border: 1px solid #1c1c1c;
     transition: transform 0.2s, border-color 0.2s;
     cursor: pointer;
 }
 
 .moldura-album:hover {
     transform: translateY(-2px);
-    border-color: #445566;
+    border-color: #1c1c1c;
 }
 
 .grid-favoritos-pf img {
@@ -181,7 +185,7 @@
 }
 
 .msg-vazio {
-    color: #667788;
+    color: #6a6b71;
     font-style: italic;
     font-size: 14px;
 }
