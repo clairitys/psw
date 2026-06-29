@@ -56,7 +56,7 @@ export function Artista() {
             <div className="artist-header">
               <div className="artist-image-wrapper">
                 <img
-                  src={formatAvatarUrl(artistaDetalhe.foto)}
+                  src={formatAvatarUrl(artistaDetalhe.foto, '/img/user.jpg')}
                   alt={artistaDetalhe.nome}
                   className="artist-detail-image"
                 />
