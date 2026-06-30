@@ -11,7 +11,7 @@ import './style/Home.css';
 
 export function Home() {
   const navigate = useNavigate();
-  const { albuns, artists, reviews, fetchDados } = useAlbumStore();
+  const { albuns, artistas, reviews, fetchDados } = useAlbumStore();
   
   const [termo, setTermo] = useState('');
   const [termoAtivo, setTermoAtivo] = useState('');
@@ -51,7 +51,7 @@ export function Home() {
     ? listaSegura.filter(album => {
         const termoLongo = termoAtivo.toLowerCase();
         const combinaTitulo = album.titulo?.toLowerCase().includes(termoLongo);
-        const dadosArtista = findArtistaForAlbum(artists || [], album);
+        const dadosArtista = findArtistaForAlbum(artistas || [], album);
         const combinaArtista = dadosArtista?.nome?.toLowerCase().includes(termoLongo);
         return combinaTitulo || combinaArtista;
       }) 
@@ -71,14 +71,14 @@ export function Home() {
             <div className="cards-busca">
               {resultadosBusca.length > 0 ? (
                 resultadosBusca.map(album => {
-                  const artistaCard = findArtistaForAlbum(artists || [], album);
+                  const artistaCard = findArtistaForAlbum(artistas || [], album);
                   return (
                     <Link to={`/album/${getEntityId(album)}`} key={getEntityId(album)} className="album-card-link">
                       <div className="album-card-busca">
                         <img src={formatCapaUrl(album.capa)} alt={album.titulo} />
                         <div className="info-album">
                           <h3>{album.titulo}</h3>
-                          <p>{artistaCard?.nome || "Artista desconhecido"}</p>
+                          <p>{artistaCard?.nome || 'Artista desconhecido'}</p>
                         </div>
                       </div>
                     </Link>
