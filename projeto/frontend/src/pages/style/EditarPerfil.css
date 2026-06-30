@@ -541,7 +541,7 @@
         font-family: 'Fraunces';
         font-size: 15px;
         color: #F8F8F8;
-        margin: 0! important;      
+        margin: 0 !important;
         text-align: left; 
     }
 
@@ -572,3 +572,4 @@
         z-index: 1;
         filter: brightness(0.8);
     }
+}

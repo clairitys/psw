@@ -502,7 +502,7 @@ export function EditarPerfil() {
                   value={senhaNova}
                   onChange={(e) => setSenhaNova(e.target.value)}
                   minLength="6"
-                  requiredgit 
+                  required
                 />
                 {errors.senhaNova && (
                   <span style={{ fontSize: '0.75rem', color: '#ff6b6b', display: 'block', marginTop: '3px' }}>
