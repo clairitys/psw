@@ -144,11 +144,11 @@
         font-size: 28px;
     }
 
-    .direita {
+    .direita1 {
         gap: 20px;
     }
 
-    .direita a {
+    .direita1 a {
         font-size: 16px;
     }
 
@@ -166,18 +166,24 @@
 @media (max-width: 767px) {
     .container {
         padding: 0 20px;
-        height: 60px;
+        height: auto;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
     }
 
     .container h1 {
         font-size: 22px;
     }
 
-    .direita {
+    .direita1 {
         gap: 15px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        width: 100%;
     }
 
-    .direita a {
+    .direita1 a {
         font-size: 14px;
     }
 
@@ -194,20 +200,23 @@
 /* Smartphones (575px e abaixo) */
 @media (max-width: 575px) {
     .container {
-        padding: 0 15px;
-        height: 55px;
+        padding: 12px 15px;
+        height: auto;
+        align-items: flex-start;
     }
 
     .container h1 {
         font-size: 18px;
     }
 
-    .direita {
+    .direita1 {
         gap: 10px;
         flex-wrap: wrap;
+        justify-content: flex-start;
+        width: 100%;
     }
 
-    .direita a {
+    .direita1 a {
         font-size: 12px;
     }
 
@@ -224,19 +233,18 @@
 /* Smartphones Pequenos (360px e abaixo) */
 @media (max-width: 360px) {
     .container {
-        padding: 0 10px;
-        height: 50px;
+        padding: 10px;
     }
 
     .container h1 {
         font-size: 16px;
     }
 
-    .direita {
+    .direita1 {
         gap: 8px;
     }
 
-    .direita a {
+    .direita1 a {
         font-size: 11px;
     }
 

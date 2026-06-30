@@ -1,3 +1,4 @@
+    .home-containerI,
     .home-container {
         display: flex;
         flex-direction: column;
@@ -267,7 +268,53 @@
         display: none;
     }
     .carrossel-wrapper {
-        padding: 0;
+        padding: 0 15px;
+    }
+
+    .texto-chamada {
+        font-size: 22px;
+        margin-top: 30px !important;
+    }
+
+    .texto-chamada2 {
+        font-size: 18px;
+        margin-bottom: 40px !important;
+    }
+
+    .botão {
+        width: 100%;
+        max-width: 320px;
+        font-size: 15px;
+    }
+
+    .albuns {
+        padding: 10px 15px;
+        gap: 14px;
+    }
+
+    .img {
+        width: 140px !important;
+        height: 140px !important;
+    }
+
+    .cards {
+        padding: 15px 15px;
+    }
+
+    .album-card-busca {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .capa-container img {
+        width: 100%;
+        max-width: 120px;
+        height: auto;
+    }
+
+    .album-card-busca .info-album {
+        width: 100%;
     }
 }
 

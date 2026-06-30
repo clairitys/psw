@@ -107,8 +107,8 @@ export function Usuario() {
                     <section className="secao-perfil-listas">
                         <h2 className="titulo-secao-letter">ÁLBUNS FAVORITOS</h2>
                         <div className="grid-favoritos-pf">
-                            <div className="moldura-album"><img src="/img/ateez.jpg" alt="Fav 1" /></div>
-                            <div className="moldura-album"><img src="/img/hs2.png" alt="Fav 2" /></div>
+                            <div className="moldura-album"><img src="/img/skz3.jpg" alt="Fav 1" /></div>
+                            <div className="moldura-album"><img src="/img/hhouse.jpg" alt="Fav 2" /></div>
                             <div className="moldura-album"><img src="/img/gaga.jpg" alt="Fav 3" /></div>
                             <div className="moldura-album"><img src="/img/lana.jpg" alt="Fav 4" /></div>
                         </div>

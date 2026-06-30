@@ -393,8 +393,8 @@ export function EditarPerfil() {
           <section className="favoritos-edit">
               <h3>ÁLBUNS FAVORITOS</h3>
               <div className="posters-container">
-                <img src="img/ateez.jpg" alt="Fav 1" className="poster" />
-                <img src="img/hs2.png" alt="Fav 2" className="poster" />
+                <img src="img/skz3.jpg" alt="Fav 1" className="poster" />
+                <img src="img/hhouse.jpg" alt="Fav 2" className="poster" />
                 <img src="img/gaga.jpg" alt="Fav 3" className="poster" />
                 <img src="img/lana.jpg" alt="Fav 4" className="poster" />
               </div>
