@@ -11,6 +11,9 @@ export function ReviewDetalhe() {
   const [review, setReview] = useState(null);
   const [erro, setErro] = useState(null);
   const [novoComentario, setNovoComentario] = useState('');
+  const [editCommentId, setEditCommentId] = useState(null);
+  const [editCommentText, setEditCommentText] = useState('');
+  const [commentError, setCommentError] = useState('');
   const [modalCadastroAberto, setModalCadastroAberto] = useState(false);
   const [jaCurtiu, setJaCurtiu] = useState(false);
 
@@ -92,6 +95,96 @@ export function ReviewDetalhe() {
       setJaCurtiu(true);
       recarregarReview();
     });
+  };
+
+  const iniciarEdicaoComentario = (comentario) => {
+    if (!user) {
+      setModalCadastroAberto(true);
+      return;
+    }
+    setEditCommentId(comentario._id);
+    setEditCommentText(comentario.texto || '');
+    setCommentError('');
+  };
+
+  const cancelarEdicaoComentario = () => {
+    setEditCommentId(null);
+    setEditCommentText('');
+    setCommentError('');
+  };
+
+  const salvarEdicaoComentario = async (comentarioId) => {
+    if (!editCommentText.trim()) {
+      setCommentError('Comentário não pode ficar vazio.');
+      return;
+    }
+
+    const targetUrl = review.id
+      ? `/api/reviews/${review.id}/comentarios/${comentarioId}`
+      : `/api/reviews/${id}/comentarios/${comentarioId}`;
+
+    try {
+      const res = await fetch(targetUrl, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        },
+        body: JSON.stringify({ texto: editCommentText }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        setCommentError(data.error || 'Erro ao editar comentário');
+        return;
+      }
+
+      setEditCommentId(null);
+      setEditCommentText('');
+      setCommentError('');
+      recarregarReview();
+    } catch (err) {
+      console.error('Erro ao editar comentário:', err);
+      setCommentError('Erro ao editar comentário');
+    }
+  };
+
+  const excluirComentario = async (comentarioId) => {
+    if (!user) {
+      setModalCadastroAberto(true);
+      return;
+    }
+
+    if (!window.confirm('Tem certeza que deseja excluir este comentário?')) {
+      return;
+    }
+
+    const targetUrl = review.id
+      ? `/api/reviews/${review.id}/comentarios/${comentarioId}`
+      : `/api/reviews/${id}/comentarios/${comentarioId}`;
+
+    try {
+      const res = await fetch(targetUrl, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        alert(data.error || 'Erro ao excluir comentário');
+        return;
+      }
+
+      if (editCommentId === comentarioId) {
+        cancelarEdicaoComentario();
+      }
+      recarregarReview();
+    } catch (err) {
+      console.error('Erro ao excluir comentário:', err);
+      alert('Erro ao excluir comentário');
+    }
   };
 
   const enviarComentario = (e) => {
@@ -206,24 +299,81 @@ export function ReviewDetalhe() {
 
           <div className="lista-comentarios">
             {review.comentarios && review.comentarios.length > 0 ? (
-              review.comentarios.map((com) => (
-                <div key={com._id} className="comentario-item">
-                  <img 
-                    src={com.user?.avatar?.startsWith('img/') ? `/${com.user.avatar}` : (com.user?.avatar || "/img/user.jpg")} 
-                    alt={com.user?.username} 
-                    className="comentario-avatar" 
-                  />
-                  <div className="comentario-conteudo">
-                    <div className="comentario-meta">
-                      <span className="comentario-autor">{com.user?.username || "Usuário"}</span>
-                      <span className="comentario-data">
-                        {new Date(com.createdAt).toLocaleDateString('pt-BR')}
-                      </span>
+              review.comentarios.map((com) => {
+                const comentarioUserId = com.user?._id || com.user?.id || com.user;
+                const podeEditar = user && (user.isAdmin || String(comentarioUserId) === String(user.id || user._id));
+                const estaEditando = editCommentId === com._id;
+
+                return (
+                  <div key={com._id} className="comentario-item">
+                    <img 
+                      src={com.user?.avatar?.startsWith('img/') ? `/${com.user.avatar}` : (com.user?.avatar || "/img/user.jpg")} 
+                      alt={com.user?.username} 
+                      className="comentario-avatar" 
+                    />
+                    <div className="comentario-conteudo">
+                      <div className="comentario-meta">
+                        <span className="comentario-autor">{com.user?.username || "Usuário"}</span>
+                        <span className="comentario-data">
+                          {new Date(com.createdAt).toLocaleDateString('pt-BR')}
+                        </span>
+                      </div>
+
+                      {estaEditando ? (
+                        <>
+                          <textarea
+                            className="comment-edit-input"
+                            value={editCommentText}
+                            onChange={(e) => setEditCommentText(e.target.value)}
+                            rows={4}
+                          />
+                          {commentError && (
+                            <div className="comment-error">{commentError}</div>
+                          )}
+                          <div className="comentario-actions">
+                            <button
+                              type="button"
+                              className="comentario-acao-button save"
+                              onClick={() => salvarEdicaoComentario(com._id)}
+                            >
+                              Salvar
+                            </button>
+                            <button
+                              type="button"
+                              className="comentario-acao-button"
+                              onClick={cancelarEdicaoComentario}
+                            >
+                              Cancelar
+                            </button>
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <p className="comentario-texto-corpo">{com.texto}</p>
+                          {podeEditar && (
+                            <div className="comentario-actions">
+                              <button
+                                type="button"
+                                className="comentario-acao-button"
+                                onClick={() => iniciarEdicaoComentario(com)}
+                              >
+                                Editar
+                              </button>
+                              <button
+                                type="button"
+                                className="comentario-acao-button delete"
+                                onClick={() => excluirComentario(com._id)}
+                              >
+                                Apagar
+                              </button>
+                            </div>
+                          )}
+                        </>
+                      )}
                     </div>
-                    <p className="comentario-texto-corpo">{com.texto}</p>
                   </div>
-                </div>
-              ))
+                );
+              })
             ) : (
               <p className="sem-comentarios">Nenhum comentário ainda.</p>
             )}

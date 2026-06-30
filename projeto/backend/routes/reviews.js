@@ -153,6 +153,50 @@ router.post(
   }
 );
 
+// PATCH /:id/comentarios/:comentarioId - Editar comentário
+router.patch(
+  "/:id/comentarios/:comentarioId",
+  verifyToken,
+  [
+    body("texto")
+      .trim()
+      .notEmpty()
+      .withMessage("O comentário é obrigatório")
+      .isLength({ max: 500 })
+      .withMessage("O comentário não pode ter mais de 500 caracteres"),
+  ],
+  async (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }
+
+    try {
+      const review = await Review.findById(req.params.id);
+      if (!review) {
+        return res.status(404).json({ error: "Avaliação não encontrada" });
+      }
+
+      const comentario = review.comentarios.id(req.params.comentarioId);
+      if (!comentario) {
+        return res.status(404).json({ error: "Comentário não encontrado" });
+      }
+
+      if (req.user.isAdmin || comentario.user.equals(req.user._id)) {
+        comentario.texto = req.body.texto;
+        await review.save();
+        await review.populate("user", "username name avatar");
+        await review.populate("comentarios.user", "username avatar");
+        return res.json(review);
+      }
+
+      return res.status(403).json({ error: "Você não tem permissão para editar este comentário" });
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
 // DELETE /:id/comentarios/:comentarioId - Deletar comentário
 router.delete("/:id/comentarios/:comentarioId", verifyToken, async (req, res, next) => {
   try {

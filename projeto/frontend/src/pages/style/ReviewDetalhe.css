@@ -253,6 +253,53 @@
     word-break: break-word;
 }
 
+.comment-edit-input {
+    width: 100%;
+    min-height: 90px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    resize: vertical;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.comment-error {
+    color: #c0392b;
+    font-size: 0.85rem;
+    margin-top: 6px;
+}
+
+.comentario-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.comentario-acao-button {
+    background: transparent;
+    border: 1px solid #060d0c;
+    color: #060d0c;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.comentario-acao-button:hover {
+    background: #060d0c;
+    color: #fff;
+}
+
+.comentario-acao-button.delete {
+    border-color: #c0392b;
+    color: #c0392b;
+}
+
+.comentario-acao-button.delete:hover {
+    background: #c0392b;
+}
+
 .formulario-comentario {
     width: 100%;
     display: flex;
