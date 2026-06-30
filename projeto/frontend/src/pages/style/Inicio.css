@@ -116,7 +116,7 @@
         font-weight: 700 !important;
         color:#060d0c;
         text-align: center;
-        margin-top: 10px !important;
+        margin-top: 50px !important;
         margin-bottom: 70px !important;
     }
     
@@ -208,20 +208,47 @@
 /* Container do Carrossel */
 .carrossel-wrapper {
     position: relative;
-    display: flex !important;
+    display: flex;
     align-items: center;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 60px; /* Garante que as setas tenham espaço nas laterais */
     box-sizing: border-box;
-    flex-wrap: nowrap;
-    overflow-x: auto;
 }
 
 /* Ajuste sutil na margem da sua div existente */
 .albuns {
-    scroll-behavior: smooth; /* Faz o deslize das setas ser suave */
+    display: flex !important;
+    flex-direction: row !important; /* Força os itens a ficarem estritamente lado a lado */
+    flex-wrap: nowrap !important;    /* Proíbe terminantemente a quebra de linha */
+    overflow-x: auto;       
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    gap: 20px;
+    padding: 20px 0; 
+    width: 100%;
+    scrollbar-width: thin; 
+    scrollbar-color: #060d0c #f8f8f8;
+    align-items: center;
+}
+
+.albuns::-webkit-scrollbar {
+    display: none !important;
+    height: 0 !important;
+}
+
+/* Oculta a barra de rolagem no Firefox e no IE/Edge antigo */
+.albuns {
+    -ms-overflow-style: none;  /* IE e Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.albuns .vitrine-link {
+    display: block !important;
+    flex: 0 0 auto !important; /* Impede que o link encolha ou quebre */
+    width: 180px;  /* Mesma largura da imagem */
+    height: 180px; /* Mesma altura da imagem */
 }
 
 /* Estilização das Setas Condicionais */

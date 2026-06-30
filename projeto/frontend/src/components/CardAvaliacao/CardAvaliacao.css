@@ -61,13 +61,27 @@ hr {
 .info {
     display: flex;
     flex-direction: column;
-    gap: 6px;           /* Reduzido o espaço vertical entre os textos */
+    gap: 6px;
     justify-content: flex-start; 
     align-items: flex-start;
-    height: 150px;      /* REDUZIDO: Antes era 200px (evita o vão vazio abaixo) */
+    /* ALTERADO: Remove o height fixo e usa min-height para permitir que o card cresça com o texto */
+    min-height: 150px; 
+    height: auto; 
     box-sizing: border-box;
     padding: 0;
     flex-grow: 1;
+}
+
+.avCT p.comentario {
+    font-family: 'Inter', sans-serif !important;
+    color: #060d0c;
+    font-size: 14px !important;
+    line-height: 1.4;
+    font-weight: 500;
+    margin: 4px 0 12px 0; /* Adicionado uma margem inferior para desgrudar da data */
+    flex-grow: 1;
+    text-align: left;
+    word-break: break-word;
 }
 
 .avCT h1 {

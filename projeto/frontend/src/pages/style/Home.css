@@ -380,6 +380,7 @@ body {
         font-size: 22px;
         text-align: center;
         margin: 60px;
+        border: none;
     }
 
    .avaliações h2 {
@@ -390,6 +391,7 @@ body {
         padding: 0 40px;
         margin-top: 20px;
         margin-bottom: 10px;
+        border: none;
     }
 
     .avaliações hr {
@@ -401,33 +403,63 @@ body {
         margin-bottom: 10px;
     }
 
-     .albuns {
-        display: flex;
-        gap: 11px;
-        padding: 20px 40px;
-        margin-top: 0; 
-        margin-bottom: 30px;
-        text-align: center;
-    }
+    .carrossel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 96%;            /* Força o bloco inteiro a ter a largura do hr */
+    margin: 0 auto;        /* Centraliza o bloco na tela */
+    padding: 20px 0;
+}
 
-    .img:hover{
-        transform: translateY(-8px); 
-        box-shadow: 0 10px 20px rgba(40, 24, 34, 0.15); 
-    }
+ .albuns1 {
+    display: flex;                /* Alinha os álbuns em linha */
+    gap: 16px;                    /* Espaçamento interno entre os álbuns */
+    padding: 20px 0;              /* Removemos o padding lateral para alinhar com a margem do hr */
+    width: 96%;                   /* Mesma largura exata do seu hr */
+    margin: 0 auto;               /* Centraliza o container na tela perfeitamente */
+    overflow-x: auto;             /* Ativa a rolagem horizontal */
+    scroll-behavior: smooth;      /* Deixa a rolagem suave */
+    
+    /* Configuração do Carrossel Nativo */
+    scroll-snap-type: x mandatory; 
+    -webkit-overflow-scrolling: touch; /* Melhora a rolagem no iPhone/Safari */
+}
 
-   .img {
-        width: 180px !important;
-        height: 180px !important;
-        object-fit: cover;
-        border-radius: 8px;
-        flex-shrink: 0;         
-        scroll-snap-align: center;
-        display: block;
-        max-width: 100%;
-        margin: 20px 0;          
-        transition: transform 0.3s, box-shadow 0.3s;
-        flex: 0 0 auto;
-    }
+/* Opcional: Se você usa setas e quer esconder a barra de rolagem horizontal */
+.albuns1::-webkit-scrollbar {
+    height: 0px; 
+    background: transparent; 
+}
+.albuns1::-webkit-scrollbar-thumb {
+    background: rgba(6, 13, 12, 0.2);
+    border-radius: 10px;
+}
+
+/* O wrapper do Link dentro do carrossel */
+.albuns1 > a {
+    flex: 0 0 160px;              /* Crucial: impede o álbum de encolher! Cada um terá fixo 160px */
+    scroll-snap-align: start;     /* Faz o álbum "travar" direitinho ao scrollar */
+    text-decoration: none;
+    display: block;
+}
+
+/* A Imagem dentro do link */
+.img {
+    width: 100%;
+    aspect-ratio: 1 / 1;          /* Força a ser um quadrado perfeito */
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Mantém o seu efeito de hover */
+.img:hover {
+    transform: translateY(-6px); 
+    box-shadow: 0 8px 16px rgba(40, 24, 34, 0.15); 
+}
 
     .popular h2{
         font-family: 'Outfit', sans-serif;

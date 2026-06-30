@@ -1,3 +1,26 @@
+/* 1. Resetar as margens padrão que o navegador cria */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 2. Forçar a página a ter pelo menos o tamanho total da tela */
+html, body {
+    height: 100%;
+}
+
+/* 3. Transformar o body num container Flexbox vertical */
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 4. Fazer o conteúdo principal crescer e empurrar o rodapé para baixo */
+main {
+    flex: 1;
+}
+
 .rodape {
         width: 100%;
         min-height: 150px;

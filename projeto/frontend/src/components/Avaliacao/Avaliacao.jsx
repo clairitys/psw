@@ -8,7 +8,7 @@ import './Avaliacao.css';
 
 export function Avaliacao({ aoFechar }) {
   const { albuns, artistas, fetchAlbuns, fetchArtistas, adicionarReview } = useAlbumStore();
-  const [termoBusca, setTermoBusca] = useState(''); // Estado para o texto digitado
+  const [termoBusca, setTermoBusca] = useState(''); 
   const [albumSelecionado, setAlbumSelecionado] = useState(null);
   const [nota, setNota] = useState(0);
   const [comentario, setComentario] = useState('');
@@ -22,9 +22,8 @@ export function Avaliacao({ aoFechar }) {
     fetchArtistas();
   }, [fetchAlbuns, fetchArtistas]);
 
-  // Filtra os álbuns baseado no termo de busca (título do álbum ou nome do artista)
   const albunsFiltrados = useMemo(() => {
-    if (!termoBusca.trim()) return []; // Se não digitou nada, não mostra a lista (ou mostre tudo trocando por [...albuns])
+    if (!termoBusca.trim()) return []; 
     
     const termo = termoBusca.toLowerCase();
     return albuns.filter((album) => {
@@ -55,11 +54,13 @@ export function Avaliacao({ aoFechar }) {
     setErro('');
 
     try {
+      // CORREÇÃO: Enviando o campo 'capa' para o backend aceitar e registrar
       await adicionarReview({
         album: albumSelecionado.titulo,
         artist: artistaInfo?.nome || 'Desconhecido',
         rating: nota,
         comment: comentario.trim(),
+        capa: albumSelecionado.capa, // <--- ESTA LINHA CORRIGE O ERRO "CAPA OBRIGATÓRIA"
       });
 
       setFeedback(true);
@@ -97,7 +98,6 @@ export function Avaliacao({ aoFechar }) {
                     Buscar álbum ou artista
                   </label>
                   
-                  {/* Substituído o Select por este Input */}
                   <input
                     id="busca-album-input"
                     type="text"
@@ -114,7 +114,6 @@ export function Avaliacao({ aoFechar }) {
                     <p className="album-select-hint-modal">Carregando catálogo...</p>
                   )}
 
-                  {/* Container de Resultados usando seu CSS existente */}
                   <div className="resultados-container">
                     {albunsFiltrados.map((album) => {
                       const artista = findArtistaForAlbum(artistas, album);
@@ -190,7 +189,7 @@ export function Avaliacao({ aoFechar }) {
 
                       <div className="opcoes-rapidas">
                         <label>
-                          <input type="checkbox" readOnly tabIndex={-1} /> Ouvi em{' '}
+                          <input type="checkbox" readOnly tabIndex={-1} checked /> Ouvi em{' '}
                           {new Date().toLocaleDateString()}
                         </label>
                         <label>

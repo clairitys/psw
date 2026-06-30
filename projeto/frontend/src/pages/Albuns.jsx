@@ -60,7 +60,7 @@ export function Albuns() {
     <div className="home-container">
       <Header />
       <main className="albuns-content container3">
-        <h1 className="albuns-title">Catálogo de Álbuns 💿</h1>
+        <h1 className="albuns-title">Catálogo de Álbuns</h1>
         <div className="albuns-actions">
           <input
             type="text"

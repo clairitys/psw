@@ -45,8 +45,6 @@ export function Header() {
             <>
               <Link to="/artistas">artistas</Link>
               <Link to="/generos">gêneros</Link>
-              <Link to="/listas">listas</Link>
-
               <div className="dropdown1">
                 <div className="userTrigger" onClick={() => setDropdownAberto(!dropdownAberto)}>
                   <img src="/img/icon.jpg" className="pfp" alt="pfp" />

@@ -17,7 +17,6 @@ export function ReviewDetalhe() {
   const { albuns, artistas, fetchDados } = useAlbumStore();
   const user = JSON.parse(localStorage.getItem('authUser'));
 
-  // CORRIGIDO PARA APONTAR PARA PORTA 3001
   const API_URL = `http://localhost:3001/avaliacoes/${id}`;
 
   const recarregarReview = () => {
@@ -32,7 +31,6 @@ export function ReviewDetalhe() {
         setReview(data);
         setErro(null);
         
-        // PROTEÇÃO DEFENSIVA PARA EVITAR CANNOT READ PROPERTIES OF UNDEFINED (READING 'INCLUDES')
         if (data && Array.isArray(data.curtidores) && user && user.username) {
           if (data.curtidores.includes(user.username)) {
             setJaCurtiu(true);
@@ -40,8 +38,21 @@ export function ReviewDetalhe() {
         }
       })
       .catch((err) => {
-        console.error("Erro na API:", err);
-        setErro(err.message);
+        console.error("Erro na API de detalhes, tentando busca fallback de segurança...", err);
+        
+        // FALLBACK: Caso a rota direta falhe devido ao formato do ID, busca a lista completa e filtra
+        fetch(`http://localhost:3001/avaliacoes`)
+          .then(res => res.json())
+          .then(lista => {
+            const achado = lista.find(item => String(item.id) === String(id) || String(item._id) === String(id));
+            if (achado) {
+              setReview(achado);
+              setErro(null);
+            } else {
+              setErro(`A avaliação de ID "${id}" não foi encontrada no sistema.`);
+            }
+          })
+          .catch(() => setErro(err.message));
       });
   };
 
@@ -54,26 +65,32 @@ export function ReviewDetalhe() {
     if (!user) {
       setModalCadastroAberto(true);
     } else {
-      acao();
+      action();
     }
   };
 
   const lidarComCurtida = () => {
-    verificarLoginOuAgir(() => {
-      if (jaCurtiu) return;
-      const novosCurtidores = review?.curtidores ? [...review.curtidores, user.username] : [user.username];
-      const novaCurtidaCount = (review?.curtidas || 0) + 1;
+    if (!user) {
+      setModalCadastroAberto(true);
+      return;
+    }
+    if (jaCurtiu) return;
+    
+    const novosCurtidores = review?.curtidores ? [...review.curtidores, user.username] : [user.username];
+    const novaCurtidaCount = (review?.curtidas || 0) + 1;
 
-      fetch(API_URL, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ curtidas: novaCurtidaCount, curtidores: novosCurtidores })
-      })
-      .then(res => res.json())
-      .then(() => {
-        setJaCurtiu(true);
-        recarregarReview();
-      });
+    // Tenta atualizar usando a URL padrão ou a chave correta encontrada
+    const targetUrl = review.id ? `http://localhost:3001/avaliacoes/${review.id}` : API_URL;
+
+    fetch(targetUrl, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ curtidas: novaCurtidaCount, curtidores: novosCurtidores })
+    })
+    .then(res => res.json())
+    .then(() => {
+      setJaCurtiu(true);
+      recarregarReview();
     });
   };
 
@@ -81,27 +98,31 @@ export function ReviewDetalhe() {
     e.preventDefault();
     if (!novoComentario.trim()) return;
 
-    verificarLoginOuAgir(() => {
-      const novoItem = {
-        id: Date.now(),
-        username: user?.username || "Usuário",
-        userImg: user?.avatar || "img/user.jpg",
-        texto: novoComentario,
-        data: new Date().toLocaleDateString('pt-BR')
-      };
+    if (!user) {
+      setModalCadastroAberto(true);
+      return;
+    }
 
-      const listaAtualizada = [...(review?.comentarios || []), novoItem];
+    const novoItem = {
+      id: Date.now(),
+      username: user?.username || "Usuário",
+      userImg: user?.avatar || "img/user.jpg",
+      texto: novoComentario,
+      data: new Date().toLocaleDateString('pt-BR')
+    };
 
-      fetch(API_URL, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ comentarios: listaAtualizada })
-      })
-      .then(res => res.json())
-      .then(() => {
-        setNovoComentario('');
-        recarregarReview();
-      });
+    const listaAtualizada = [...(review?.comentarios || []), novoItem];
+    const targetUrl = review.id ? `http://localhost:3001/avaliacoes/${review.id}` : API_URL;
+
+    fetch(targetUrl, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ comentarios: listaAtualizada })
+    })
+    .then(res => res.json())
+    .then(() => {
+      setNovoComentario('');
+      recarregarReview();
     });
   };
 
@@ -110,8 +131,8 @@ export function ReviewDetalhe() {
       <div className="sua-avaliacao-page" style={{ padding: '40px', textAlign: 'center' }}>
         <Header />
         <main className="conteudo-principal" style={{ marginTop: '100px', color: '#fff' }}>
-          <h2>⚠️ Erro ao Carregar</h2>
-          <p>{erro}</p>
+          <h2>⚠️ Avaliação não encontrada</h2>
+          <p>Não foi possível carregar a revisão selecionada.</p>
         </main>
         <Rodape />
       </div>
@@ -133,13 +154,14 @@ export function ReviewDetalhe() {
   const safeAlbuns = Array.isArray(albuns) ? albuns : [];
   const safeArtistas = Array.isArray(artistas) ? artistas : [];
 
-  const albumDados = safeAlbuns.find(a => String(a.id) === String(review.albumId));
-  const artistaIdDinamico = review.artistaId || albumDados?.artistaId;
+  // Mapeia usando tanto review.albumId quanto propriedades diretas do objeto inserido
+  const albumDados = safeAlbuns.find(a => String(a.id) === String(review.albumId || review.album?.id));
+  const artistaIdDinamico = review.artistaId || albumDados?.artistaId || review.artist?.id;
   const artistaDados = safeArtistas.find(art => String(art.id) === String(artistaIdDinamico));
 
-  const capaFinal = albumDados?.capa || review.capa || "img/default.jpg";
-  const tituloFinal = albumDados?.titulo || review.titulo || "Álbum";
-  const artistaFinal = artistaDados?.nome || review.artista || "Artista";
+  const capaFinal = albumDados?.capa || review.album?.capa || review.capa || "img/default.jpg";
+  const tituloFinal = albumDados?.titulo || review.album?.titulo || review.titulo || "Álbum";
+  const artistaFinal = artistaDados?.nome || review.artist?.nome || review.artista || "Artista";
 
   return (
     <div className="sua-avaliacao-page">
@@ -152,20 +174,20 @@ export function ReviewDetalhe() {
             <div className="review-meta-dados">
               <span className="review-subtitulo-voce">Avaliação de</span>
               <div className="review-user-linha">
-                <img src={review.userImg?.startsWith('img/') ? `/${review.userImg}` : (review.userImg || "/img/user.jpg")} alt={review.usuario} className="avatar-autor" />
-                <span className="autor-nome">{review.usuario}</span>
+                <img src={review.userImg?.startsWith('img/') ? `/${review.userImg}` : (review.userImg || "/img/user.jpg")} alt={review.usuario || review.user?.username} className="avatar-autor" />
+                <span className="autor-nome">{review.usuario || review.user?.username || "Anônimo"}</span>
               </div>
               <h1 className="review-titulo-musica">{tituloFinal}</h1>
               <p className="review-artista-nome">por <span className="artist-name">{artistaFinal}</span></p>
               <div className="review-estrelas-grandes">
-                {'★'.repeat(Number(review.estrelas) || 0)}
+                {'★'.repeat(Number(review.estrelas || review.rating) || 0)}
               </div>
             </div>
           </div>
 
           <div className="review-corpo-texto">
-            <p className="comentario-texto-exibicao">“{review.comentario}”</p>
-            <span className="data-publicacao-review">Postado em {review.data}</span>
+            <p className="comentario-texto-exibicao">“{review.comentario || review.comment}”</p>
+            <span className="data-publicacao-review">Postado em {review.data || review.createdAt}</span>
           </div>
 
           <div className="review-acoes-barra">

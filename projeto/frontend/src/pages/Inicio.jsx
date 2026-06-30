@@ -1,5 +1,5 @@
 import { useAlbumStore } from '../store/useAlbumStore';
-import { useState, useEffect, useRef } from 'react'; // Mantido e adicionado useRef
+import { useState, useEffect, useRef } from 'react'; 
 import { Link, useNavigate } from 'react-router-dom';
 import { Header } from '../components/Header/Header.jsx';
 import { Rodape } from '../components/Rodape/Rodape.jsx';
@@ -15,24 +15,20 @@ export function Inicio() {
   const [termoAtivo, setTermoAtivo] = useState('');
   const [modalCadastroAberto, setModalCadastroAberto] = useState(false);
   
-  // Estado para controlar se o usuário está logado
   const [usuarioLogado, setUsuarioLogado] = useState(null);
   const navigate = useNavigate();
 
   const { albuns, artistas, reviews, fetchDados } = useAlbumStore();
 
-  // Referência criada para controlar o movimento do carrossel de álbuns
   const carrosselRef = useRef(null);
 
   useEffect(() => {
     fetchDados();
     
-    // Verifica se existe um usuário no localStorage ao carregar a página
     const user = localStorage.getItem('authUser');
     if (user) {
       const userParsed = JSON.parse(user);
       setUsuarioLogado(userParsed);
-      // Se já estiver logado, redireciona para a Home
       navigate('/home'); 
     }
   }, [fetchDados, navigate]);
@@ -47,7 +43,6 @@ export function Inicio() {
     setTermoAtivo(termo.trim());
   };
 
-  // Funções de clique das setas para mover o scroll lateralmente
   const scrollEsquerda = () => {
     if (carrosselRef.current) {
       carrosselRef.current.scrollBy({ left: -300, behavior: 'smooth' });
@@ -118,7 +113,7 @@ export function Inicio() {
           <>
             <p className="texto-chamada">
               Avalie as músicas e álbuns que você já ouviu<br />
-              Salve aquilo que você quer ouvir <br />
+              Save aquilo que você quer ouvir <br />
               Compartilhe com seus amigos o que é bom
             </p>
 
@@ -159,14 +154,15 @@ export function Inicio() {
             <section className="avaliações">
               <h2>Principais avaliações da semana</h2>
               <hr />
-              <div className="cards">
+              
+              {/* ATUALIZADO: Substituído 'cards' pela classe Grid 'grade-dupla-cards' */}
+              <div className="grade-dupla-cards">
                 {Array.isArray(reviews) && reviews.length > 0 ? (
                   reviews.slice(0, 4).map((review) => (
-                    /* INTEGRADO: Link dinâmico adicionado ao redor de cada CardAvaliacao para abrir os detalhes */
                     <Link 
                       to={`/review/${getEntityId(review)}`} 
                       key={getEntityId(review)} 
-                      style={{ textDecoration: 'none', color: 'inherit', display: 'block', width: '100%', maxWidth: '500px' }}
+                      style={{ textDecoration: 'none', color: 'inherit', display: 'block', width: '100%' }}
                     >
                       <CardAvaliacao
                         id={review.id}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAlbumStore } from '../store/useAlbumStore';
 import { findArtistaForAlbum, getEntityId } from '../utils/ids';
@@ -11,10 +11,13 @@ import './style/Home.css';
 
 export function Home() {
   const navigate = useNavigate();
-  const { albuns, artists, reviews, fetchDados } = useAlbumStore(); // Se o seu store usa 'artistas', altere de 'artists' para 'artistas'
+  const { albuns, artists, reviews, fetchDados } = useAlbumStore();
   
   const [termo, setTermo] = useState('');
   const [termoAtivo, setTermoAtivo] = useState('');
+
+  // Referência atrelada ao container do carrossel horizontal
+  const carrosselRef = useRef(null);
 
   const user = JSON.parse(localStorage.getItem('authUser'));
   const nomeUsuario = user?.username || "usuário";
@@ -29,6 +32,17 @@ export function Home() {
 
   const lidarComBusca = () => {
     setTermoAtivo(termo.trim());
+  };
+
+  // Função que move a rolagem para a esquerda ou direita ao clicar nas setas
+  const scrollCarrossel = (direcao) => {
+    if (carrosselRef.current) {
+      const valorScroll = (180 + 20) * 3; // Move o equivalente a 3 álbuns por clique
+      carrosselRef.current.scrollBy({
+        left: direcao === 'esquerda' ? -valorScroll : valorScroll,
+        behavior: 'smooth'
+      });
+    }
   };
 
   const listaSegura = Array.isArray(albuns) ? albuns : [];
@@ -47,7 +61,6 @@ export function Home() {
     <div className="home-container">
       <Header />
 
-      {/* Alterado para <main className="conteudo-principal"> para seguir o mesmo comportamento e estrutura simétrica do Inicio.jsx */}
       <main className="conteudo-principal">
         
         <Busca valor={termo} aoMudar={setTermo} aoBuscar={lidarComBusca} />
@@ -83,60 +96,74 @@ export function Home() {
             <section className="avaliações">
               <h2>Mais bem avaliados da semana</h2>
               <hr />
-              <div className="albuns">
-                {listaSegura.slice(0, 9).map((album) => (
-                  <Link to={`/album/${getEntityId(album)}`} key={getEntityId(album)}>
-                    <img src={formatCapaUrl(album.capa)} className="img" alt={album.titulo} />
-                  </Link>
-                ))}
+              
+              {/* Wrapper estrutural para fixar as setas por cima e nas pontas */}
+              <div className="carrossel-wrapper">
+                <button 
+                  className="seta-carrossel esquerda" 
+                  onClick={() => scrollCarrossel('esquerda')}
+                  aria-label="Rolar para esquerda"
+                >
+                  ‹
+                </button>
+
+                <div className="albuns1" ref={carrosselRef}>
+                  {listaSegura.slice(0, 9).map((album) => (
+                    <Link 
+                      to={`/album/${getEntityId(album)}`} 
+                      key={getEntityId(album)}
+                      className="vitrine-link"
+                    >
+                      <img src={formatCapaUrl(album.capa)} className="img" alt={album.titulo} />
+                    </Link>
+                  ))}
+                </div>
+
+                <button 
+                  className="seta-carrossel direita" 
+                  onClick={() => scrollCarrossel('direita')}
+                  aria-label="Rolar para direita"
+                >
+                  ›
+                </button>
               </div>
             </section>
 
             <section className="popular">
               <h2>Popular entre amigos</h2>
               <hr />
-              <div className="cards">
-                {Array.isArray(reviews) && reviews.slice(0, 4).map((review) => (
-                  <CardAvaliacao
-                    key={review.id || review._id}
-                    album={review.album}
-                    artist={review.artist}
-                    rating={review.rating}
-                    comment={review.comment}
-                    user={review.user}
-                    createdAt={review.createdAt}
-                  />
+              <div className="grade-dupla-cards">
+                {Array.isArray(reviews) && reviews.slice(0, 3).map((review) => (
+                  <Link to={`/album/${getEntityId(review.album)}`} key={review.id || review._id}>
+                    <CardAvaliacao
+                      album={review.album}
+                      artist={review.artist}
+                      rating={review.rating}
+                      comment={review.comment}
+                      user={review.user}
+                      createdAt={review.createdAt}
+                    />
+                  </Link>
                 ))}
               </div>
             </section>
 
-           {/* <section className="generos">
-              <h2>Gêneros procurados</h2>
-              <hr />
-              <div className="genCard">
-                <div className="image"><img src="img/bossa-nova.webp" alt="Bossa Nova" /></div>
-                <div className="conteudo">
-                  <span className="title">Bossa Nova</span>
-                  <p>Movimento musical brasileiro surgido no Rio de Janeiro...</p>
-                </div>
-              </div>
-            </section> */} 
-
             <section className="avaliações">
               <h2>Principais avaliações da semana</h2>
               <hr />
-              <div className="cards">
-                {Array.isArray(reviews) && reviews.slice(0, 4).map((review) => (
-                  <CardAvaliacao
-                    key={getEntityId(review)}
-                    id={review.id}
-                    album={review.album}
-                    artist={review.artist}
-                    rating={review.rating}
-                    comment={review.comment}
-                    user={review.user}
-                    createdAt={review.createdAt}
-                  />
+              <div className="grade-dupla-cards">
+                {Array.isArray(reviews) && reviews.slice(0, 3).map((review) => (
+                  <Link to={`/album/${getEntityId(review.album || review)}`} key={getEntityId(review)}>
+                    <CardAvaliacao
+                      id={review.id}
+                      album={review.album}
+                      artist={review.artist}
+                      rating={review.rating}
+                      comment={review.comment}
+                      user={review.user}
+                      createdAt={review.createdAt}
+                    />
+                  </Link>
                 ))}
               </div>
             </section>
