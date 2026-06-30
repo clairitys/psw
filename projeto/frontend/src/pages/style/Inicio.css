@@ -151,11 +151,14 @@
         scroll-snap-type: x mandatory;
         gap: 20px;
         padding: 20px 40px;
-        margin: 0;   
+        margin: 0 auto;
+        width: 100%;
+        max-width: 1200px;
         text-align: center;
         clear: both;
         scrollbar-width: thin; 
         scrollbar-color: #060d0c #f8f8f8;
+        align-items: center;
     }
 
     
@@ -184,6 +187,7 @@
         max-width: 100%;
         margin: 20px 0;          
         transition: transform 0.3s, box-shadow 0.3s;
+        flex: 0 0 auto;
     }
 
     .img:hover{
@@ -211,6 +215,8 @@
     margin: 0 auto;
     padding: 0 40px;
     box-sizing: border-box;
+    flex-wrap: nowrap;
+    overflow-x: auto;
 }
 
 /* Ajuste sutil na margem da sua div existente */

@@ -410,17 +410,23 @@ body {
         text-align: center;
     }
 
-    .img:hover {
-       transform: scale(1.05);
+    .img:hover{
+        transform: translateY(-8px); 
+        box-shadow: 0 10px 20px rgba(40, 24, 34, 0.15); 
     }
 
-    .img {
-        width: 150px;
-        height: 150px;
+   .img {
+        width: 180px !important;
+        height: 180px !important;
         object-fit: cover;
         border-radius: 8px;
-        margin-bottom: 30px;
-        margin-top: 0;      
+        flex-shrink: 0;         
+        scroll-snap-align: center;
+        display: block;
+        max-width: 100%;
+        margin: 20px 0;          
+        transition: transform 0.3s, box-shadow 0.3s;
+        flex: 0 0 auto;
     }
 
     .popular h2{
