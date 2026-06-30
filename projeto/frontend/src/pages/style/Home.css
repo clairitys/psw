@@ -127,7 +127,7 @@ body {
         display: flex;
         gap: 25px;
         align-items: center;
-    } 
+    }
 
     .direita a {
         color: #f0de65 !important;    
@@ -216,7 +216,7 @@ body {
     }
 
     .barra button:hover {
-        transform: scale(1.05)
+        transform: scale(1.05);
     }
 
     .home-container {

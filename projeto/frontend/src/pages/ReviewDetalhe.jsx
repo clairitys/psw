@@ -17,7 +17,7 @@ export function ReviewDetalhe() {
   const { albuns, artistas, fetchDados } = useAlbumStore();
   const user = JSON.parse(localStorage.getItem('authUser'));
 
-  const API_URL = `http://localhost:3001/avaliacoes/${id}`;
+  const API_URL = `/api/reviews/${id}`;
 
   const recarregarReview = () => {
     fetch(API_URL)
@@ -41,7 +41,7 @@ export function ReviewDetalhe() {
         console.error("Erro na API de detalhes, tentando busca fallback de segurança...", err);
         
         // FALLBACK: Caso a rota direta falhe devido ao formato do ID, busca a lista completa e filtra
-        fetch(`http://localhost:3001/avaliacoes`)
+        fetch(`/api/reviews`)
           .then(res => res.json())
           .then(lista => {
             const achado = lista.find(item => String(item.id) === String(id) || String(item._id) === String(id));
@@ -65,7 +65,7 @@ export function ReviewDetalhe() {
     if (!user) {
       setModalCadastroAberto(true);
     } else {
-      action();
+      acao();
     }
   };
 
@@ -80,7 +80,7 @@ export function ReviewDetalhe() {
     const novaCurtidaCount = (review?.curtidas || 0) + 1;
 
     // Tenta atualizar usando a URL padrão ou a chave correta encontrada
-    const targetUrl = review.id ? `http://localhost:3001/avaliacoes/${review.id}` : API_URL;
+    const targetUrl = review.id ? `/api/reviews/${review.id}` : API_URL;
 
     fetch(targetUrl, {
       method: 'PATCH',
@@ -103,36 +103,39 @@ export function ReviewDetalhe() {
       return;
     }
 
-    const novoItem = {
-      id: Date.now(),
-      username: user?.username || "Usuário",
-      userImg: user?.avatar || "img/user.jpg",
-      texto: novoComentario,
-      data: new Date().toLocaleDateString('pt-BR')
-    };
-
-    const listaAtualizada = [...(review?.comentarios || []), novoItem];
-    const targetUrl = review.id ? `http://localhost:3001/avaliacoes/${review.id}` : API_URL;
+    const targetUrl = review.id ? `/api/reviews/${review.id}/comentarios` : `/api/reviews/${id}/comentarios`;
 
     fetch(targetUrl, {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ comentarios: listaAtualizada })
+      method: 'POST',
+      headers: { 
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      },
+      body: JSON.stringify({ texto: novoComentario })
     })
-    .then(res => res.json())
+    .then(res => {
+      if (!res.ok) throw new Error('Erro ao enviar comentário');
+      return res.json();
+    })
     .then(() => {
       setNovoComentario('');
       recarregarReview();
+    })
+    .catch(err => {
+      console.error('Erro ao enviar comentário:', err);
+      alert('Erro ao publicar comentário');
     });
   };
 
   if (erro) {
     return (
-      <div className="sua-avaliacao-page" style={{ padding: '40px', textAlign: 'center' }}>
+      <div className="sua-avaliacao-page">
         <Header />
-        <main className="conteudo-principal" style={{ marginTop: '100px', color: '#fff' }}>
-          <h2>⚠️ Avaliação não encontrada</h2>
-          <p>Não foi possível carregar a revisão selecionada.</p>
+        <main className="loading-error-container">
+          <div>
+            <h2>⚠️ Avaliação não encontrada</h2>
+            <p>Não foi possível carregar a revisão selecionada.</p>
+          </div>
         </main>
         <Rodape />
       </div>
@@ -141,9 +144,9 @@ export function ReviewDetalhe() {
 
   if (!review) {
     return (
-      <div className="sua-avaliacao-page" style={{ padding: '40px', textAlign: 'center' }}>
+      <div className="sua-avaliacao-page">
         <Header />
-        <main className="conteudo-principal" style={{ marginTop: '100px', color: '#fff' }}>
+        <main className="loading-error-container">
           <p>Carregando dados da avaliação... 🎧</p>
         </main>
         <Rodape />
@@ -203,13 +206,19 @@ export function ReviewDetalhe() {
 
           <div className="lista-comentarios">
             {review.comentarios && review.comentarios.length > 0 ? (
-              review.comentarios.map((com, idx) => (
-                <div key={com.id || idx} className="comentario-item">
-                  <img src={com.userImg?.startsWith('img/') ? `/${com.userImg}` : com.userImg} alt={com.username} className="comentario-avatar" />
+              review.comentarios.map((com) => (
+                <div key={com._id} className="comentario-item">
+                  <img 
+                    src={com.user?.avatar?.startsWith('img/') ? `/${com.user.avatar}` : (com.user?.avatar || "/img/user.jpg")} 
+                    alt={com.user?.username} 
+                    className="comentario-avatar" 
+                  />
                   <div className="comentario-conteudo">
                     <div className="comentario-meta">
-                      <span className="comentario-autor">{com.username}</span>
-                      <span className="comentario-data">{com.data}</span>
+                      <span className="comentario-autor">{com.user?.username || "Usuário"}</span>
+                      <span className="comentario-data">
+                        {new Date(com.createdAt).toLocaleDateString('pt-BR')}
+                      </span>
                     </div>
                     <p className="comentario-texto-corpo">{com.texto}</p>
                   </div>

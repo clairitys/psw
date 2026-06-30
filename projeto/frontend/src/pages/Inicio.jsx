@@ -173,6 +173,7 @@ export function Inicio() {
                         comment={review.comment}
                         user={review.user}
                         createdAt={review.createdAt}
+                        capa={review.capa}
                       />
                     </Link>
                   ))

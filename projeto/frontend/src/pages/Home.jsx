@@ -134,7 +134,7 @@ export function Home() {
               <hr />
               <div className="grade-dupla-cards">
                 {Array.isArray(reviews) && reviews.slice(0, 3).map((review) => (
-                  <Link to={`/album/${getEntityId(review.album)}`} key={review.id || review._id}>
+                  <Link to={`/review/${getEntityId(review)}`} key={review.id || review._id}>
                     <CardAvaliacao
                       album={review.album}
                       artist={review.artist}
@@ -142,6 +142,7 @@ export function Home() {
                       comment={review.comment}
                       user={review.user}
                       createdAt={review.createdAt}
+                      capa={review.capa}
                     />
                   </Link>
                 ))}
@@ -153,11 +154,12 @@ export function Home() {
               <hr />
               <div className="grade-dupla-cards">
                 {Array.isArray(reviews) && reviews.slice(0, 3).map((review) => (
-                  <Link to={`/album/${getEntityId(review.album || review)}`} key={getEntityId(review)}>
+                  <Link to={`/review/${getEntityId(review)}`} key={getEntityId(review)}>
                     <CardAvaliacao
                       id={review.id}
                       album={review.album}
                       artist={review.artist}
+                      capa={review.capa}
                       rating={review.rating}
                       comment={review.comment}
                       user={review.user}

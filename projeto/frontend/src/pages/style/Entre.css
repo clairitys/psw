@@ -290,7 +290,8 @@
     /* Mobile grande (576px - 767px) */
     @media (max-width: 767px) {
         body {
-            padding-top: 0 !important;        }
+            padding-top: 0 !important;
+        }
 
         .container {
             height: 55px;

@@ -80,6 +80,7 @@ export function SuaAvaliacao() {
         artist: artistaAlvo?.nome || 'Desconhecido',
         rating: rating,
         comment: comentario.trim() || '',
+        capa: albumAlvo.capa,
       };
 
       await adicionarReview(novaReview);
@@ -230,7 +231,7 @@ export function SuaAvaliacao() {
         <div className="cards">
           {Array.isArray(reviews) &&
             reviews.slice(0, 2).map((rev) => (
-              <CardAvaliacao key={getEntityId(rev)} {...rev} />
+              <CardAvaliacao key={getEntityId(rev)} {...rev} capa={rev.capa} />
             ))}
         </div>
       </section>

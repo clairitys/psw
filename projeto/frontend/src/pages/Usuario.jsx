@@ -31,6 +31,19 @@ export function Usuario() {
       getEntityId(rev.user) === meuId
   );
 
+  // Filtra comentários feitos por este usuário em todas as reviews
+  const meusComentarios = reviews
+    .flatMap(review => 
+      (review.comentarios || []).map(comentario => ({
+        ...comentario,
+        reviewId: getEntityId(review),
+        albumTitulo: review.album,
+        albumArtista: review.artist,
+        albumCapa: review.capa
+      }))
+    )
+    .filter(com => com.user?.username === nomeUsuario || getEntityId(com.user) === meuId);
+
   const lidarComBusca = () => {
     setTermoAtivo(termo.trim());
   };
@@ -50,7 +63,7 @@ export function Usuario() {
                     <div className="info-usuario-container">
                         <div className="nome-acoes-linha">
                             <h1 className="nome-display">{nomeUsuario}</h1>
-                            <Link to="/editar-perfil" className="botão-editar">EDITAR PERFIL</Link>
+                            <Link to="/editar-perfil" className="botao-editar">EDITAR PERFIL</Link>
                         </div>
                     </div>
                 </div>
@@ -96,6 +109,12 @@ export function Usuario() {
                 >
                     Minhas Avaliações
                 </div>
+                <div 
+                    className={`cat-item ${abaAtiva === 'comentarios' ? 'active' : ''}`} 
+                    onClick={() => setAbaAtiva('comentarios')}
+                >
+                    Comentários ({meusComentarios.length})
+                </div>
             </div>
             <hr className="linha-separadora" />
 
@@ -129,6 +148,7 @@ export function Usuario() {
                                     comment={review.comment}
                                     user={review.user}
                                     createdAt={review.createdAt}
+                                    capa={review.capa}
                                 />
                             ))}
                             {minhasReviews.length === 0 && (
@@ -172,10 +192,42 @@ export function Usuario() {
                                     comment={review.comment}
                                     user={review.user}
                                     createdAt={review.createdAt}
+                                    capa={review.capa}
                                 />
                             ))
                         ) : (
                             <p className="msg-vazio">Você ainda não fez nenhuma avaliação.</p>
+                        )}
+                    </div>
+                </section>
+            )}
+
+            {abaAtiva === 'comentarios' && (
+                <section className="secao-perfil-listas">
+                    <h2 className="titulo-secao-letter">MEUS COMENTÁRIOS</h2>
+                    <div className="lista-feed-perfil">
+                        {meusComentarios.length > 0 ? (
+                            meusComentarios.map((com, idx) => (
+                                <Link 
+                                    key={com._id || idx} 
+                                    to={`/review/${com.reviewId}`}
+                                    style={{ textDecoration: 'none', color: 'inherit', display: 'block', width: '100%' }}
+                                >
+                                    <div className="comentario-perfil-card">
+                                        <div className="comentario-header-perfil">
+                                            <img src={com.albumCapa?.startsWith('http') || com.albumCapa?.startsWith('/') ? com.albumCapa : `/${com.albumCapa || 'img/default-album.jpg'}`} alt={com.albumTitulo} className="comentario-capa-pequena" />
+                                            <div className="comentario-info-perfil">
+                                                <h4 className="comentario-album-titulo">{com.albumTitulo}</h4>
+                                                <p className="comentario-album-artista">por {com.albumArtista}</p>
+                                                <small className="comentario-data-perfil">{new Date(com.createdAt).toLocaleDateString('pt-BR')}</small>
+                                            </div>
+                                        </div>
+                                        <p className="comentario-texto-perfil">{com.texto}</p>
+                                    </div>
+                                </Link>
+                            ))
+                        ) : (
+                            <p className="msg-vazio">Você ainda não fez nenhum comentário.</p>
                         )}
                     </div>
                 </section>

@@ -1,5 +1,21 @@
 const mongoose = require("mongoose");
 
+const comentarioSchema = new mongoose.Schema(
+  {
+    texto: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+  },
+  { timestamps: true }
+);
+
 const reviewSchema = new mongoose.Schema(
   {
     album: {
@@ -23,11 +39,16 @@ const reviewSchema = new mongoose.Schema(
       trim: true,
       default: "",
     },
+    capa: {
+      type: String,
+      trim: true,
+    },
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: true,
     },
+    comentarios: [comentarioSchema],
   },
   {
     timestamps: true,

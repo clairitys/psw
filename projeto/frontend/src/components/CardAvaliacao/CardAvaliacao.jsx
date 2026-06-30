@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useAlbumStore } from '../../store/useAlbumStore';
 import { getEntityId } from '../../utils/ids';
 import './CardAvaliacao.css';
@@ -7,8 +7,8 @@ const BASE_URL_BACKEND = "http://localhost:5000";
 
 export function CardAvaliacao({ id, _id, album, artist, rating, comment, user, createdAt, capa }) {
   const [loading, setLoading] = useState(false);
-  const [capaInjetada, setCapaInjetada] = useState(null); // Estado para guardar a capa encontrada
   const { removerReview } = useAlbumStore();
+  
   const currentUser = JSON.parse(localStorage.getItem('authUser') || 'null');
   const reviewId = getEntityId({ id, _id });
 
@@ -16,36 +16,6 @@ export function CardAvaliacao({ id, _id, album, artist, rating, comment, user, c
     getEntityId(currentUser) === getEntityId(user) ||
     currentUser.username === user.username
   );
-
-  // 🌟 BUSCA BLINDADA DA CAPA VIA API
-  useEffect(() => {
-    // Se a review já veio com uma capa válida do banco, usamos ela direto
-    if (capa && capa !== "undefined" && capa !== "null" && capa.trim() !== "") {
-      setCapaInjetada(capa);
-      return;
-    }
-
-    // Se veio sem capa, fazemos uma busca na sua rota de álbuns usando o nome do álbum
-    const buscarCapaDoAlbum = async () => {
-      try {
-        const resposta = await fetch(`${BASE_URL_BACKEND}/api/albuns`); // Ajuste o "/api/albuns" se sua rota de álbuns for diferente
-        if (!resposta.ok) return;
-        
-        const listaAlbuns = await resposta.json();
-        const encontrado = listaAlbuns.find(
-          (a) => (a.titulo || '').toLowerCase().trim() === (album || '').toLowerCase().trim()
-        );
-
-        if (encontrado && encontrado.capa) {
-          setCapaInjetada(encontrado.capa);
-        }
-      } catch (err) {
-        console.error("Erro ao buscar capa dinamicamente:", err);
-      }
-    };
-
-    buscarCapaDoAlbum();
-  }, [album, capa]);
 
   const handleDelete = async (e) => {
     e.stopPropagation(); 
@@ -80,14 +50,17 @@ export function CardAvaliacao({ id, _id, album, artist, rating, comment, user, c
     }
   };
 
-  // --- MONTAGEM FINAL DA URL DA CAPA ---
+  // --- MONTAGEM DA URL DA CAPA DIRETO DA PROP ---
   let capaUrl = "/img/default-album.jpg"; 
 
-  if (capaInjetada) {
-    if (capaInjetada.startsWith("http")) {
-      capaUrl = capaInjetada;
+  if (capa) {
+    if (capa.startsWith("/img")) {
+      // Se vier do banco como "/img/fulano.jpg", puxa direto da sua pasta public!
+      capaUrl = capa; 
+    } else if (capa.startsWith("http")) {
+      capaUrl = capa;
     } else {
-      const caminhoLimpo = capaInjetada.startsWith("/") ? capaInjetada : `/${capaInjetada}`;
+      const caminhoLimpo = capa.startsWith("/") ? capa : `/${capa}`;
       capaUrl = `${BASE_URL_BACKEND}${caminhoLimpo}`;
     }
   }
@@ -95,7 +68,7 @@ export function CardAvaliacao({ id, _id, album, artist, rating, comment, user, c
   // --- TRATAMENTO DO AVATAR ---
   let avatarUrl = "/img/user.jpg";
   if (user?.avatar) {
-    if (user.avatar.startsWith("http")) {
+    if (user.avatar.startsWith("/img") || user.avatar.startsWith("http")) {
       avatarUrl = user.avatar;
     } else {
       const avatarLimpo = user.avatar.startsWith("/") ? user.avatar : `/${user.avatar}`;
@@ -114,7 +87,7 @@ export function CardAvaliacao({ id, _id, album, artist, rating, comment, user, c
       <img 
         src={capaUrl} 
         className="img1" 
-        alt="Capa do Álbum" 
+        alt={`Capa do álbum ${album}`} 
         onError={(e) => { 
           e.target.src = "/img/default-album.jpg"; 
         }} 

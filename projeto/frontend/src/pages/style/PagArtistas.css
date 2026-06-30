@@ -19,6 +19,7 @@
   margin: 0 auto;
   padding: 60px 40px;
   box-sizing: border-box;
+  margin-top: 40px;
 }
 
 /* Título Principal Editorial */
@@ -99,6 +100,7 @@
   letter-spacing: 1px;
   color: #94a3b8; /* Cinza claro para contraste no fundo escuro */
   font-weight: 600;
+  
 }
 
 .artista-card-title {

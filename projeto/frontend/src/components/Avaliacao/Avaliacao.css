@@ -79,9 +79,7 @@
     box-shadow: 0 0 0 2px rgba(154, 154, 154, 0.2); /* Opcional: uma sombra verde bem sutil apenas para feedback */
 }
 
-                  
-.album-select-label
-{
+.album-select-label {
     font-weight: 350;
     font-size: 16px !important;
 }
