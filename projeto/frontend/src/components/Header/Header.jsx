@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Avaliacao } from '../Avaliacao/Avaliacao.jsx';
 import { Entre } from '../../pages/Entre.jsx'; 
 import { Cadastro } from '../../pages/Cadastro.jsx';
+import { formatAvatarUrl } from '../../utils/format';
 import './Header.css';
 
 export function Header() {
@@ -47,7 +48,7 @@ export function Header() {
               <Link to="/generos">gêneros</Link>
               <div className="dropdown1">
                 <div className="userTrigger" onClick={() => setDropdownAberto(!dropdownAberto)}>
-                  <img src="/img/icon.jpg" className="pfp" alt="pfp" />
+                  <img src={formatAvatarUrl(user?.avatar)} className="pfp" alt={user?.username || 'Usuário'} />
                   <span style={{ 
                     fontFamily: "'Outfit', sans-serif", 
                     color: '#FFFFFF',
